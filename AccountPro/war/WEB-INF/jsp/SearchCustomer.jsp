@@ -7,16 +7,17 @@
 <%@ include file="../css/global.css" %>
 <%@ include file="../css/ListCustomer.css" %>
 
-.colOpen	{width:5%;;background-Color:#D4D0C9;border:1px solid ;}
 
 </style>
 
 <script type="text/javascript">
 
- function openCustomer()
+ function openCustomer(id)
  {
-	 window.open('addCustomer.htm','_self',false);
+	 //alert("CustomerId :"+id);
+	 window.open('openCustomer.htm?id='+id,'_self',false);
  }
+ 
  
 </script>
 
@@ -96,7 +97,7 @@
 <%-- 			 	    		  	<td class="col1"><c:out value="${customer.firstName}"/></td>  
 				    		  	<td class="col2"><c:out value="${customer.lastName}"/></td>
  --%>				    		 
- 								<td class="colOpen"><input type="button" value="open" onclick="openCustomer()"/></td>
+ 								<td class="colOpen"><input type="button" value="open" onclick="openCustomer(${customer.customerID})"/></td>
  								<td class="colName"><c:out value="${customer.firstName} ${customer.lastName}"/></td>
  								<td class="col3"><c:out value="${customer.phone}"/></td>
 				    		  	<td class="col4"><c:out value="${customer.paymentDueDate}"/></td>

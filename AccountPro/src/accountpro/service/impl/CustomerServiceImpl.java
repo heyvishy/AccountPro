@@ -56,5 +56,15 @@ public class CustomerServiceImpl implements CustomerService{
 		return result;
 	}
 
+	
+	@Override
+	public Customer openCustomer(String customerId) {
+		Customer customer = new Customer();
+		customer = customerDao.openCustomer(customerId);
+		return customer;
+
+	}
+
+
 
 }

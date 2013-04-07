@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,6 +25,10 @@ import accountpro.service.CustomerService;
 public class CustomerController {
 	
 	private static final Logger LOGGER = Logger.getLogger(CustomerController.class.getName());
+
+	private static final String USER_ID = null;
+
+	private static final String PASSWORD = null;
 	
 	private CustomerService customerService;
 	
@@ -75,6 +81,34 @@ public class CustomerController {
 	    return mav;
 	}
 
+	
+	@RequestMapping(value="/openCustomer.htm")
+	public ModelAndView openCustomer(@RequestParam("id") String id)
+	{
+		//LOGGER.info("id "+id);
+		ModelAndView mav = new ModelAndView();
+		LOGGER.info("id: "+id);
+		Customer cust = customerService.openCustomer(id);
+		 mav.setViewName("AddCustomer");
+		 mav.addObject("customer", cust);
+		return mav;
+		
+	}
+	
+//	@RequestMapping(value="/openCustomer.htm")
+//	//public ModelAndView openCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {
+//	public ModelAndView openCustomer(Model model) {
+//	    
+//		ModelAndView mav = new ModelAndView();
+//	    //String cutomerId = request.
+//	    //String customerId  = customer.getCustomerID();
+//	    Customer cust = customerService.openCustomer("19");
+//	    mav.setViewName("AddCustomer");
+//	    mav.addObject("customer", cust);
+//	    return mav;
+//	}
+
+	
 	
 	@RequestMapping(value="/addCustomer.htm",method=RequestMethod.POST)
 	public ModelAndView addCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {

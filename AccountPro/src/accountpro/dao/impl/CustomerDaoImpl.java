@@ -81,6 +81,7 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		List<Customer> customers = new ArrayList<Customer>();
 		while(rss.next()){
 			Customer cust = new Customer();
+			cust.setCustomerID(Integer.toString(rss.getInt("P_Id")));
 			cust.setFirstName(rss.getString("FirstName"));
 			cust.setLastName(rss.getString("LastName"));
 			cust.setAddress(rss.getString("City"));
@@ -89,6 +90,33 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		}
 		return customers;
 		
+	}
+
+	@Override
+	public Customer openCustomer(String customerId) {
+		StringBuffer sql = new StringBuffer();
+		List<Object> args = new ArrayList<Object>();
+		
+		sql.append("select * from Customer where P_id = ?");
+		args.add(customerId);
+		SqlRowSet rss  = this.getJdbcTemplate().queryForRowSet(sql.toString(), args.toArray());
+		
+		Customer customer =  new Customer();
+		while(rss.next()){
+			customer.setFirstName(rss.getString("FirstName"));
+			customer.setLastName(rss.getString("LastName"));
+			//customer.setCity(rss.getString("Add));
+			//customer.setPhone(rss.getString(arg0));
+			customer.setAddress(rss.getString("Address"));
+			customer.setCustomerID(customerId);
+			customer.setCity(rss.getString("City"));
+			//customer.setActive(active);
+			customer.setZipCode(rss.getString("ZipCode"));
+			//customer.setAmountDue(amountDue);
+			break;
+		}
+		
+		return customer;
 	}	
 
 

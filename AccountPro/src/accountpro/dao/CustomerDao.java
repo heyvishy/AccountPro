@@ -10,5 +10,7 @@ public interface CustomerDao {
 	public String getCustomerName();
 	
 	public List<Customer> searchCustomer(Customer customer);
+	
+	public Customer openCustomer(String customerId);
 		
 }
