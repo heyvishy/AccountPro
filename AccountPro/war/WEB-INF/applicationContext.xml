@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<import resource="/conf/spring-dao.xml" />
+	<import resource="/conf/spring-service.xml" />
+</beans>

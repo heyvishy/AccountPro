@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+
+    <bean id="loginService" class="accountpro.service.impl.LoginServiceImpl">
+        <property name="loginDao" ref="loginDao"/>
+    </bean>
+    
+    <bean id="customerService" class="accountpro.service.impl.CustomerServiceImpl">
+    	<property name="customerDao" ref="customerDao"/>
+    </bean>
+    
+
+    <bean id="policyService" class="accountpro.service.impl.PolicyServiceImpl">
+    	<property name="policyDao" ref="policyDao"/>
+    </bean>
+
+</beans>

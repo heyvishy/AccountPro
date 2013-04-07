@@ -1,0 +1,51 @@
+    /* Get ride of default margin's and padding */
+    ul, li {
+        margin: 0;
+        padding: 0;
+        list-style-type:none;
+    }
+
+	/*added  vishy*/
+	a:link,a:visited
+	{
+		display:block;
+		font-weight:bold;
+		color:#FFFFFF;
+		background-color:#D4D0C9;
+		text-align:center;
+		padding:4px;
+		width:120px;
+		text-decoration:none;
+		text-transform:uppercase;
+		border: solid;
+	}
+	a:hover,a:active
+	{
+		background-color:grey;
+	}
+	
+    /* Display parent unordered list items horizontally */
+    ul li {
+        float: left;
+        list-style: none;       /* Get rid of default Browser styling */
+        margin-right: 10px;     /* Add some space between items */
+    }
+
+        /* Hide inset unordered Lists */
+        ul li ul {
+            display: none;
+            
+        }
+
+        /* Un-Hide inset unordered Lists when parent <li> is hovered over */
+        ul li:hover ul {
+            display: block;
+            position: absolute;
+
+        }
+
+            /* Clear the any element that may be "float: left;" (Essentially moves the item to the next line */
+            ul li:hover ul li {
+                clear: left;
+                           
+            }

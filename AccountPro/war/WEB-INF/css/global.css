@@ -1,0 +1,117 @@
+/* .tblParent   {width:100%;height:100%;background-Color:#D4D0C9;border: thick; border-style: groove;position: relative;margin-left:25%}
+.tblChild   {background-Color:#D4D0C9;width:50%;position:relative;margin-left:25%;margin-bottom:25%; border: thick; border-style: groove; }
+.Heading	{background-Color:#D4D0C9;font-size:x-large;font-family: sans-serif;font-style: normal;position: relative;padding-top: 200px;padding-left: 50%}
+ */ 
+ 
+.tblNav   {width:100%;background-Color:#D4D0C9;border: thick; border-style: none;}
+.tblParent   {width:100%;height:100%;background-Color:#D4D0C9;border-style: none}
+.tblChild   {background-Color:#D4D0C9;width:50%;position:relative;margin-left:25%;margin-bottom:25%; border: thick; border-style: groove; }
+.Heading	{font-size:x-large;font-family: sans-serif;font-style: normal;padding-left: 50%}
+.und {text-decoration: underline; }
+.line {border-style: groove;width:100%;}
+
+#navigation
+{width:100%; height:30px; background:#999;}
+	/*First level menu****************************************/
+	#navigation ul
+	{	
+		margin:0px; 
+		padding:0px;
+	}
+		/*First level list items******************************/
+		#navigation ul li
+		{
+			display:inline; 
+			float:left; 
+			height:30px;
+			line-height:30px;
+			list-style:none; 
+			margin-left:15px; 
+			position:relative; 
+		}
+			/*First level anchor tags************************/
+			#navigation li a
+			{
+				color:#fff; 
+				text-decoration:none;
+			}
+			#navigation li a:hover
+			{
+				text-decoration:underline;
+			}
+			
+			/*Second level menu*****************************/
+			#navigation li ul
+			{
+				background-color:#999;
+				display:none; 
+				left:0px; 
+				margin:0px; 
+				padding:0px; 
+				position:absolute; 
+				top:30px; 
+			}
+			#navigation li:hover ul
+			{
+				display:block; 
+				width:160px;
+			}
+				
+				/*Second level list items*******************/
+				#navigation li li
+				{	
+					list-style:none; 
+					display:list-item;
+				}
+					
+					/*Second level anchors*****************/
+					#navigation li li a
+					{
+						color:#fff; 
+						text-decoration:none;
+					}
+					#navigation li li a:hover
+					{
+						text-decoration:underline;
+					}
+
+/*
+	The above CSS is for learning purposes ONLY! In a real stylesheet 
+	you would want to utilize much smaller and less frequest selectors.
+	
+	#nav {
+		background:#999;
+		width:100%;
+	}
+		#nav,#nav li { height:30px; }
+		
+		#nav ul {
+			margin:0px; 
+			padding:0px;
+		}
+				#nav li {
+					display:block; 
+					float:left; 
+					list-style:none;
+					line-height:30px;
+					margin-left:15px; 
+					position:relative;			
+				}
+					#nav a {
+						color:#fff;
+						text-decoration:none;
+					}
+					#nav a:hover { text-decoration:underline; }
+					
+					#nav li ul { display:none; }
+					#nav li:hover ul {
+						background-color:#999;
+						border-top: 1px solid #8F8E8E;
+						display:block; 
+						left:0px; 
+						position:absolute; 
+						top:30px;
+						width:160px;						 					
+					}					
+		
+*/

@@ -1,0 +1,32 @@
+CREATE TABLE Customer
+(
+P_Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+LastName VARCHAR(255) NOT NULL,
+FirstName VARCHAR(255),
+Address VARCHAR(255),
+City VARCHAR(255),
+ZipCode VARCHAR(10)
+);
+
+CREATE TABLE Users
+(
+Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+LastName VARCHAR(255) ,
+FirstName VARCHAR(255),
+userid VARCHAR(20) NOT NULL,
+PASSWORD VARCHAR(20) NOT NULL
+);
+
+/*sets up user account*/
+INSERT INTO accountpro.`Users` (LastName,FirstName,userid,PASSWORD) VALUES ('SHUKLA','VISHAL','vishal','password');
+
+CREATE TABLE Policy
+(
+Policy_Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CustomerID INT NOT NULL,
+PolicyType VARCHAR(20) NOT NULL,
+PolicyNumber INT NOT NULL,
+PolicyAmount DOUBLE NOT NULL,
+StartDate DATE ,
+EndDate DATE
+);
