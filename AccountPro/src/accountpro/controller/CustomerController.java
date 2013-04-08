@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.Customer;
+import accountpro.domain.SearchCustomerCriteria;
 import accountpro.service.CustomerService;
 
 @Controller
@@ -26,10 +26,6 @@ public class CustomerController {
 	
 	private static final Logger LOGGER = Logger.getLogger(CustomerController.class.getName());
 
-	private static final String USER_ID = null;
-
-	private static final String PASSWORD = null;
-	
 	private CustomerService customerService;
 	
 	public CustomerService getCustomerService() {
@@ -62,20 +58,20 @@ public class CustomerController {
 
 	@RequestMapping(value="/searchCustomer.htm")
 	public ModelAndView showSearchCustomerForm(Model model) {
-	    Customer customer = new Customer(); 
+		SearchCustomerCriteria searchCustomerCriteria = new SearchCustomerCriteria();
 	    ModelAndView mav = new ModelAndView();
 	    
-	    List<Customer> customers = customerService.searchCustomers(customer);
+	    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
 	    mav.addObject("customerList", customers);
 	    mav.setViewName("SearchCustomer");
-	    mav.addObject("customer", customer);
+	    mav.addObject("searchCustomerCriteria", searchCustomerCriteria);
 	    return mav;
 	}
 
 	@RequestMapping(value="/searchCustomer.htm",method=RequestMethod.POST)
-	public ModelAndView searchCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {
+	public ModelAndView searchCustomer(@ModelAttribute("searchCustomerCriteria")  @Valid SearchCustomerCriteria searchCustomerCriteria,BindingResult result, SessionStatus status) {
 	    ModelAndView mav = new ModelAndView();
-	    List<Customer> customers = customerService.searchCustomers(customer);
+	    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
 	    mav.setViewName("SearchCustomer");
 	    mav.addObject("customerList", customers);
 	    return mav;
@@ -141,7 +137,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value="/deleteCustomer.htm",method=RequestMethod.POST)
-	public ModelAndView deleteCustomer(@ModelAttribute("customer")  Customer customer,BindingResult result, SessionStatus status) {
+	public ModelAndView deleteCustomer(@ModelAttribute("searchCustomerCriteria")  SearchCustomerCriteria searchCustomerCriteria,BindingResult result, SessionStatus status) {
 	
 		ModelAndView mav = new ModelAndView();
 		
@@ -153,12 +149,26 @@ public class CustomerController {
 		}
 		else{
 			int resultValue = 0;
-			resultValue = customerService.deleteCustomer(customer.getCustomerID());
+			LOGGER.info("customer ID RECEIVED  = " +searchCustomerCriteria.getCustomerID());
+			resultValue = customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
+			
 			LOGGER.info("Customer deleted !! ");
+		    
+			//mav.setViewName("SearchCustomer");
+		    //mav.addObject("resultValue", resultValue);
+		    //mav.addObject("searchCustomerCriteria", searchCustomerCriteria);
+		    
+		    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
 		    mav.setViewName("SearchCustomer");
-		    mav.addObject("resultValue", resultValue);
-		    mav.addObject("customer", customer);
+		    mav.addObject("customerList", customers);
+
 		    return mav;
+/*		    ModelAndView mav = new ModelAndView();
+		    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
+		    mav.setViewName("SearchCustomer");
+		    mav.addObject("customerList", customers);
+		    return mav;
+*/		    
 		}
 	}
 	

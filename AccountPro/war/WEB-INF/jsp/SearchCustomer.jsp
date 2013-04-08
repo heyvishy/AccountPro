@@ -14,7 +14,6 @@
 
  function openCustomer(id)
  {
-	 //alert("CustomerId :"+id);
 	 window.open('openCustomer.htm?id='+id,'_self',false);
  }
  
@@ -23,11 +22,15 @@
 	 alert("deleete :"+id);
 	 //window.open('openCustomer.htm?id='+id,'_self',false);
 	  var form = document.getElementById("searchCustomerForm");
-	  //var custId = document.getElementById("custID");
+	  var custId = document.getElementById("custID");
 	 //form.commandName='policy';
-	  //form.custId.value= id;
+	  custId.value  = id;
 	  form.action = 'deleteCustomer.htm';
 
+	  
+/* 	     var form = document.getElementById("CustomerForm");
+	     form.action = 'updateCustomer.htm';
+ */
  }
 
  
@@ -41,7 +44,7 @@
 <body>
 
 
-<form:form method="post" action="searchCustomer.htm" commandName="customer" id="searchCustomerForm">
+<form:form method="post" action="searchCustomer.htm" commandName="searchCustomerCriteria" id="searchCustomerForm">
  	
  	 	<tr>
  			<td><%@ include file="../jsp/Navigation.jsp" %></td>
@@ -88,13 +91,6 @@
 								</table>				
 							</td>
 						</tr>
-<!-- 						<tr>
-							<td colspan="2" class="line"></td>
-						</tr>				
-			      		<tr>	
-			     			<td colspan="2" align="center"><b>List Of Customers</b> </td>
-			     		</tr>
- -->
 			     		<tr>
 					   			<!-- <td class="col1">FirstName</td> -->
 					   			<!-- <td class="col2">LastName</td> -->

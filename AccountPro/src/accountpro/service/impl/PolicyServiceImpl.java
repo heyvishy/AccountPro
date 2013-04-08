@@ -19,7 +19,6 @@ public class PolicyServiceImpl implements PolicyService {
 
 	@Override
 	public List<Policy> getPolicies() {
-		int result = 0;
 		List<Policy> policies = policyDao.getPolicies();
 		return policies;
 	}

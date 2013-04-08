@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import accountpro.domain.Customer;
 import accountpro.domain.Policy;
 import accountpro.service.PolicyService;
 

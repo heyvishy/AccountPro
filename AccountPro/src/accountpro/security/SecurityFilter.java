@@ -12,8 +12,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import accountpro.controller.BaseController;
-
 public class SecurityFilter implements Filter {
 	
 	private static final Logger LOGGER = Logger.getLogger(SecurityFilter.class.getName());

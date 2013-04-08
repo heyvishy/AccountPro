@@ -5,6 +5,7 @@ import java.util.List;
 
 import accountpro.dao.CustomerDao;
 import accountpro.domain.Customer;
+import accountpro.domain.SearchCustomerCriteria;
 import accountpro.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService{
@@ -20,10 +21,10 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public List<Customer> searchCustomers(Customer customer) {
+	public List<Customer> searchCustomers(SearchCustomerCriteria searchCustomerCriteria) {
 		List<Customer> customers = new ArrayList<Customer>();
 		
-		customers = customerDao.searchCustomer(customer);
+		customers = customerDao.searchCustomer(searchCustomerCriteria);
 		return customers;
 	}
 	

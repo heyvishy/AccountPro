@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import accountpro.dao.BaseDao;
 import accountpro.dao.CustomerDao;
 import accountpro.domain.Customer;
+import accountpro.domain.SearchCustomerCriteria;
 
 public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 	
@@ -52,30 +53,30 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		return name;
 	}
 
-	
-	public List<Customer> searchCustomer(Customer customer) {
+	@Override
+	public List<Customer> searchCustomer(SearchCustomerCriteria searchCustomerCriteria) {
 		StringBuffer sql = new StringBuffer();
 		List<Object> args = new ArrayList<Object>();
 		
 		sql.append("select * from Customer ");
 
-		if(StringUtils.isBlank(customer.getCity()))
+		if(StringUtils.isBlank(searchCustomerCriteria.getCity()))
 			sql.append("WHERE City IS NOT NULL ");
 		else
 			sql.append("WHERE City = ? ");
 		
-		if(StringUtils.isNotBlank(customer.getFirstName()))
+		if(StringUtils.isNotBlank(searchCustomerCriteria.getFirstName()))
 			sql.append(" and FirstName = ? ");
-		if(StringUtils.isNotBlank(customer.getLastName()))
+		if(StringUtils.isNotBlank(searchCustomerCriteria.getLastName()))
 			sql.append(" and LastName = ? ");
 		
 		
-		if(StringUtils.isNotBlank(customer.getCity()))
-			args.add(customer.getCity());
-		if(StringUtils.isNotBlank(customer.getFirstName()))
-			args.add(customer.getFirstName());
-		if(StringUtils.isNotBlank(customer.getLastName()))
-			args.add(customer.getLastName());
+		if(StringUtils.isNotBlank(searchCustomerCriteria.getCity()))
+			args.add(searchCustomerCriteria.getCity());
+		if(StringUtils.isNotBlank(searchCustomerCriteria.getFirstName()))
+			args.add(searchCustomerCriteria.getFirstName());
+		if(StringUtils.isNotBlank(searchCustomerCriteria.getLastName()))
+			args.add(searchCustomerCriteria.getLastName());
 
 		
 		SqlRowSet rss = this.getJdbcTemplate().queryForRowSet(sql.toString(), args.toArray());
@@ -151,7 +152,8 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
 		logger.info("result delete customer "+result);
 		return result;
-	}	
+	}
+
 
 
 }

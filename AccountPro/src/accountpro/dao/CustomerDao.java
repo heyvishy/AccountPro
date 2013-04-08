@@ -3,6 +3,7 @@ package accountpro.dao;
 import java.util.List;
 
 import accountpro.domain.Customer;
+import accountpro.domain.SearchCustomerCriteria;
 
 public interface CustomerDao {
 		
@@ -11,7 +12,7 @@ public interface CustomerDao {
 	
 	public String getCustomerName();
 	
-	public List<Customer> searchCustomer(Customer customer);
+	public List<Customer> searchCustomer(SearchCustomerCriteria searchCustomerCriteria);
 	
 	public Customer openCustomer(String customerId);
 	
