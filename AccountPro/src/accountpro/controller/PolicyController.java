@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import accountpro.domain.Customer;
 import accountpro.domain.Policy;
 import accountpro.domain.SearchPolicyCriteria;
+import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
 import accountpro.service.PolicyService;
 
@@ -116,25 +117,34 @@ public class PolicyController {
 	}
 
 	@RequestMapping(value="/deletePolicy.htm",method=RequestMethod.POST)
-	public ModelAndView deleteCustomer(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status) {
+	public ModelAndView deletePolicy(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status) {
 	
 		ModelAndView mav = new ModelAndView();
+
+		try{
+			if(result.hasErrors() ){
+				LOGGER.info("Error occurred in delete customer");
+			    mav.setViewName("SearchPolicy");
+			    mav.addObject("policies", null);
+			    return mav;
+			}
+			else{
+				int resultValue = 0;
+				resultValue = policyService.deletePolicy(Integer.toString(searchPolicyCriteria.getPolicyID()));
+				LOGGER.info("Policy deleted !! \n resultValue ="+resultValue);
+				List<Policy> policies = policyService.getPolicies();
+				
+			    mav.setViewName("SearchPolicy");
+			    mav.addObject("SearchPolicyCriteria", searchPolicyCriteria);
+			    mav.addObject("policies", policies);
+			    return mav;
+			}
+		}
 		
-		if(result.hasErrors() ){
-			LOGGER.info("Error occurred in delete customer");
+		catch(ServiceException e){
+			LOGGER.info("Exception in delete customer is :"+e.getMessage());
 		    mav.setViewName("SearchPolicy");
 		    mav.addObject("policies", null);
-		    return mav;
-		}
-		else{
-			int resultValue = 0;
-			resultValue = policyService.deletePolicy(Integer.toString(searchPolicyCriteria.getPolicyID()));
-			LOGGER.info("Policy deleted !! \n resultValue ="+resultValue);
-			List<Policy> policies = policyService.getPolicies();
-			
-		    mav.setViewName("SearchPolicy");
-		    mav.addObject("SearchPolicyCriteria", searchPolicyCriteria);
-		    mav.addObject("policies", policies);
 		    return mav;
 		}
 	}

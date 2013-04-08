@@ -19,7 +19,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.Customer;
+import accountpro.domain.ExceptionMessage;
 import accountpro.domain.SearchCustomerCriteria;
+import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
 
 @Controller
@@ -141,25 +143,49 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value="/deleteCustomer.htm",method=RequestMethod.POST)
-	public ModelAndView deleteCustomer(@ModelAttribute("searchCustomerCriteria")  SearchCustomerCriteria searchCustomerCriteria,BindingResult result, SessionStatus status) {
+	public ModelAndView deleteCustomer(@ModelAttribute("searchCustomerCriteria")  SearchCustomerCriteria searchCustomerCriteria,BindingResult result, SessionStatus status) throws Exception {
 	
 		ModelAndView mav = new ModelAndView();
 		
-		if(result.hasErrors() ){
-			LOGGER.info("Error occurred in delete customer");
-		    mav.setViewName("SearchCustomer");
-		    mav.addObject("customerList", null);
+		try{
+			if(result.hasErrors() ){
+				LOGGER.info("Error occurred in delete customer");
+			    mav.setViewName("SearchCustomer");
+			    mav.addObject("customerList", null);
+			    return mav;
+			}
+			else{
+				int resultValue = 0;
+				LOGGER.info("customer ID RECEIVED :" +searchCustomerCriteria.getCustomerID());
+				//resultValue = customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
+				customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
+				
+				LOGGER.info("Customer deleted !! ");
+			    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
+			    mav.setViewName("SearchCustomer");
+			    mav.addObject("customerList", customers);
+			    return mav;
+			}
+		}
+		catch(ServiceException e){
+			LOGGER.info("ServiceException in delete customer :"+e.getMessage());
+			
+			//ExceptionMessage exceptionMessage = new ExceptionMessage();
+			//exceptionMessage.setExceptionReason(e.getMessage());
+
+			mav.setViewName("Exception");
+			mav.addObject("exceptionReason", e.getMessage());
 		    return mav;
 		}
-		else{
-			int resultValue = 0;
-			LOGGER.info("customer ID RECEIVED :" +searchCustomerCriteria.getCustomerID());
-			resultValue = customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
-			LOGGER.info("Customer deleted !! ");
-		    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
-		    mav.setViewName("SearchCustomer");
-		    mav.addObject("customerList", customers);
+		catch(Exception e){
+			LOGGER.info("Exception in delete customer :"+e.getMessage());
+/*			ExceptionMessage exceptionMessage = new ExceptionMessage();
+			exceptionMessage.setExceptionReason(e.getMessage());
+*/
+			mav.setViewName("Exception");
+		    mav.addObject("exceptionReason", e.getMessage());
 		    return mav;
+			
 		}
 	}
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import accountpro.domain.Customer;
 import accountpro.domain.SearchCustomerCriteria;
+import accountpro.exception.ServiceException;
 
 public interface CustomerService {
 
@@ -12,5 +13,5 @@ public interface CustomerService {
 	public int addCustomer(Customer customer);
 	public int updateCustomer(Customer customer);	
 	public Customer openCustomer(String customerId);
-	public int deleteCustomer(String customerId);
+	public void deleteCustomer(String customerId) throws ServiceException;
 }

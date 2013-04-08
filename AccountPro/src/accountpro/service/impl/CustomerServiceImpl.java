@@ -6,6 +6,7 @@ import java.util.List;
 import accountpro.dao.CustomerDao;
 import accountpro.domain.Customer;
 import accountpro.domain.SearchCustomerCriteria;
+import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService{
@@ -78,12 +79,15 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
-	public int deleteCustomer(String customerId) {
+	public void deleteCustomer(String customerId) throws ServiceException {
 		int result = 0;
-		result = customerDao.deleteCustomer(customerId);
-		return result;
+		try{
+			result = customerDao.deleteCustomer(customerId);
+		}
+		catch(Exception e){
+				throw new ServiceException(e.getMessage());
+		}
 	}
-
 
 
 }

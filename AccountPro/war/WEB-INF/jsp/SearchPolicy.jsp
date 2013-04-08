@@ -21,13 +21,13 @@
 <script type="text/javascript">
  function openPolicy(id)
  {
-	 alert("openPolicy :"+id);
+	 //alert("openPolicy :"+id);
 	 window.open('openPolicy.htm?id='+id,'_self',false);
  }
  
  function deletePolicy(id)
  {
-	 alert("DeletePolicy :"+id);
+	 //alert("DeletePolicy :"+id);
 	 if (confirm('Are you sure you want to delete Policy ?')) 
 	 { 
 		  var form = document.getElementById("searchPolicyForm");
