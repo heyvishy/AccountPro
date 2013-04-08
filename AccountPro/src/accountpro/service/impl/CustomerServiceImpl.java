@@ -65,6 +65,13 @@ public class CustomerServiceImpl implements CustomerService{
 
 	}
 
+	@Override
+	public int updateCustomer(Customer customer) {
+		int result = 0;
+		result = customerDao.updateCustomer(customer);
+		return result;
+	}
+
 
 
 }

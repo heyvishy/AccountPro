@@ -7,6 +7,8 @@ import accountpro.domain.Customer;
 public interface CustomerDao {
 		
 	public int insertCustomer(Customer customer);
+	public int updateCustomer(Customer customer);
+	
 	public String getCustomerName();
 	
 	public List<Customer> searchCustomer(Customer customer);

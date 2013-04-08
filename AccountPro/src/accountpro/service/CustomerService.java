@@ -9,6 +9,6 @@ public interface CustomerService {
 	public List<Customer> getCustomers ();
 	public List<Customer> searchCustomers(Customer customer);
 	public int addCustomer(Customer customer);
-	
+	public int updateCustomer(Customer customer);	
 	public Customer openCustomer(String customerId);
 }

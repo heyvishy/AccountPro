@@ -21,14 +21,15 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 	public int insertCustomer(Customer customer){
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("Insert into Customer ( LastName, FirstName , Address , City)");
-		sql.append("VALUES (?,?,?,?)");
+		sql.append("Insert into Customer ( LastName, FirstName , Address , City, ZipCode)");
+		sql.append("VALUES (?,?,?,?,?)");
 		
 		List<Object> args = new ArrayList<Object>();
 		args.add(customer.getLastName());
 		args.add(customer.getFirstName());
 		args.add(customer.getAddress());
 		args.add(customer.getCity());
+		args.add(customer.getZipCode());
 		
 		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
 		logger.info("result "+result);
@@ -117,6 +118,26 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		}
 		
 		return customer;
+	}
+
+	@Override
+	public int updateCustomer(Customer customer) {
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("Update Customer set LastName =  ? , FirstName= ?  , Address= ? 	 , City =  ?  , ZipCode =  ?  where P_Id = ? ");
+		///sql.append("VALUES (?,?,?,?,?)");
+		
+		List<Object> args = new ArrayList<Object>();
+		args.add(customer.getLastName());
+		args.add(customer.getFirstName());
+		args.add(customer.getAddress());
+		args.add(customer.getCity());
+		args.add(customer.getZipCode());
+		args.add(customer.getCustomerID());
+		
+		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
+		logger.info("result updateCustomer "+result);
+		return result;
 	}	
 
 

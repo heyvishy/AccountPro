@@ -95,20 +95,6 @@ public class CustomerController {
 		
 	}
 	
-//	@RequestMapping(value="/openCustomer.htm")
-//	//public ModelAndView openCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {
-//	public ModelAndView openCustomer(Model model) {
-//	    
-//		ModelAndView mav = new ModelAndView();
-//	    //String cutomerId = request.
-//	    //String customerId  = customer.getCustomerID();
-//	    Customer cust = customerService.openCustomer("19");
-//	    mav.setViewName("AddCustomer");
-//	    mav.addObject("customer", cust);
-//	    return mav;
-//	}
-
-	
 	
 	@RequestMapping(value="/addCustomer.htm",method=RequestMethod.POST)
 	public ModelAndView addCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {
@@ -125,6 +111,28 @@ public class CustomerController {
 			int resultValue = 0;
 			resultValue = customerService.addCustomer(customer);
 			LOGGER.info("Customer added !! ");
+		    mav.setViewName("AddCustomer");
+		    mav.addObject("resultValue", resultValue);
+		    mav.addObject("customer", customer);
+		    return mav;
+		}
+	}
+
+	@RequestMapping(value="/updateCustomer.htm",method=RequestMethod.POST)
+	public ModelAndView updateCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {
+	
+		ModelAndView mav = new ModelAndView();
+		
+		if(result.hasErrors() ){
+			LOGGER.info("Error occurred in AddCustomer form ");
+		    mav.setViewName("AddCustomer");
+		    mav.addObject("customer", customer);
+		    return mav;
+		}
+		else{
+			int resultValue = 0;
+			resultValue = customerService.updateCustomer(customer);
+			LOGGER.info("Customer updated !! ");
 		    mav.setViewName("AddCustomer");
 		    mav.addObject("resultValue", resultValue);
 		    mav.addObject("customer", customer);

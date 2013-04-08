@@ -17,6 +17,16 @@
     form.action = 'addPolicy.htm';
 }
  */ 
+ function updateCustomer(){
+	 //alert("update");
+	 //form.action = 'updateCustomer.htm';
+	 
+     var form = document.getElementById("CustomerForm");
+     //form.commandName='policy';
+     form.action = 'updateCustomer.htm';
+
+	 
+ }
  
   function addPolicy()
  {
@@ -60,6 +70,7 @@
 	 		<tr>
 	 			<td>
 				    <table class="tblChild">
+				    	
 					    <tr>
 					        <td><form:label path="firstName">First Name</form:label></td>
 					        <td><form:input path="firstName" /></td>
@@ -67,7 +78,7 @@
 					    </tr>
 					    <tr>
 					        <td><form:label path="lastName">Last Name</form:label></td>
-					        <td><form:input path="lastName" /></td>
+					        <td><form:input path="lastName"/></td>
 					        <td><form:errors path="lastName" cssClass="error" /></td>
 					    </tr>
 					    <tr>
@@ -85,20 +96,22 @@
 					        <td><form:input path="zipCode" /></td>
 					        <td><form:errors path="zipCode" cssClass="error" /></td>
 					    </tr>
-					
+						
+						<tr>
+							<td><form:hidden path="customerID" /></td>
+						</tr>
+						
 					    <tr>
 						 <c:choose>
-						 	<c:when test="${resultValue > 0}">
+						 	<c:when test="${!empty customer.customerID or resultValue > 0}"> 
 						        <td>
-						            <input type="submit" value="Save"/>
+						            <input type="submit" value="Save" onClick="updateCustomer()">
 						        </td>
 						        <td>
-						            <!-- <td><a href="addPolicy.htm" value="AddPolicy"></a> -->
 						            <input type="button" value="AddPolicy" onClick="addPolicy()">
-						            <!-- <input type="submit" value="AddPolicy" onclick="addPolicy();"/> -->
 						        </td>
-						        
 						 	</c:when>
+						 	
 						 	<c:otherwise>
 						        <td>
 						            <input type="submit" value="Add"/>
