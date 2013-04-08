@@ -72,6 +72,13 @@ public class CustomerServiceImpl implements CustomerService{
 		return result;
 	}
 
+	@Override
+	public int deleteCustomer(String customerId) {
+		int result = 0;
+		result = customerDao.deleteCustomer(customerId);
+		return result;
+	}
+
 
 
 }

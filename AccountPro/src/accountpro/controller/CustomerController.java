@@ -140,5 +140,26 @@ public class CustomerController {
 		}
 	}
 
+	@RequestMapping(value="/deleteCustomer.htm",method=RequestMethod.POST)
+	public ModelAndView deleteCustomer(@ModelAttribute("customer")  Customer customer,BindingResult result, SessionStatus status) {
+	
+		ModelAndView mav = new ModelAndView();
+		
+		if(result.hasErrors() ){
+			LOGGER.info("Error occurred in delete customer");
+		    mav.setViewName("SearchCustomer");
+		    mav.addObject("customerList", null);
+		    return mav;
+		}
+		else{
+			int resultValue = 0;
+			resultValue = customerService.deleteCustomer(customer.getCustomerID());
+			LOGGER.info("Customer deleted !! ");
+		    mav.setViewName("SearchCustomer");
+		    mav.addObject("resultValue", resultValue);
+		    mav.addObject("customer", customer);
+		    return mav;
+		}
+	}
 	
 }

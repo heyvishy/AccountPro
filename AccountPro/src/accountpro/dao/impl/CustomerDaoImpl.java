@@ -138,6 +138,19 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
 		logger.info("result updateCustomer "+result);
 		return result;
+	}
+
+	@Override
+	public int deleteCustomer(String customerId) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from Customer where P_Id = ? ");
+		
+		List<Object> args = new ArrayList<Object>();
+		args.add(customerId);
+		
+		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
+		logger.info("result delete customer "+result);
+		return result;
 	}	
 
 

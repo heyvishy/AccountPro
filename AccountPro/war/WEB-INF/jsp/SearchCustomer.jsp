@@ -18,6 +18,18 @@
 	 window.open('openCustomer.htm?id='+id,'_self',false);
  }
  
+ function deleteCustomer(id)
+ {
+	 alert("deleete :"+id);
+	 //window.open('openCustomer.htm?id='+id,'_self',false);
+	  var form = document.getElementById("searchCustomerForm");
+	  //var custId = document.getElementById("custID");
+	 //form.commandName='policy';
+	  //form.custId.value= id;
+	  form.action = 'deleteCustomer.htm';
+
+ }
+
  
 </script>
 
@@ -29,7 +41,7 @@
 <body>
 
 
-<form:form method="post" action="searchCustomer.htm" commandName="customer">
+<form:form method="post" action="searchCustomer.htm" commandName="customer" id="searchCustomerForm">
  	
  	 	<tr>
  			<td><%@ include file="../jsp/Navigation.jsp" %></td>
@@ -64,6 +76,8 @@
 							<td><input type="submit" value="Search"/></td>
 					        <td><input type="reset" value="Reset" /></td>
 					    </tr>
+					
+						<tr><td><form:hidden path="customerID" id="custID"/></td></tr>
 					
 						<tr>
 							<td>
@@ -103,8 +117,8 @@
 				    		  	<td class="col4"><c:out value="${customer.paymentDueDate}"/></td>
 				    		  	<td class="col5"><c:out value="${customer.amountDue}"/></td>
 				    		  	<td class="col6"><c:out value="${customer.active}"/></td>
-				    		  	<!-- <td class="colDelete"> <img src="Del.jpg" alt="Delete" /> </td> -->
-				    		  	<td class="colDelete"><img src="../../images/Del.jpg" ALT="Delete Customer" /> </td>
+				    		  	<td class="colDelete"><input type="submit" value="Delete" onClick="deleteCustomer(${customer.customerID})"></td>
+				    		  	<!-- <td class="colDelete"><img src="../../images/Del.jpg" ALT="Delete Customer" /> </td> -->
 				    		  	
 				    		  	
 						 </tr>							    		  	
