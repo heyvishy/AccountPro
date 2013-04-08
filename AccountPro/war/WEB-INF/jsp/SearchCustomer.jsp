@@ -19,21 +19,15 @@
  
  function deleteCustomer(id)
  {
-	 alert("deleete :"+id);
-	 //window.open('openCustomer.htm?id='+id,'_self',false);
-	  var form = document.getElementById("searchCustomerForm");
-	  var custId = document.getElementById("custID");
-	 //form.commandName='policy';
-	  custId.value  = id;
-	  form.action = 'deleteCustomer.htm';
-
-	  
-/* 	     var form = document.getElementById("CustomerForm");
-	     form.action = 'updateCustomer.htm';
- */
+	 if (confirm('Are you sure you want to delete customer ?')) 
+	 { 
+		  var form = document.getElementById("searchCustomerForm");
+		  var custId = document.getElementById("custID");
+		  custId.value  = id;
+		  form.action = 'deleteCustomer.htm';
+	 }
  }
 
- 
 </script>
 
 <html>

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -106,6 +107,9 @@ public class CustomerController {
 		else{
 			int resultValue = 0;
 			resultValue = customerService.addCustomer(customer);
+			if(StringUtils.isBlank(customer.getCustomerID()))
+				customer.setCustomerID(Integer.toString(resultValue));
+			
 			LOGGER.info("Customer added !! ");
 		    mav.setViewName("AddCustomer");
 		    mav.addObject("resultValue", resultValue);
@@ -149,26 +153,13 @@ public class CustomerController {
 		}
 		else{
 			int resultValue = 0;
-			LOGGER.info("customer ID RECEIVED  = " +searchCustomerCriteria.getCustomerID());
+			LOGGER.info("customer ID RECEIVED :" +searchCustomerCriteria.getCustomerID());
 			resultValue = customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
-			
 			LOGGER.info("Customer deleted !! ");
-		    
-			//mav.setViewName("SearchCustomer");
-		    //mav.addObject("resultValue", resultValue);
-		    //mav.addObject("searchCustomerCriteria", searchCustomerCriteria);
-		    
-		    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
-		    mav.setViewName("SearchCustomer");
-		    mav.addObject("customerList", customers);
-
-		    return mav;
-/*		    ModelAndView mav = new ModelAndView();
 		    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
 		    mav.setViewName("SearchCustomer");
 		    mav.addObject("customerList", customers);
 		    return mav;
-*/		    
 		}
 	}
 	

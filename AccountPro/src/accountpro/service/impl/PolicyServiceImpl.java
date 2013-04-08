@@ -37,4 +37,18 @@ public class PolicyServiceImpl implements PolicyService {
 		this.policyDao = policyDao;
 	}
 
+	@Override
+	public Policy openPolicy(String policyId) {
+		Policy policy = null;
+		policy = policyDao.openPolicy(policyId);
+	    return policy;
+	}
+
+	@Override
+	public int deletePolicy(String policyId) {
+		int result = 0;
+		result = policyDao.deletePolicy(policyId);
+	    return result;
+	}
+
 }

@@ -51,8 +51,12 @@ public class CustomerServiceImpl implements CustomerService{
 	}
 
 	@Override
+	/**
+	 * @return id of customer added
+	 */
 	public int addCustomer(Customer customer) {
 		int result = 0;
+		//result is the ID of customer inserted
 		result = customerDao.insertCustomer(customer);
 		return result;
 	}

@@ -28,5 +28,6 @@ PolicyType VARCHAR(20) NOT NULL,
 PolicyNumber INT NOT NULL,
 PolicyAmount DOUBLE NOT NULL,
 StartDate DATE ,
-EndDate DATE
+EndDate DATE,
+FOREIGN KEY (CustomerID) REFERENCES Customer(P_Id)
 );

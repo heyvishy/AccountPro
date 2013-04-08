@@ -6,6 +6,8 @@
 <%@ include file="../css/error.css" %>
 <%@ include file="../css/global.css" %>
 
+.colDelete	{width:5%;;background-Color:#D4D0C9;border:1px solid ;}
+.colOpen	{width:5%;;background-Color:#D4D0C9;border:1px solid ;}
 
 .col1	 	{width:10%;;background-Color:#D4D0C9;border:1px solid ;}
 .col2	 	{width:15%;;background-Color:#D4D0C9;border:1px solid ;}
@@ -14,8 +16,27 @@
 .col5	 	{width:10%;height:10%;background-Color:#D4D0C9;border:1px solid ;}
 .col6	 	{width:10%;height:10%;background-Color:#D4D0C9;border:1px solid ;}
 .col7	 	{width:10%;height:5%;background-Color:#D4D0C9;border:1px solid ;}
-
 </style>
+
+<script type="text/javascript">
+ function openPolicy(id)
+ {
+	 alert("openPolicy :"+id);
+	 window.open('openPolicy.htm?id='+id,'_self',false);
+ }
+ 
+ function deletePolicy(id)
+ {
+	 alert("DeletePolicy :"+id);
+	 if (confirm('Are you sure you want to delete Policy ?')) 
+	 { 
+		  var form = document.getElementById("searchPolicyForm");
+		  var policyId = document.getElementById("policyID");
+		  policyId.value  = id;
+		  form.action = 'deletePolicy.htm';
+	 }
+ }
+</script>
 
 
 <html>
@@ -26,7 +47,7 @@
 <body>
 
 
-<form:form method="post" action="searchPolicy.htm" commandName="policy">
+<form:form method="post" action="searchPolicy.htm" commandName="SearchPolicyCriteria" id="searchPolicyForm">
  	
  	 	<tr>
  			<td><%@ include file="../jsp/Navigation.jsp" %></td>
@@ -57,7 +78,8 @@
 							<td><input type="submit" value="Search"/></td>
 					        <td><input type="reset" value="Reset" /></td>
 					    </tr>
-					
+						<tr><td><form:hidden path="policyID" id="policyID"/></td></tr>
+						
 						<tr>
 							<td>
 								<table class="">
@@ -68,23 +90,27 @@
 							</td>
 						</tr>
 			     		<tr>
-					   			<td class="col1">Policy_Id</td>
-					   			<td class="col2">CustomerID</td>
+					   			<!-- <td class="col1">Policy_Id</td> -->
+					   			<td class="colOpen">Select</td>
+					   			<td class="col2">CustomerName</td>
 					   			<td class="col3">PolicyType</td>
 					   			<td class="col4">PolicyNumber</td>
 					   			<td class="col5">PolicyAmount</td>
 					   			<td class="col6">StartDate</td>
 					   			<td class="col7">EndDate</td>
+					   			<td class="colDelete">Delete</td>
 				   		</tr>		
 				    	<c:forEach items="${policies}" var="policy">
 			    		  <tr>
-			 	    		  	<td class="col1"><c:out value="${policy.policyID}"/></td>  
+			 	    		  	<%-- <td class="col1"><c:out value="${policy.policyID}"/></td> --%>  
+				    		  	<td class="colOpen"><input type="button" value="open" onclick="openPolicy(${policy.policyID})"/></td>
 				    		  	<td class="col2"><c:out value="${policy.customerId}"/></td>
 				    		  	<td class="col3"><c:out value="${policy.policyType}"/></td>
 				    		  	<td class="col4"><c:out value="${policy.policyNumber}"/></td>
 				    		  	<td class="col5"><c:out value="${policy.policyAmount}"/></td>
 				    		  	<td class="col6"><c:out value="${policy.startDate}"/></td>
 				    		  	<td class="col7"><c:out value="${policy.endDate}"/></td>
+				    		  	<td class="colDelete"><input type="submit" value="Delete" onClick="deletePolicy(${policy.policyID})"></td>
 						 </tr>							    		  	
 			    		</c:forEach>
 						 				 

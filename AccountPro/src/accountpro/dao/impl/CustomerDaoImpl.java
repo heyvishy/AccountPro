@@ -1,12 +1,19 @@
 package accountpro.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import accountpro.dao.BaseDao;
@@ -22,18 +29,49 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 	public int insertCustomer(Customer customer){
 		StringBuffer sql = new StringBuffer();
 		
+		 //KeyHolder keyHolder = new GeneratedKeyHolder();
+		
+		 //final String INSERT_SQL = "insert into my_test (name) values(?)";
+		 //final String name = "Rob";
+
 		sql.append("Insert into Customer ( LastName, FirstName , Address , City, ZipCode)");
 		sql.append("VALUES (?,?,?,?,?)");
+
+		 final String INSERT_SQL = sql.toString();
+		 
+		 final String lastName = customer.getLastName();
+		 final String firstName= customer.getFirstName();
+		 final String address = customer.getAddress();
+		 final String city = customer.getCity();
+		 final String zipCode = customer.getZipCode();
+		 
+		 KeyHolder keyHolder = new GeneratedKeyHolder();
+		 this.getJdbcTemplate().update(new PreparedStatementCreator() {
+		         public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+		             PreparedStatement ps =
+		                 connection.prepareStatement(INSERT_SQL, new String[] {"id"});
+		             ps.setString(1, lastName);
+		             ps.setString(2, firstName);
+		             ps.setString(3, address);
+		             ps.setString(4, city);
+		             ps.setString(5, zipCode);
+		             return ps;
+		         }
+		         
+		     },
+		     keyHolder);
+		 
 		
-		List<Object> args = new ArrayList<Object>();
+/*		List<Object> args = new ArrayList<Object>();
 		args.add(customer.getLastName());
 		args.add(customer.getFirstName());
 		args.add(customer.getAddress());
 		args.add(customer.getCity());
 		args.add(customer.getZipCode());
-		
-		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
-		logger.info("result "+result);
+*/		
+		//int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
+		logger.info("inserted Customer id "+keyHolder.getKey().intValue());
+		int result = keyHolder.getKey().intValue();
 		return result;
 		
 	}

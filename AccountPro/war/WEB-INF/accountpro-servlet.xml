@@ -16,6 +16,7 @@
 
  	<bean name="/addPolicy.htm" class="accountpro.controller.PolicyController">
 		<property name="policyService" ref="policyService"></property>
+		<property name="customerService" ref="customerService"></property>
     </bean>
 
  	<bean name="/mainMenu.htm" class="accountpro.controller.MainMenuController">

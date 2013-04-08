@@ -35,12 +35,22 @@
 			        	<form:label path="customerId">Select Customer</form:label>
 			        </td>
 			        <td>
-			        	<form:select path="customerId">
-								   <form:option value="0" label="--- Select ---" />
-								   <form:option value="1" label="Vishal"/>
-								   <form:option value="2" label="Abha"/>
-								   <%-- <form:options items="${customerList}" /> --%>
-						</form:select>
+						 <c:choose>
+						 	<c:when test="${policy.customerId gt 0}"> 
+					        	<form:select path="customerId" disabled="">
+										   <form:option value="${policy.customerId}" label="${customerName}"/>
+								</form:select>
+						 	</c:when>
+						 	<c:otherwise>
+					        	<form:select path="customerId">
+										   <form:option value="0" label="--- Select ---" />
+										   <form:option value="1" label="Vishal"/>
+										   <form:option value="2" label="Abha"/>
+										   <%-- <form:options items="${customerList}" /> --%>
+								</form:select>
+						 	</c:otherwise>
+						 </c:choose>
+			        	
 					</td>
 			        <td><form:errors path="customerId" cssClass="error" /></td> 
 			    </tr>
@@ -71,7 +81,8 @@
 
 			    <tr>
 					 <c:choose>
-					 	<c:when test="${resultValue > 0}">	  		
+					 	<c:when test="${policy.customerId gt 0}">
+					 	<%-- <c:when test="${resultValue > 0}"> --%>	  		
 					        <td>
 					            <input type="submit" value="Save"/>
 					        </td>

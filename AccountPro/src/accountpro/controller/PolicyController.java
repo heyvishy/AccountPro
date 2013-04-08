@@ -18,10 +18,14 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import accountpro.domain.Customer;
 import accountpro.domain.Policy;
+import accountpro.domain.SearchPolicyCriteria;
+import accountpro.service.CustomerService;
 import accountpro.service.PolicyService;
 
 @Controller
@@ -32,7 +36,16 @@ public class PolicyController {
 	public static List<String> customerList = new ArrayList<String>(Arrays.asList("Vishal", "Abha", "Dad"));
 	
 	private PolicyService policyService;
+	private CustomerService customerService;
 	
+	public CustomerService getCustomerService() {
+		return customerService;
+	}
+
+	public void setCustomerService(CustomerService customerService) {
+		this.customerService = customerService;
+	}
+
 	public PolicyService getPolicyService() {
 		return policyService;
 	}
@@ -47,31 +60,88 @@ public class PolicyController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
  	}
 	
-	@RequestMapping(value="/addPolicy.htm")	
-	public ModelAndView showForm(ModelMap model){
+	@RequestMapping(value="/addPolicyForCustomer.htm")	
+	public ModelAndView addPolicyForCustomer(@RequestParam("id") String customerId){
 		Policy policy = new Policy();
 		
+		LOGGER.info("addPolicy for customerID "+customerId);
+	    ModelAndView mav = new ModelAndView();
+	    policy.setCustomerId(Integer.parseInt(customerId));
+	    
+	    Customer customer = customerService.openCustomer(customerId);
+	    String customerName = customer.getFirstName().concat(" ").concat(customer.getLastName());
+	    
+	    mav.setViewName("AddPolicy");
+	    mav.addObject("customerName",customerName);
+	    mav.addObject("policy", policy);
+	    mav.addObject("customerList", customerList);
+	    return mav;
+	}
+
+	@RequestMapping(value="/addPolicy.htm")	
+	public ModelAndView addPolicyForCustomer(){
+		Policy policy = new Policy();
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("AddPolicy");
 	    mav.addObject("policy", policy);
 	    mav.addObject("customerList", customerList);
 	    return mav;
 	}
-	
+
 	@RequestMapping(value="/searchPolicy.htm")
 	public ModelAndView showListPolicyForm(ModelMap model){
-		Policy policy = new Policy();
+		SearchPolicyCriteria searchPolicyCriteria = new SearchPolicyCriteria();
 		List<Policy> policies = policyService.getPolicies();
 		ModelAndView mav = new ModelAndView();
 	    mav.setViewName("SearchPolicy");
-	    mav.addObject("policy", policy);
+	    mav.addObject("SearchPolicyCriteria", searchPolicyCriteria);
 	    mav.addObject("policies", policies);
 	    return mav;
 	}
 
+	@RequestMapping(value="/openPolicy.htm")
+	public ModelAndView openPolicy(@RequestParam("id") String id)
+	{
+		ModelAndView mav = new ModelAndView();
+		LOGGER.info("Policy id: "+id);
+		Policy policy = policyService.openPolicy(id);
+		
+	    Customer customer = customerService.openCustomer(Integer.toString(policy.getCustomerId()));
+	    String customerName = customer.getFirstName().concat(" ").concat(customer.getLastName());
+	    
+	    mav.addObject("customerName",customerName);
+		mav.setViewName("AddPolicy");
+		mav.addObject("policy", policy);
+		return mav;
+	}
+
+	@RequestMapping(value="/deletePolicy.htm",method=RequestMethod.POST)
+	public ModelAndView deleteCustomer(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status) {
+	
+		ModelAndView mav = new ModelAndView();
+		
+		if(result.hasErrors() ){
+			LOGGER.info("Error occurred in delete customer");
+		    mav.setViewName("SearchPolicy");
+		    mav.addObject("policies", null);
+		    return mav;
+		}
+		else{
+			int resultValue = 0;
+			resultValue = policyService.deletePolicy(Integer.toString(searchPolicyCriteria.getPolicyID()));
+			LOGGER.info("Policy deleted !! \n resultValue ="+resultValue);
+			List<Policy> policies = policyService.getPolicies();
+			
+		    mav.setViewName("SearchPolicy");
+		    mav.addObject("SearchPolicyCriteria", searchPolicyCriteria);
+		    mav.addObject("policies", policies);
+		    return mav;
+		}
+	}
+
 	@RequestMapping(value="/addPolicy.htm",method=RequestMethod.POST)	
 	public ModelAndView addPolicy(@ModelAttribute("policy") @Valid Policy policy,BindingResult result,SessionStatus status){
-		LOGGER.info("policy is here");
+		LOGGER.info("addPolicy (POST) for customerID " +policy.getCustomerId());
 		ModelAndView mav = new ModelAndView();
 		
 		if (result.hasErrors()) {
@@ -86,13 +156,15 @@ public class PolicyController {
 			LOGGER.info(" resultValue being set model = "+resultValue);
 			if(resultValue > 0)
 				LOGGER.info("Policy Added !! ");
-						
+			
+			 policy.setPolicyID(policy.getCustomerId());
 			 mav.addObject("policy", policy);
-			 mav.addObject("resultValue", resultValue);
+			 //mav.addObject("resultValue", resultValue);
 			 mav.setViewName("AddPolicy");
 			 return mav;
 		}
 
 	}
+
 
 }

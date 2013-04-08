@@ -5,45 +5,21 @@
 <style type="text/css">
 <%@ include file="../css/error.css" %>
 <%@ include file="../css/global.css" %>
-
-
 </style>
 
 <script type="text/javascript">
 
-/* function changeAction () {
-    alert("inside change action");
-    var form = document.getElementById("CustomerForm");
-    form.action = 'addPolicy.htm';
-}
- */ 
  function updateCustomer(){
-	 //alert("update");
-	 //form.action = 'updateCustomer.htm';
-	 
      var form = document.getElementById("CustomerForm");
-     //form.commandName='policy';
      form.action = 'updateCustomer.htm';
-
-	 
  }
  
-  function addPolicy()
+ function addPolicy(id)
  {
-	 window.open('addPolicy.htm','_self',false);
+	 alert("addPolicy for customerID "+id);
+	 window.open('addPolicyForCustomer.htm?id='+id,'_self',false);
  }
- 
-/*  	function addPolicy()
-    {
-       // alert("inside addPolicy action");
-  //     window.location = 'addPolicy.htm';
-       
-        var form = document.getElementById("CustomerForm");
-        form.commandName='policy';
-        form.action = 'addPolicy.htm';
-        //form.submit;
-     }
- */ 
+
 </script>
 
 <html>
@@ -103,12 +79,12 @@
 						
 					    <tr>
 						 <c:choose>
-						 	<c:when test="${!empty customer.customerID or resultValue > 0}"> 
+						 	<c:when test="${!empty customer.customerID }"> 
 						        <td>
 						            <input type="submit" value="Save" onClick="updateCustomer()">
 						        </td>
 						        <td>
-						            <input type="button" value="AddPolicy" onClick="addPolicy()">
+						            <input type="button" value="AddPolicy" onClick="addPolicy(${customer.customerID})">
 						        </td>
 						 	</c:when>
 						 	

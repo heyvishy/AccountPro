@@ -23,8 +23,8 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 		sql.append("VALUES (?,?,?,?,?,?)");
 		
 		List<Object> args = new ArrayList<Object>();
-		//hard-coded customer id, till we fig. out, dynamic way
-		args.add("1");
+		
+		args.add(policy.getCustomerId());
 		args.add(policy.getPolicyType());
 		args.add(policy.getPolicyNumber());
 		args.add(policy.getPolicyAmount());
@@ -65,6 +65,39 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	public List<Policy> searchPolicies(Policy policy) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Policy openPolicy(String policyId) {
+		Policy policy = new Policy();
+		List<Object> args = new ArrayList<Object>();
+		String sql = "select * from Policy where Policy_Id = ?";
+		args.add(policyId);
+		SqlRowSet rss = this.getJdbcTemplate().queryForRowSet(sql,args.toArray());
+		while(rss.next()){
+			policy.setPolicyID(rss.getInt("Policy_Id"));
+			policy.setCustomerId(rss.getInt("CustomerID"));
+			policy.setPolicyType(rss.getString("PolicyType"));
+			policy.setPolicyNumber(rss.getInt("PolicyNumber"));
+			policy.setPolicyAmount(rss.getDouble("PolicyAmount"));
+			policy.setStartDate(rss.getDate("StartDate"));
+			policy.setEndDate(rss.getDate("EndDate"));
+			break;
+		}
+		return policy;
+	}
+
+	@Override
+	public int deletePolicy(String policyId) {
+		StringBuffer sql = new StringBuffer();
+		sql.append("delete from Policy where Policy_Id = ? ");
+		
+		List<Object> args = new ArrayList<Object>();
+		args.add(policyId);
+		
+		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
+		logger.info("result delete policy "+result);
+		return result;
 	} 
 	
 
