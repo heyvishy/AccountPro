@@ -6,6 +6,17 @@
 
 </style>
 
+<script type="text/javascript">
+	
+	function chooseCustomer(){
+		window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
+		//window.open('openPolicy.htm?id='+id,'_self',false);
+/* 		if (window.focus) {newwindow.focus()}
+		return false;
+ */	}
+	
+</script>
+
 <html>	
 <head>
     <title>Add Policy</title>
@@ -48,6 +59,7 @@
 										   <form:option value="2" label="Abha"/>
 										   <%-- <form:options items="${customerList}" /> --%>
 								</form:select>
+								<td><input type="button" value="choose" onclick="chooseCustomer()"/></td>
 						 	</c:otherwise>
 						 </c:choose>
 			        	

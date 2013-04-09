@@ -4,6 +4,7 @@ import java.util.List;
 
 import accountpro.dao.PolicyDao;
 import accountpro.domain.Policy;
+import accountpro.exception.ServiceException;
 import accountpro.service.PolicyService;
 
 public class PolicyServiceImpl implements PolicyService {
@@ -49,6 +50,15 @@ public class PolicyServiceImpl implements PolicyService {
 		int result = 0;
 		result = policyDao.deletePolicy(policyId);
 	    return result;
+	}
+
+	@Override
+	public List<Policy> getCustomerPolicies(String cutomerId)
+			throws ServiceException {
+		
+		List<Policy> policies = policyDao.getPolicies();
+		return policies;
+
 	}
 
 }

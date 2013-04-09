@@ -11,5 +11,5 @@ public interface PolicyDao {
 	public List<Policy> searchPolicies(Policy policy);
 	public Policy openPolicy(String policyId);
 	public int deletePolicy(String policyId);
-
+	public List<Policy> getCustomerPolicies(String customerId);
 }

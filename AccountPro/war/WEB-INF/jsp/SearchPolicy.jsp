@@ -5,17 +5,9 @@
 <style type="text/css">
 <%@ include file="../css/error.css" %>
 <%@ include file="../css/global.css" %>
+<%@ include file="../css/SearchPolicy.css" %>
 
-.colDelete	{width:5%;;background-Color:#D4D0C9;border:1px solid ;}
-.colOpen	{width:5%;;background-Color:#D4D0C9;border:1px solid ;}
 
-.col1	 	{width:10%;;background-Color:#D4D0C9;border:1px solid ;}
-.col2	 	{width:15%;;background-Color:#D4D0C9;border:1px solid ;}
-.col3	 	{width:20%;;background-Color:#D4D0C9;border:1px solid ;}
-.col4	 	{width:25%;;background-Color:#D4D0C9;border:1px solid ;}
-.col5	 	{width:10%;height:10%;background-Color:#D4D0C9;border:1px solid ;}
-.col6	 	{width:10%;height:10%;background-Color:#D4D0C9;border:1px solid ;}
-.col7	 	{width:10%;height:5%;background-Color:#D4D0C9;border:1px solid ;}
 </style>
 
 <script type="text/javascript">

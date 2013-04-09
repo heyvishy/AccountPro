@@ -5,6 +5,7 @@
 <style type="text/css">
 <%@ include file="../css/error.css" %>
 <%@ include file="../css/global.css" %>
+<%@ include file="../css/AddCustomer.css" %>
 </style>
 
 <script type="text/javascript">
@@ -98,6 +99,38 @@
 						 	</c:otherwise>
 						 </c:choose>
 					    </tr>
+						
+						<tr>
+							<td>
+								<table class="">
+										<tr>
+											<td><b>Customer Policies</b></td>
+										</tr>
+								</table>				
+							</td>
+						</tr>
+			     		<tr>
+					   			<!-- <td class="colOpen">Select</td> -->
+					   			<!-- <td class="col2">CustomerName</td> -->
+					   			<td class="col3">PolicyType</td>
+					   			<td class="col4">PolicyNumber</td>
+					   			<td class="col5">PolicyAmount</td>
+					   			<td class="col6">StartDate</td>
+					   			<td class="col7">EndDate</td>
+					   			<!-- <td class="colDelete">Delete</td> -->
+				   		</tr>		
+				    	<c:forEach items="${policies}" var="policy">
+			    		  <tr>
+				    		  	<%-- <td class="colOpen"><input type="button" value="open" onclick="openPolicy(${policy.policyID})"/></td> --%>
+				    		  	<%-- <td class="col2"><c:out value="${policy.customerId}"/></td> --%>
+				    		  	<td class="col3"><c:out value="${policy.policyType}"/></td>
+				    		  	<td class="col4"><c:out value="${policy.policyNumber}"/></td>
+				    		  	<td class="col5"><c:out value="${policy.policyAmount}"/></td>
+				    		  	<td class="col6"><c:out value="${policy.startDate}"/></td>
+				    		  	<td class="col7"><c:out value="${policy.endDate}"/></td>
+				    		  	<%-- <td class="colDelete"><input type="submit" value="Delete" onClick="deletePolicy(${policy.policyID})"></td> --%>
+						 </tr>							    		  	
+			    		</c:forEach>
 						 				 
 					</table>  
 	 			</td>

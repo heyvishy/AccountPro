@@ -20,9 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.Customer;
 import accountpro.domain.ExceptionMessage;
+import accountpro.domain.Policy;
 import accountpro.domain.SearchCustomerCriteria;
 import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
+import accountpro.service.PolicyService;
 
 @Controller
 public class CustomerController {
@@ -30,6 +32,7 @@ public class CustomerController {
 	private static final Logger LOGGER = Logger.getLogger(CustomerController.class.getName());
 
 	private CustomerService customerService;
+	private PolicyService policyService;
 	
 	public CustomerService getCustomerService() {
 		return customerService;
@@ -39,7 +42,7 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
-	@RequestMapping(value="/listCustomers.htm")
+/*	@RequestMapping(value="/listCustomers.htm")
 	public ModelAndView showListCustomerForm(ModelMap model){
 		
 		List<Customer> customerList  = new ArrayList<Customer>();
@@ -48,7 +51,7 @@ public class CustomerController {
 		LOGGER.info("customerList size :"+customerList.size()+ " "+customerList.toString() );	
 		return new ModelAndView("ListCustomer","customerList",customerList);
 	}
-
+*/
 
 	@RequestMapping(value="/addCustomer.htm")
 	public ModelAndView showAddCustomerForm(Model model) {
@@ -56,6 +59,18 @@ public class CustomerController {
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("AddCustomer");
 	    mav.addObject("customer", customer);
+	    return mav;
+	}
+
+	@RequestMapping(value="/pickerCustomer.htm")
+	public ModelAndView showPickerCustomerForm(Model model) {
+		SearchCustomerCriteria searchCustomerCriteria = new SearchCustomerCriteria();
+	    ModelAndView mav = new ModelAndView();
+	    
+	    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
+	    mav.addObject("customerList", customers);
+	    mav.setViewName("PickerCustomer");
+	    mav.addObject("searchCustomerCriteria", searchCustomerCriteria);
 	    return mav;
 	}
 
@@ -82,15 +97,24 @@ public class CustomerController {
 
 	
 	@RequestMapping(value="/openCustomer.htm")
-	public ModelAndView openCustomer(@RequestParam("id") String id)
+	public ModelAndView openCustomer(@RequestParam("id") String cutomerId) throws Exception
 	{
 		//LOGGER.info("id "+id);
 		ModelAndView mav = new ModelAndView();
-		LOGGER.info("id: "+id);
-		Customer cust = customerService.openCustomer(id);
-		 mav.setViewName("AddCustomer");
-		 mav.addObject("customer", cust);
-		return mav;
+		LOGGER.info("cutomerId: "+cutomerId);
+		try{
+			Customer cust = customerService.openCustomer(cutomerId);
+			List<Policy> policies = policyService.getCustomerPolicies(cutomerId);
+			mav.setViewName("AddCustomer");
+			mav.addObject("policies", policies);
+			mav.addObject("customer", cust);
+			return mav;
+		}
+		catch(Exception e){
+			mav.setViewName("Exception");
+		    mav.addObject("exceptionReason", e.getMessage());
+		    return mav;
+		}
 		
 	}
 	
@@ -187,6 +211,14 @@ public class CustomerController {
 		    return mav;
 			
 		}
+	}
+
+	public PolicyService getPolicyService() {
+		return policyService;
+	}
+
+	public void setPolicyService(PolicyService policyService) {
+		this.policyService = policyService;
 	}
 	
 }

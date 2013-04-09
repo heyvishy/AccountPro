@@ -12,4 +12,5 @@ public interface PolicyService {
 	public List<Policy> searchPolicies(Policy policy);
 	public Policy openPolicy(String policyId);
 	public int deletePolicy(String policyId) throws ServiceException;
+	public List<Policy> getCustomerPolicies(String cutomerId) throws ServiceException;
 }

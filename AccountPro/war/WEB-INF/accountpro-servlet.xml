@@ -14,17 +14,22 @@
     <mvc:annotation-driven />   
     <!-- the application context definition for the accountpro DispatcherServlet -->
 
- 	<bean name="/addPolicy.htm" class="accountpro.controller.PolicyController">
+ 	<bean name="/searchPolicy.htm" class="accountpro.controller.PolicyController">
 		<property name="policyService" ref="policyService"></property>
 		<property name="customerService" ref="customerService"></property>
     </bean>
 
+<!--  	<bean name="/pickerCustomer.htm" class="accountpro.controller.CustomerController">
+    </bean>
+ -->
  	<bean name="/mainMenu.htm" class="accountpro.controller.MainMenuController">
-		<property name="viewName" value="/listCustomers.htm" />
+		<!-- <property name="viewName" value="/listCustomers.htm" /> -->
     </bean>
 
- 	<bean name="/listCustomers.htm" class="accountpro.controller.CustomerController">
+
+  	<bean name="/searchCustomer.htm" class="accountpro.controller.CustomerController">
 		<property name="customerService" ref="customerService"></property>
+		<property name="policyService" ref="policyService"></property>
     </bean>
 
   	<bean name="/login.htm" class="accountpro.controller.LoginController">

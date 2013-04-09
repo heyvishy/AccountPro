@@ -13,7 +13,7 @@
 					<td>
 							<ul>
 								<li>
-									<a href="#">Customer</a>
+									<a href="searchCustomer.htm">Customer</a>
 					 	                <ul>
 						                      <li><a href="addCustomer.htm">Add </a></li>
 						                      <!-- <li><a href="listCustomers.htm">Search </a></li> -->
@@ -22,7 +22,7 @@
 						                </ul>
 					 			</li>
 								<li>
-									<a href="#">Policy</a>
+									<a href="searchPolicy.htm">Policy</a>
 					 	                <ul>
 						                      <li><a href="addPolicy.htm">Add </a></li>
 						                      <li><a href="searchPolicy.htm">Search </a></li>

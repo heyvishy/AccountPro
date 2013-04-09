@@ -98,6 +98,31 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
 		logger.info("result delete policy "+result);
 		return result;
+	}
+
+	@Override
+	public List<Policy> getCustomerPolicies(String customerId) {
+		List<Policy> policies = new ArrayList<Policy>();
+		List<Object> args = new ArrayList<Object>();
+		
+		String sql = "select * from Policy where customerID = ? ";
+		args.add(customerId);
+		
+		SqlRowSet rss = this.getJdbcTemplate().queryForRowSet(sql,args.toArray());
+		
+		while(rss.next()){
+			Policy pol = new Policy();
+			pol.setPolicyID(rss.getInt("Policy_Id"));
+			pol.setCustomerId(rss.getInt("CustomerID"));
+			pol.setPolicyType(rss.getString("PolicyType"));
+			pol.setPolicyNumber(rss.getInt("PolicyNumber"));
+			pol.setPolicyAmount(rss.getDouble("PolicyAmount"));
+			pol.setStartDate(rss.getDate("StartDate"));
+			pol.setEndDate(rss.getDate("EndDate"));
+			policies.add(pol);
+		}
+		
+		return policies;
 	} 
 	
 
