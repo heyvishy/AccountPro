@@ -10,10 +10,9 @@
 	
 	function chooseCustomer(){
 		window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
-		//window.open('openPolicy.htm?id='+id,'_self',false);
-/* 		if (window.focus) {newwindow.focus()}
+/*  		if (window.focus) {newwindow.focus()}
 		return false;
- */	}
+ */ 	}
 	
 </script>
 

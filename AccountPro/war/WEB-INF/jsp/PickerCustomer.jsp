@@ -14,7 +14,15 @@
 
 	function selectCustomer(id){
 		alert("select customer id :"+id);
+		window.opener.location.href = window.opener.location.href;
+
+		if (window.opener.progressWindow)
+		{
+		    window.opener.progressWindow.close()
+		}
+		window.close();
 	}
+	
 /*  function openCustomer(id)
  {
 	 window.open('openCustomer.htm?id='+id,'_self',false);
@@ -82,7 +90,7 @@
 					   			<td class="col4">DueDate</td>
 					   			<td class="col5">AmountDue</td>
 					   			<td class="col6">Active</td>
-					   			<td class="colDelete">Delete</td>
+					   			<td class="colDelete">Select</td>
 				   		</tr>		
 				    	<c:forEach items="${customerList}" var="customer">
 			    		  <tr>
@@ -92,7 +100,7 @@
 				    		  	<td class="col4"><c:out value="${customer.paymentDueDate}"/></td>
 				    		  	<td class="col5"><c:out value="${customer.amountDue}"/></td>
 				    		  	<td class="col6"><c:out value="${customer.active}"/></td>
-				    		  	<td class="colDelete"><input type="submit" value="Delete" onClick="selectCustomer(${customer.customerID})"></td>
+				    		  	<td class="colDelete"><input type="submit" value="select" onClick="selectCustomer(${customer.customerID})"></td>
 				    		  	
 				    		  	
 						 </tr>							    		  	

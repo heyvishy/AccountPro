@@ -1,6 +1,5 @@
 package accountpro.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -9,7 +8,6 @@ import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.Customer;
-import accountpro.domain.ExceptionMessage;
 import accountpro.domain.Policy;
 import accountpro.domain.SearchCustomerCriteria;
 import accountpro.exception.ServiceException;
@@ -67,6 +64,16 @@ public class CustomerController {
 		SearchCustomerCriteria searchCustomerCriteria = new SearchCustomerCriteria();
 	    ModelAndView mav = new ModelAndView();
 	    
+	    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
+	    mav.addObject("customerList", customers);
+	    mav.setViewName("PickerCustomer");
+	    mav.addObject("searchCustomerCriteria", searchCustomerCriteria);
+	    return mav;
+	}
+
+	@RequestMapping(value="/pickerCustomer.htm",method=RequestMethod.POST)
+	public ModelAndView selectPickerCustomerForm(@ModelAttribute("searchCustomerCriteria") @Valid SearchCustomerCriteria searchCustomerCriteria,BindingResult result, SessionStatus status) {
+	    ModelAndView mav = new ModelAndView();
 	    List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
 	    mav.addObject("customerList", customers);
 	    mav.setViewName("PickerCustomer");
