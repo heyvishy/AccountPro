@@ -9,6 +9,8 @@
     
     <bean id="customerService" class="accountpro.service.impl.CustomerServiceImpl">
     	<property name="customerDao" ref="customerDao"/>
+    	<property name="messages" ref="messageLoader" />
+    	
     </bean>
     
 

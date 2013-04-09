@@ -22,16 +22,14 @@
  	
  	 	<table class="tblParent">
 			<tr>
-				<td class="Heading">AccountPro Exception</td>
+				<td class="errorHeading" >AccountPro Exception :</td>
 			</tr> 	
 	 		<tr>
 	 			<td>
 				    <table class="tblChild">
-				    	
 					    <tr>
-					        <%-- <td><form:label  >AccountPro Exception</form:label></td> --%>
-					        <td>AccountPro Exception</td>
-					        <td> <c:out value="${exceptionReason}"> </c:out> </td>
+					        <!-- <td>AccountPro Exception</td> -->
+					        <td class="errorMessage"> <c:out value="${exceptionReason}"> </c:out> </td>
 					    </tr>
 					</table>
 				</td>

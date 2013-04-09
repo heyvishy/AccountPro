@@ -8,10 +8,20 @@ import accountpro.domain.Customer;
 import accountpro.domain.SearchCustomerCriteria;
 import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
+import accountpro.util.MessageLoader;
 
 public class CustomerServiceImpl implements CustomerService{
 
 	private CustomerDao customerDao;
+	private MessageLoader messages;
+
+	public MessageLoader getMessages() {
+		return messages;
+	}
+
+	public void setMessages(MessageLoader messages) {
+		this.messages = messages;
+	}
 
 	public CustomerDao getCustomerDao() {
 		return customerDao;
@@ -85,7 +95,7 @@ public class CustomerServiceImpl implements CustomerService{
 			result = customerDao.deleteCustomer(customerId);
 		}
 		catch(Exception e){
-				throw new ServiceException(e.getMessage());
+				throw new ServiceException(messages.getMessage("error.delete.customer"));
 		}
 	}
 
