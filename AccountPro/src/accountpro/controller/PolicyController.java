@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -168,8 +169,14 @@ public class PolicyController {
 				LOGGER.info("Policy Added !! ");
 			
 			 policy.setPolicyID(policy.getCustomerId());
-			 mav.addObject("policy", policy);
-			 //mav.addObject("resultValue", resultValue);
+			 
+		     if(StringUtils.isNotBlank(Integer.toString(policy.getCustomerId()))){
+				 Customer customer = customerService.openCustomer(Integer.toString(policy.getCustomerId()));
+			     String customerName = customer.getFirstName().concat(" ").concat(customer.getLastName());
+			     mav.addObject("customerName",customerName);
+		     }
+
+		     mav.addObject("policy", policy);
 			 mav.setViewName("AddPolicy");
 			 return mav;
 		}
