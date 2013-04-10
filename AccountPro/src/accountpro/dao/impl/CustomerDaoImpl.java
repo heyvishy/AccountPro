@@ -192,6 +192,29 @@ public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 		return result;
 	}
 
+	@Override
+	public List<Customer> getCustomers() {
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from Customer");
+		SqlRowSet rss  = this.getJdbcTemplate().queryForRowSet(sql.toString());
+		
+		List<Customer> customers = new ArrayList<Customer>();
+		while(rss.next()){
+			
+			Customer customer =  new Customer();
+			customer.setCustomerID(Integer.toString(rss.getInt("P_Id")));
+			customer.setLastName(rss.getString("LastName"));
+			customer.setFirstName(rss.getString("FirstName"));
+			customer.setAddress(rss.getString("Address"));
+			customer.setCity(rss.getString("City"));
+			customer.setZipCode(rss.getString("ZipCode"));
+			customers.add(customer);
+		}
+		
+		return customers;
+	
+	}
+
 
 
 }

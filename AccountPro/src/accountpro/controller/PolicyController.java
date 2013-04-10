@@ -35,7 +35,7 @@ public class PolicyController {
 
 	private static final Logger LOGGER = Logger.getLogger(PolicyController.class.getName());
 	
-	public static List<String> customerList = new ArrayList<String>(Arrays.asList("Vishal", "Abha", "Dad"));
+	//public static List<String> customerList = new ArrayList<String>(Arrays.asList("Vishal", "Abha", "Dad"));
 	
 	private PolicyService policyService;
 	private CustomerService customerService;
@@ -76,7 +76,7 @@ public class PolicyController {
 	    mav.setViewName("AddPolicy");
 	    mav.addObject("customerName",customerName);
 	    mav.addObject("policy", policy);
-	    mav.addObject("customerList", customerList);
+	    //mav.addObject("customerList", customerList);
 	    return mav;
 	}
 
@@ -84,6 +84,7 @@ public class PolicyController {
 	public ModelAndView addPolicyForCustomer(){
 		Policy policy = new Policy();
 	    ModelAndView mav = new ModelAndView();
+	    List<Customer> customerList = customerService.getCustomers();
 	    mav.setViewName("AddPolicy");
 	    mav.addObject("policy", policy);
 	    mav.addObject("customerList", customerList);

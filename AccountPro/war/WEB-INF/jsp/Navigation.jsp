@@ -15,17 +15,19 @@
 								<li>
 									<a href="searchCustomer.htm">Customer</a>
 					 	                <ul>
-						                      <li><a href="addCustomer.htm">Add </a></li>
+						                      <li><a href="addCustomer.htm">Add</a></li>
 						                      <!-- <li><a href="listCustomers.htm">Search </a></li> -->
-						                      <li><a href="searchCustomer.htm">Search </a></li>
+						                      <!-- <li><a href="searchCustomer.htm">Search </a></li> -->
+						                      <li><a href="searchCustomer.htm">Manage</a></li>
 						                      
 						                </ul>
 					 			</li>
 								<li>
 									<a href="searchPolicy.htm">Policy</a>
 					 	                <ul>
-						                      <li><a href="addPolicy.htm">Add </a></li>
-						                      <li><a href="searchPolicy.htm">Search </a></li>
+						                      <li><a href="addPolicy.htm">Add</a></li>
+						                      <!-- <li><a href="searchPolicy.htm">Search </a></li> -->
+						                      <li><a href="searchPolicy.htm">Manage</a></li>
 						                </ul>
 								</li>
 								<li>

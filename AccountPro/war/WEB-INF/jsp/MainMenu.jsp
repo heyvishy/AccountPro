@@ -20,7 +20,7 @@
 <table class="tblParent"> 
 
   		<tr>
-			<td class="Heading" >Main Menu</td>
+			<td class="Heading"></td>
 		</tr> 	
 </table>
 

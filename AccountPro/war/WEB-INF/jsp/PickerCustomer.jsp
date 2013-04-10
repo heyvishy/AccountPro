@@ -12,33 +12,22 @@
 
 <script type="text/javascript">
 
-	function selectCustomer(id){
-		alert("select customer id :"+id);
-		window.opener.location.href = window.opener.location.href;
-
-		if (window.opener.progressWindow)
+	function selectCustomer(name,id){
+		//alert("select customer id :"+id);
+		//alert("select customer name :"+name);
+		
+		//window.opener.location.href = window.opener.location.href;
+		
+/* 		if (window.opener.progressWindow)
 		{
 		    window.opener.progressWindow.close()
 		}
+ */		
+ 		
+ 		window.opener.document.getElementById("customerID").value = id;
 		window.close();
 	}
 	
-/*  function openCustomer(id)
- {
-	 window.open('openCustomer.htm?id='+id,'_self',false);
- }
- */ 
-/*  function deleteCustomer(id)
- {
-	 if (confirm('Are you sure you want to delete customer ?')) 
-	 { 
-		  var form = document.getElementById("searchCustomerForm");
-		  var custId = document.getElementById("custID");
-		  custId.value  = id;
-		  form.action = 'deleteCustomer.htm';
-	 }
- }
- */
 </script>
 
 <html>
@@ -94,15 +83,14 @@
 				   		</tr>		
 				    	<c:forEach items="${customerList}" var="customer">
 			    		  <tr>
+ 								<c:set var="customerName" value="${customer.firstName} ${customer.lastName}"></c:set>
  								<%-- <td class="colOpen"><input type="button" value="open" onclick="openCustomer(${customer.customerID})"/></td> --%>
- 								<td class="colName"><c:out value="${customer.firstName} ${customer.lastName}"/></td>
+ 								<td class="colName"><c:out value="${customerName}"/></td>
  								<td class="col3"><c:out value="${customer.phone}"/></td>
 				    		  	<td class="col4"><c:out value="${customer.paymentDueDate}"/></td>
 				    		  	<td class="col5"><c:out value="${customer.amountDue}"/></td>
 				    		  	<td class="col6"><c:out value="${customer.active}"/></td>
-				    		  	<td class="colDelete"><input type="submit" value="select" onClick="selectCustomer(${customer.customerID})"></td>
-				    		  	
-				    		  	
+				    		  	<td class="colDelete"><input type="submit" value="select" onClick="selectCustomer('${customerName}',${customer.customerID})"></td>
 						 </tr>							    		  	
 			    		</c:forEach>
 						 				 

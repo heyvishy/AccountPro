@@ -41,22 +41,34 @@
  		<td>
 			  <table class="tblChild">
 			    <tr>
+			    	
+			    		<%-- <form:input path="" id="custIDValue" value="someVal"/> --%>
+<%-- 			    		<form:select id="userSelect" name="userId" path="user.id">
+						    <option value="">Select to Edit</option>
+						    <c:forEach var="theUser" items="${user.userList}">
+						        <form:option value="${theUser.id}"><c:out value="${theUser.lastname} ${theUser.firstname}"/></form:option>
+						    </c:forEach>
+						</form:select>
+ --%>			    	
+			    </tr>	
+			    <tr>
 			        <td>
 			        	<form:label path="customerId">Select Customer</form:label>
 			        </td>
 			        <td>
 						 <c:choose>
 						 	<c:when test="${policy.customerId gt 0}"> 
-					        	<form:select path="customerId" disabled="">
+					        	<form:select id="customerID" path="customerId" disabled="">
 										   <form:option value="${policy.customerId}" label="${customerName}"/>
 								</form:select>
 						 	</c:when>
 						 	<c:otherwise>
-					        	<form:select path="customerId">
-										   <form:option value="0" label="--- Select ---" />
-										   <form:option value="1" label="Vishal"/>
-										   <form:option value="2" label="Abha"/>
-										   <%-- <form:options items="${customerList}" /> --%>
+					        	<form:select id="customerID" path="customerId">
+								    <option value="0">Select</option>
+									    <c:forEach var="customer" items="${customerList}">
+									        <form:option value="${customer.customerID}" label="${customer.firstName} ${customer.lastName}"> </form:option>
+									    </c:forEach>
+ 										 <%-- <form:options items="${customerList}" itemValue="" /> --%>
 								</form:select>
 								<td><input type="button" value="choose" onclick="chooseCustomer()"/></td>
 						 	</c:otherwise>
