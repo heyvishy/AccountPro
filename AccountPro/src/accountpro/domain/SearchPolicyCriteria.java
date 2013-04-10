@@ -6,14 +6,34 @@ public class SearchPolicyCriteria {
 
 	public int policyID;
 	public String customerName;
+	
+	public String firstName;
+	public String lastName;
+	
 	public String policyType;
 	public int policyNumber;
 	public double policyAmount;
 	public Date startDate;
 	public Date endDate;
 	
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	public String getCustomerName() {
-		return customerName;
+		//return customerName;
+		StringBuffer sb = new StringBuffer("");
+		sb.append(firstName+ " "+lastName);
+		return sb.toString();
+		//return firstName+" "+lastName;
 	}
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;

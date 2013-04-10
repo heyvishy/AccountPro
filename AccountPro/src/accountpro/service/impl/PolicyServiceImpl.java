@@ -4,6 +4,7 @@ import java.util.List;
 
 import accountpro.dao.PolicyDao;
 import accountpro.domain.Policy;
+import accountpro.domain.SearchPolicyCriteria;
 import accountpro.exception.ServiceException;
 import accountpro.service.PolicyService;
 
@@ -25,9 +26,9 @@ public class PolicyServiceImpl implements PolicyService {
 	}
 
 	@Override
-	public List<Policy> searchPolicies(Policy policy) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Policy> searchPolicies(SearchPolicyCriteria searchPolicyCriteria) {
+		List<Policy> policies = policyDao.searchPolicies(searchPolicyCriteria);
+		return policies;
 	}
 
 	public PolicyDao getPolicyDao() {
@@ -53,10 +54,10 @@ public class PolicyServiceImpl implements PolicyService {
 	}
 
 	@Override
-	public List<Policy> getCustomerPolicies(String cutomerId)
+	public List<Policy> getCustomerPolicies(String customerId)
 			throws ServiceException {
 		
-		List<Policy> policies = policyDao.getPolicies();
+		List<Policy> policies = policyDao.getCustomerPolicies(customerId);
 		return policies;
 
 	}

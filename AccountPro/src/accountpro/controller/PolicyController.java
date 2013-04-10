@@ -91,8 +91,23 @@ public class PolicyController {
 	    return mav;
 	}
 
+/*	@RequestMapping(value="/deletePolicy.htm",method=RequestMethod.POST)
+	public ModelAndView deletePolicy(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status) {
+*/	
+	@RequestMapping(value="/searchPolicy.htm",method=RequestMethod.POST)
+	public ModelAndView searchPolicyForm(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status){
+		LOGGER.info("inside searchPolicyForm");
+		LOGGER.info("values searchPolicyCriteria "+searchPolicyCriteria.getCustomerName()+" "+searchPolicyCriteria.getPolicyType());
+		List<Policy> policies = policyService.searchPolicies(searchPolicyCriteria);
+		ModelAndView mav = new ModelAndView();
+	    mav.setViewName("SearchPolicy");
+	    mav.addObject("SearchPolicyCriteria", searchPolicyCriteria);
+	    mav.addObject("policies", policies);
+	    return mav;
+	}
+
 	@RequestMapping(value="/searchPolicy.htm")
-	public ModelAndView showListPolicyForm(ModelMap model){
+	public ModelAndView showAllPolicyForm(ModelMap model){
 		SearchPolicyCriteria searchPolicyCriteria = new SearchPolicyCriteria();
 		List<Policy> policies = policyService.getPolicies();
 		ModelAndView mav = new ModelAndView();

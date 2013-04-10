@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import accountpro.dao.BaseDao;
 import accountpro.dao.PolicyDao;
 import accountpro.domain.Policy;
+import accountpro.domain.SearchPolicyCriteria;
 
 public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	
@@ -42,13 +44,14 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 		
 		List<Policy> policies = new ArrayList<Policy>();
 		List<Object> args = new ArrayList<Object>();
-		String sql = "select * from Policy";
+		String sql = "select * FROM Policy P INNER JOIN Customer C ON P.CustomerID=C.P_Id";
 		SqlRowSet rss = this.getJdbcTemplate().queryForRowSet(sql,args.toArray());
 		
 		while(rss.next()){
 			Policy pol = new Policy();
 			pol.setPolicyID(rss.getInt("Policy_Id"));
 			pol.setCustomerId(rss.getInt("CustomerID"));
+			pol.setCustomerName(rss.getString("FirstName")+" "+rss.getString("LastName"));
 			pol.setPolicyType(rss.getString("PolicyType"));
 			pol.setPolicyNumber(rss.getInt("PolicyNumber"));
 			pol.setPolicyAmount(rss.getDouble("PolicyAmount"));
@@ -62,9 +65,41 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	}
 
 	@Override
-	public List<Policy> searchPolicies(Policy policy) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Policy> searchPolicies(SearchPolicyCriteria searchPolicyCriteria) {
+		List<Policy> policies = new ArrayList<Policy>();
+		List<Object> args = new ArrayList<Object>();
+		
+		StringBuffer sql = new StringBuffer("SELECT * FROM Policy P INNER JOIN Customer C ON P.CustomerID=C.P_Id WHERE Policy_Id > 0 ");
+		
+		if(StringUtils.isNotBlank(searchPolicyCriteria.getPolicyType())){
+			sql.append(" and P.PolicyType =  ? ");
+			args.add(searchPolicyCriteria.getPolicyType());
+		}
+		if(StringUtils.isNotBlank(searchPolicyCriteria.getFirstName())){
+			sql.append(" and C.FirstName =  ? ");
+			args.add(searchPolicyCriteria.getFirstName());
+		}
+		if(StringUtils.isNotBlank(searchPolicyCriteria.getLastName())){
+			sql.append(" and C.LastName =  ? ");
+			args.add(searchPolicyCriteria.getLastName());
+		}
+		
+		SqlRowSet rss = this.getJdbcTemplate().queryForRowSet(sql.toString(),args.toArray());
+		
+		while(rss.next()){
+			Policy pol = new Policy();
+			pol.setPolicyID(rss.getInt("Policy_Id"));
+			pol.setCustomerName(rss.getString("FirstName")+" "+rss.getString("LastName"));
+			pol.setCustomerId(rss.getInt("CustomerID"));
+			pol.setPolicyType(rss.getString("PolicyType"));
+			pol.setPolicyNumber(rss.getInt("PolicyNumber"));
+			pol.setPolicyAmount(rss.getDouble("PolicyAmount"));
+			pol.setStartDate(rss.getDate("StartDate"));
+			pol.setEndDate(rss.getDate("EndDate"));
+			policies.add(pol);
+		}
+		
+		return policies;
 	}
 
 	@Override

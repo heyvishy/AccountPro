@@ -9,6 +9,8 @@ public class Policy {
 	//system generated value
 	public int policyID;
 	public int customerId;
+	public String customerName;
+	
 	
 	@NotEmpty
 	public String policyType;
@@ -62,7 +64,13 @@ public class Policy {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
+	public String getCustomerName() {
+		return customerName;
+	}
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
 	
 
 

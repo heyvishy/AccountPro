@@ -31,7 +31,7 @@
 							<td>email : shukla81@gmail.com</td>
 						</tr>
 						<tr>
-							<td>phone : 800-100-9000</td>
+							<td>phone :  (302) 468-7024</td>
 						</tr>
 				</table>
 			</td>

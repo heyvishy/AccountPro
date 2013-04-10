@@ -56,12 +56,16 @@
 					        <td><form:label path="policyType">Policy Type</form:label></td>
 					        <td><form:input path="policyType" readonly="true" value="Recurring Deposit"/></td>
 					    </tr>
-<%-- 					    <tr>
+ 						<tr>
 					        <td><form:label path="lastName">Last Name</form:label></td>
 					        <td><form:input path="lastName" /></td>
-					        <td><form:errors path="lastName" cssClass="error" /></td>
 					    </tr>
-					    <tr>
+ 						<tr>
+					        <td><form:label path="firstName">First Name</form:label></td>
+					        <td><form:input path="firstName" /></td>
+					    </tr>
+
+<%--					    <tr>
 					        <td><form:label path="city">City</form:label></td>
 					        <td><form:input path="city" /></td>
 					        <td><form:errors path="city" cssClass="error" /></td>
@@ -96,7 +100,7 @@
 			    		  <tr>
 			 	    		  	<%-- <td class="col1"><c:out value="${policy.policyID}"/></td> --%>  
 				    		  	<td class="colOpen"><input type="button" value="open" onclick="openPolicy(${policy.policyID})"/></td>
-				    		  	<td class="col2"><c:out value="${policy.customerId}"/></td>
+				    		  	<td class="col2"><c:out value="${policy.customerName}"/></td>
 				    		  	<td class="col3"><c:out value="${policy.policyType}"/></td>
 				    		  	<td class="col4"><c:out value="${policy.policyNumber}"/></td>
 				    		  	<td class="col5"><c:out value="${policy.policyAmount}"/></td>
