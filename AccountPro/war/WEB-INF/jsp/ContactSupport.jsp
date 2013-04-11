@@ -2,7 +2,6 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 <html>
 <style type="text/css">
-
 <%@ include file="../css/global.css" %>
 </style>
 
