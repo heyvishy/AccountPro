@@ -31,10 +31,15 @@
 <form>
     <table>
 	    <tr>
-	    	<td><input type="label" value="Start Date"/> </td> <td><input id="datepicker1" /></td>
+	    	<!-- <td><form:label path="startDate">Start Date (Format DD-MM-YYYY e.g 01-01-2012)</form:label></td> --> 
+	    	<td><label for="startDateLabel">Start Date</label></td>
+	    	<!-- <td><input type="label" value="Start Date"/></td> --> 
+	    	<td><input id="datepicker1" /></td>
 	    </tr>
 	    <tr>
-	    	<td><input type="label" value="End Date"/> </td> <td><input id="datepicker2" /></td>
+	    	<!-- <td><input type="label" value="End Date"/></td> -->
+	    	<td><label for="endDateLabel">End Date</label></td> 
+	    	<td><input id="datepicker2" /></td>
 	    </tr>
 	
 	    <tr>
