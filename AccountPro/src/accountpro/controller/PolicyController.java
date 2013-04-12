@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.Customer;
 import accountpro.domain.Policy;
+import accountpro.domain.SearchCustomerCriteria;
 import accountpro.domain.SearchPolicyCriteria;
 import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
@@ -62,6 +64,14 @@ public class PolicyController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
  	}
 	
+	
+	@RequestMapping(value="/pickerDate.htm")
+	public ModelAndView showPickerCustomerForm(Model model) {
+	    ModelAndView mav = new ModelAndView();
+	    mav.setViewName("PickerDate");
+	    return mav;
+	}
+
 	@RequestMapping(value="/addPolicyForCustomer.htm")	
 	public ModelAndView addPolicyForCustomer(@RequestParam("id") String customerId){
 		Policy policy = new Policy();

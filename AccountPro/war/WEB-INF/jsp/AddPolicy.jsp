@@ -11,43 +11,22 @@
   });
   </script>
 
-  
+
 <style type="text/css">
 <%@ include file="../css/error.css" %>
 <%@ include file="../css/global.css" %>
 </style>
-
-
-<!-- <style>
-ui-datepicker td {
-    border: 1px solid #CCC;
-    padding: 0;
-}
-</style>
- -->  
- 
- <!-- <script>
-$(function() {
- $('.date-picker').datepicker( {
- changeMonth: true,
- changeYear: true,
- showButtonPanel: true,
- dateFormat: 'MM yy',
- onClose: function(dateText, inst) { 
- var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
- var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
- $(this).datepicker('setDate', new Date(year, month, 1));
- }
- });
-});
-</script> -->
 <script type="text/javascript">
 	
+	function chooseDate()
+	{
+		//alert("date"); 
+		window.open('pickerDate.htm','datepicker','resizable=no,height=400,width=600');
+	}
+
 	function chooseCustomer(){
 		window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
-/*  		if (window.focus) {newwindow.focus()}
-		return false;
- */ 	}
+ 	}
 	
 </script>
 
@@ -93,7 +72,7 @@ $(function() {
 									        <form:option value="${customer.customerID}" label="${customer.firstName} ${customer.lastName}"> </form:option>
 									    </c:forEach>
 								</form:select>
-								<td><input type="button" value="choose" onclick="chooseCustomer()"/></td>
+								<td><input id="chooseCustomer" type="button" value="choose" onclick="chooseCustomer()"/></td>
 						 	</c:otherwise>
 						 </c:choose>
 			        	
@@ -116,16 +95,14 @@ $(function() {
 			    </tr>
 			    <tr>
 			        <td><form:label path="startDate">Start Date (Format DD-MM-YYYY e.g 01-01-2012)</form:label></td>
-			        <%-- <td><form:input path="startDate" /></td> --%>
-			        <%-- <td><form:input type="text" path="startDate" id="datepicker"  /></td> --%>
-			        <%-- <form:input type="text" path="startDate" class="date-picker" /> --%>
-			        <td><form:input id="datepicker" path="startDate"/></td>
-			        
+			        <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td>
 			        <td><form:errors path="startDate" cssClass="error" /></td>
+			        
+			        <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="endDate">End Date  (Format DD-MM-YYYY e.g 01-01-2012)</form:label></td>
-			        <td><form:input path="endDate" /></td>
+			        <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td>
 			        <td><form:errors path="endDate" cssClass="error" /></td>
 			    </tr>
 
