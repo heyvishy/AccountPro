@@ -28,6 +28,12 @@
 		window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
  	}
 	
+	function updatePolicy(){
+	     var form = document.getElementById("policyForm");
+	     form.action = 'updatePolicy.htm';
+
+	}
+	
 </script>
 
 <html>	
@@ -37,7 +43,7 @@
 
 <body>
 
-<form:form method="post" action="addPolicy.htm" commandName="policy">
+<form:form method="post" action="addPolicy.htm" commandName="policy" id="policyForm">
  	
  	
   		<tr>
@@ -111,7 +117,7 @@
 					 	<c:when test="${policy.customerId gt 0}">
 					 	<%-- <c:when test="${resultValue > 0}"> --%>	  		
 					        <td>
-					            <input type="submit" value="Save"/>
+					            <input type="submit" value="Save" onClick="updatePolicy()"/>
 					        </td>
 					 	</c:when>
 					 	<c:otherwise>

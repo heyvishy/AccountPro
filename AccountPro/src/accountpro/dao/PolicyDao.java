@@ -8,6 +8,7 @@ import accountpro.domain.SearchPolicyCriteria;
 public interface PolicyDao {
 	
 	public int insertPolicy(Policy policy);
+	public void updatePolicy(Policy policy);
 	public List<Policy> getPolicies();
 	public List<Policy> searchPolicies(SearchPolicyCriteria searchPolicyCriteria);
 	public Policy openPolicy(String policyId);

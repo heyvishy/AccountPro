@@ -1,8 +1,6 @@
 package accountpro.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -26,7 +24,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.Customer;
 import accountpro.domain.Policy;
-import accountpro.domain.SearchCustomerCriteria;
 import accountpro.domain.SearchPolicyCriteria;
 import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
@@ -86,6 +83,7 @@ public class PolicyController {
 	    mav.setViewName("AddPolicy");
 	    mav.addObject("customerName",customerName);
 	    mav.addObject("policy", policy);
+	    mav.addObject("operationType","add");
 	    //mav.addObject("customerList", customerList);
 	    return mav;
 	}
@@ -173,6 +171,33 @@ public class PolicyController {
 		    mav.setViewName("SearchPolicy");
 		    mav.addObject("policies", null);
 		    return mav;
+		}
+	}
+
+	@RequestMapping(value="/updatePolicy.htm",method=RequestMethod.POST)
+	public ModelAndView updatePolicy(@ModelAttribute("policy")  @Valid Policy policy,BindingResult result, SessionStatus status) {
+	
+		ModelAndView mav = new ModelAndView();
+		
+		if(result.hasErrors() ){
+			LOGGER.info("Error happend in loading AddPolicy");
+			 mav.setViewName("AddPolicy");
+			 return mav;
+		}
+		else{
+			
+		    policyService.updatePolicy(policy);
+		    LOGGER.info("Policy updated !!");
+
+		    if(StringUtils.isNotBlank(Integer.toString(policy.getCustomerId()))){
+				 Customer customer = customerService.openCustomer(Integer.toString(policy.getCustomerId()));
+			     String customerName = customer.getFirstName().concat(" ").concat(customer.getLastName());
+			     mav.addObject("customerName",customerName);
+		     }
+
+		     mav.addObject("policy", policy);
+			 mav.setViewName("AddPolicy");
+			 return mav;
 		}
 	}
 

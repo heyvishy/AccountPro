@@ -158,6 +158,24 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 		}
 		
 		return policies;
+	}
+
+	@Override
+	public void updatePolicy(Policy policy) {
+		StringBuffer sql = new StringBuffer();
+		
+		sql.append("Update Policy set PolicyAmount =  ? , PolicyNumber = ?  , StartDate = ? , EndDate =  ?  where Policy_Id = ? ");
+		
+		List<Object> args = new ArrayList<Object>();
+		args.add(policy.getPolicyAmount());
+		args.add(policy.getPolicyNumber());
+		args.add(policy.getStartDate());
+		args.add(policy.getEndDate());
+		args.add(policy.getPolicyID());
+		
+		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
+		logger.info("result updatePolicy "+result);
+	
 	} 
 	
 

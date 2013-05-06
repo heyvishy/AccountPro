@@ -10,9 +10,9 @@
         <property name="password" value=""/>
  -->
  	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <!-- <property name="url" value="jdbc:mysql://accountpro.cqoauszdwpu6.us-east-1.rds.amazonaws.com:3306/accountpro"/> -->
-       <property name="url" value="jdbc:mysql://ec2-184-73-20-183.compute-1.amazonaws.com:3306/accountpro"/>
-        <!-- <property name="url" value="jdbc:mysql://localhost:3306/AccountPro"/> -->
+       <!-- <property name="url" value="jdbc:mysql://accountpro.cqoauszdwpu6.us-east-1.rds.amazonaws.com:3306/accountpro"/> -->
+       <!-- <property name="url" value="jdbc:mysql://ec2-184-73-20-183.compute-1.amazonaws.com:3306/accountpro"/> -->
+        <property name="url" value="jdbc:mysql://localhost:3306/accountpro"/>
         <property name="username" value="shukla81"/>
         <property name="password" value="shanker11"/>
  </bean>

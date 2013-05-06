@@ -100,6 +100,7 @@
 						 </c:choose>
 					    </tr>
 						
+					 <c:if test="${!empty policies}" >
 						<tr>
 							<td>
 								<table class="">
@@ -119,6 +120,8 @@
 					   			<td class="col7">EndDate</td>
 					   			<!-- <td class="colDelete">Delete</td> -->
 				   		</tr>		
+					</c:if>
+					
 				    	<c:forEach items="${policies}" var="policy">
 			    		  <tr>
 				    		  	<%-- <td class="colOpen"><input type="button" value="open" onclick="openPolicy(${policy.policyID})"/></td> --%>

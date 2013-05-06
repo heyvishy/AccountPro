@@ -62,4 +62,9 @@ public class PolicyServiceImpl implements PolicyService {
 
 	}
 
+	@Override
+	public void updatePolicy(Policy policy) {
+		 policyDao.updatePolicy(policy);
+	}
+
 }
