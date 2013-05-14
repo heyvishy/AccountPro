@@ -8,23 +8,11 @@
 <%@ include file="../css/AddCustomer.css" %>
 </style>
 
-<script type="text/javascript">
-
- function updateCustomer(){
-     var form = document.getElementById("CustomerForm");
-     form.action = 'updateCustomer.htm';
- }
- 
- function addPolicy(id)
- {
-	// alert("addPolicy for customerID "+id);
-	 window.open('addPolicyForCustomer.htm?id='+id,'_self',false);
- }
-
-</script>
-
 <html>
 <head>
+	<script type="text/javascript" src="../../js/AddCustomer.js">
+	</script>
+		
     <title>Add Customer</title>
 </head>
 

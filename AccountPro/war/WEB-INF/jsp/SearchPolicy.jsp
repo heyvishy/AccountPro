@@ -90,7 +90,8 @@
 					   			<td class="colOpen">Select</td>
 					   			<td class="col2">CustomerName</td>
 					   			<td class="col3">PolicyType</td>
-					   			<td class="col4">PolicyNumber</td>
+					   			<!-- <td class="col4">PolicyNumber</td> -->
+					   			<td class="col4">Account Number</td>
 					   			<td class="col5">PolicyAmount</td>
 					   			<td class="col6">StartDate</td>
 					   			<td class="col7">EndDate</td>

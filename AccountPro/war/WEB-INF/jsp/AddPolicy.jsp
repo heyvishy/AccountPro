@@ -1,10 +1,16 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
 
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
 
+<!-- 
+<link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/> 
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+ -->
+ 
   <script>
   $(document).ready(function() {
     $("#datepicker").datepicker();
@@ -90,7 +96,8 @@
 			        <td><form:input path="policyType" readonly="true" value="Recurring Deposit"  /></td>
 			    </tr>
 			    <tr>
-			        <td><form:label path="policyNumber">Policy Number</form:label></td>
+			        <%-- <td><form:label path="policyNumber">Policy Number</form:label></td> --%>
+			        <td><form:label path="policyNumber">Account Number</form:label></td>
 			        <td><form:input path="policyNumber"/></td>
 			        <td><form:errors path="policyNumber" cssClass="error" /></td>
 			    </tr>
