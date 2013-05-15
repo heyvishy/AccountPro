@@ -1,9 +1,14 @@
+<%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<style type="text/css">
+<%-- <style type="text/css">
 <%@ include file="../css/Login.css" %>
 <%@ include file="../css/error.css" %>
 </style>
+ --%>
+ 
+<link href="<c:url value="/css/Login.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/css/error.css"/>" rel="stylesheet" type="text/css"/>
 
 <html>
 <head>

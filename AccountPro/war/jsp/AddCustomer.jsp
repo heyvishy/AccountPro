@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
@@ -8,10 +8,10 @@
 <%@ include file="../css/AddCustomer.css" %>
 </style>
 
+
 <html>
 <head>
-	<script type="text/javascript" src="../../js/AddCustomer.js">
-	</script>
+	<script type="text/javascript" src="<c:url value="/js/AddCust.js"/>"></script>
 		
     <title>Add Customer</title>
 </head>
