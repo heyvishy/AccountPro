@@ -107,8 +107,8 @@
 				    		  	<td class="col4"><c:out value="${customer.paymentDueDate}"/></td>
 				    		  	<td class="col5"><c:out value="${customer.amountDue}"/></td>
 				    		  	<td class="col6"><c:out value="${customer.active}"/></td>
-				    		  	<td class="colDelete"><input type="submit" value="Delete" onClick="deleteCustomer(${customer.customerID})"></td>
-				    		  	<!-- <td class="colDelete"><img src="../../images/Del.jpg" ALT="Delete Customer" /> </td> -->
+				    		  	<%-- <td class="colDelete"><input type="submit" value="Delete" onClick="deleteCustomer(${customer.customerID})"></td> --%>
+				    		  	<td class="colDelete"><img src="<c:url value="/images/Del.jpg"/> " ALT="Delete Customer" onClick="deleteCustomer(${customer.customerID})" /> </td>
 				    		  	
 				    		  	
 						 </tr>							    		  	
