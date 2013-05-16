@@ -1,50 +1,37 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/jsp/include.jsp" %>
 
-<!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/> -->
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
-
-<!-- 
-<link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/> 
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
- -->
- 
-  <script>
-  $(document).ready(function() {
-    $("#datepicker").datepicker();
-  });
-  </script>
-
-
-<style type="text/css">
-<%@ include file="../css/error.css" %>
-<%@ include file="../css/global.css" %>
-</style>
-<script type="text/javascript">
-	
-	function chooseDate()
-	{
-		//alert("date"); 
-		window.open('pickerDate.htm','datepicker','resizable=no,height=400,width=600');
-	}
-
-	function chooseCustomer(){
-		window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
- 	}
-	
-	function updatePolicy(){
-	     var form = document.getElementById("policyForm");
-	     form.action = 'updatePolicy.htm';
-
-	}
-	
-</script>
 
 <html>	
 <head>
     <title>Add Policy</title>
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+
+	<script>
+		$(document).ready(function() {
+		  $("#datepicker").datepicker();
+		});
+	</script>
+	    
+	<script type="text/javascript">
+		function chooseDate()
+		{
+			//alert("date"); 
+			window.open('pickerDate.htm','datepicker','resizable=no,height=400,width=600');
+		}
+	
+		function chooseCustomer(){
+			window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
+	 	}
+		
+		function updatePolicy(){
+		     var form = document.getElementById("policyForm");
+		     form.action = 'updatePolicy.htm';
+		}
+
+	</script>
+    
 </head>
 
 <body>

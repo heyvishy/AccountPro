@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-
-<style type="text/css">
-
-<%@ include file="../css/navigation.css" %>
-<%@ include file="../css/global.css" %>
-</style>
+	<head>
+		<link href="css/navigation.css" rel="stylesheet" type="text/css"/>
+		<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	</head>
 
 	<body>
 		<table class="tblNav">
@@ -45,7 +43,6 @@
 					<td align="right"><a href="login.htm">Sign out</a></td>
 				</tr>
 		</table>
-		
 	</body>
 </html>
 

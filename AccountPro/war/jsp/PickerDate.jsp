@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<%@ include file="/jsp/include.jsp" %>
+
 <html>
 <head>
 
 
- <link href="<c:url value="/css/jquery-ui.css"/>" rel="stylesheet" type="text/css"/>
- <script type="text/javascript" src="<c:url value="/js/jquery.min.js"/>"></script>
- <script type="text/javascript" src="<c:url value="/js/jquery-ui.min.js"/>"></script>
+ <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+ <script type="text/javascript" src="js/jquery.min.js"></script>
+ <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 
  <script>
   $(document).ready(function() {

@@ -1,15 +1,6 @@
 <%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
-<style type="text/css">
-<%@ include file="../css/error.css" %>
-<%@ include file="../css/global.css" %>
-<%@ include file="../css/ListCustomer.css" %>
-
-
-</style>
-
 <script type="text/javascript">
 
 	function selectCustomer(name,id){
@@ -33,6 +24,9 @@
 <html>
 <head>
     <title>Choose Customer</title>
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	<link href="css/ListCustomer.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>

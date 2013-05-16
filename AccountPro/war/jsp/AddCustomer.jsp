@@ -1,19 +1,14 @@
 <%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
-<style type="text/css">
-<%@ include file="../css/error.css" %>
-<%@ include file="../css/global.css" %>
-<%@ include file="../css/AddCustomer.css" %>
-</style>
-
-
 <html>
 <head>
-	<script type="text/javascript" src="<c:url value="/js/AddCust.js"/>"></script>
-		
-    <title>Add Customer</title>
+	<title>Add Customer</title>
+	
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	<link href="css/AddCustomer.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="js/AddCust.js"></script>	
 </head>
 
 <body>
