@@ -1,14 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/jsp/include.jsp" %>
 
-
-<html>	
-<head>
-    <title>Add Policy</title>
-	<link href="css/error.css" rel="stylesheet" type="text/css"/>
-	<link href="css/global.css" rel="stylesheet" type="text/css"/>
-
-	<script>
+	<script type="text/javascript">
 		$(document).ready(function() {
 		  $("#datepicker").datepicker();
 		});
@@ -17,11 +10,12 @@
 	<script type="text/javascript">
 		function chooseDate()
 		{
-			//alert("date"); 
+			alert("date"); 
 			window.open('pickerDate.htm','datepicker','resizable=no,height=400,width=600');
 		}
 	
 		function chooseCustomer(){
+			alert("chooseCustomer");
 			window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
 	 	}
 		
@@ -31,6 +25,13 @@
 		}
 
 	</script>
+
+<html>	
+<head>
+    <title>Add Policy</title>
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+
     
 </head>
 
