@@ -8,17 +8,19 @@
 	</script>
 	    
 	<script type="text/javascript">
+
+		function pickCustomer()
+		{
+			//alert("date"); 
+			window.open('pickerCustomer.htm','customerpicker','resizable=no,height=400,width=600');
+		}
+		
 		function chooseDate()
 		{
-			alert("date"); 
+			//alert("date"); 
 			window.open('pickerDate.htm','datepicker','resizable=no,height=400,width=600');
 		}
 	
-		function chooseCustomer(){
-			alert("chooseCustomer");
-			window.open('pickerCustomer.htm','choosecustomer','resizable=no,height=400,width=600');
-	 	}
-		
 		function updatePolicy(){
 		     var form = document.getElementById("policyForm");
 		     form.action = 'updatePolicy.htm';
@@ -72,7 +74,7 @@
 									        <form:option value="${customer.customerID}" label="${customer.firstName} ${customer.lastName}"> </form:option>
 									    </c:forEach>
 								</form:select>
-								<td><input id="chooseCustomer" type="button" value="choose" onclick="chooseCustomer()"/></td>
+								<td><input id="chooseCustomer" type="button" value="choose" onClick="pickCustomer()"/></td>
 						 	</c:otherwise>
 						 </c:choose>
 			        	
@@ -109,7 +111,8 @@
 
 			    <tr>
 					 <c:choose>
-					 	<c:when test="${policy.customerId gt 0}">
+					 	<%-- <c:when test="${policy.customerId gt 0}"> --%>
+					 	<c:when test="${policy.policyID gt 0}">
 					 	<%-- <c:when test="${resultValue > 0}"> --%>	  		
 					        <td>
 					            <input type="submit" value="Save" onClick="updatePolicy()"/>
