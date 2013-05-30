@@ -18,9 +18,10 @@ import net.sf.jasperreports.engine.xml.JRXmlLoader;
 public class Reporter {
 @SuppressWarnings("unchecked")
 public static void main(String[] args) throws Exception {
-		InputStream inputStream = new FileInputStream ("reports/test_jasper.jrxml");
+		InputStream inputStream = new FileInputStream ("reports/testrep.jrxml");
 		 
 		DataBeanMaker dataBeanMaker = new DataBeanMaker();
+	
 		ArrayList<DataBean> dataBeanList = dataBeanMaker.getDataBeanList();
 		 
 		JRBeanCollectionDataSource beanColDataSource = new
@@ -31,6 +32,6 @@ public static void main(String[] args) throws Exception {
 		JasperDesign jasperDesign = JRXmlLoader.load(inputStream);
 		JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanColDataSource);
-		JasperExportManager.exportReportToPdfFile(jasperPrint, "c:/reports/test_jasper.pdf"); 
+		JasperExportManager.exportReportToPdfFile(jasperPrint, "c:/JasperReports/test_jasper.pdf"); 
 	}
 }

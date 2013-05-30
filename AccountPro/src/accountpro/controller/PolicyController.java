@@ -83,7 +83,7 @@ public class PolicyController {
 	    mav.setViewName("AddPolicy");
 	    mav.addObject("customerName",customerName);
 	    mav.addObject("policy", policy);
-	    mav.addObject("operationType","add");
+	    //mav.addObject("operationType","add");
 	    //mav.addObject("customerList", customerList);
 	    return mav;
 	}

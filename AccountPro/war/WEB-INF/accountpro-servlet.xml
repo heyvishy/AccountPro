@@ -37,6 +37,10 @@
 			<property name="viewName" value="/mainMenu.htm" />
     </bean>
 
+   	<bean name="/report.htm" class="accountpro.controller.ReportController">
+   		<property name="reportService" ref="reportService"/>
+    </bean>
+ 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>
     </bean>

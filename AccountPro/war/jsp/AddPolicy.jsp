@@ -85,6 +85,11 @@
 			        <td><form:label path="policyType">Policy Type</form:label></td>
 			        <td><form:input path="policyType" readonly="true" value="Recurring Deposit"  /></td>
 			    </tr>
+				<tr>
+			        <td><form:label path="cardNumber">Card Number</form:label></td>
+			        <td><form:input path="cardNumber"/></td>
+			        <td><form:errors path="cardNumber" cssClass="error" /></td>
+				</tr>
 			    <tr>
 			        <%-- <td><form:label path="policyNumber">Policy Number</form:label></td> --%>
 			        <td><form:label path="policyNumber">Account Number</form:label></td>

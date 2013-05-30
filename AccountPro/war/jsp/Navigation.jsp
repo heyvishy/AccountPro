@@ -30,15 +30,17 @@
 								</li>
 								<li>
 									<a href="support.htm">Contact</a>
-<!-- 									<ul>
-						                      <li><a href=""> </a></li>
-						                      <li><a href=""> </a></li>
-									</ul>
- -->								</li>
-<!-- 								<li>
+								</li>
+								<li>
+									<a href="report.htm">Report</a>
+								</li>
+									
+
+<!--							<li>
 									<a href="#">About</a>
 								</li>
- -->							</ul>
+ -->
+ 							</ul>
 					</td>
 					<td align="right"><a href="login.htm">Sign out</a></td>
 				</tr>

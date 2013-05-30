@@ -2,6 +2,8 @@ package accountpro.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Policy {
@@ -15,6 +17,10 @@ public class Policy {
 	@NotEmpty
 	public String policyType;
 	
+	@NotNull
+	public int cardNumber;
+	
+	//accountNumber
 	public int policyNumber;
 	
 	public double policyAmount;
@@ -69,6 +75,12 @@ public class Policy {
 	}
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
+	}
+	public int getCardNumber() {
+		return cardNumber;
+	}
+	public void setCardNumber(int cardNumber) {
+		this.cardNumber = cardNumber;
 	}
 
 	
