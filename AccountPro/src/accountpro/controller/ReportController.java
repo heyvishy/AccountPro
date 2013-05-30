@@ -8,15 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.itextpdf.text.Chunk;
+import accountpro.domain.Customer;
+import accountpro.service.ReportService;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
-import accountpro.domain.Customer;
-import accountpro.service.ReportService;
 
 @Controller
 public class ReportController {
