@@ -11,13 +11,11 @@
 
 		function pickCustomer()
 		{
-			//alert("date"); 
 			window.open('pickerCustomer.htm','customerpicker','resizable=no,height=400,width=600');
 		}
 		
 		function chooseDate()
 		{
-			//alert("date"); 
 			window.open('pickerDate.htm','datepicker','resizable=no,height=400,width=600');
 		}
 	
@@ -33,8 +31,6 @@
     <title>Add Policy</title>
 	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 	<link href="css/global.css" rel="stylesheet" type="text/css"/>
-
-    
 </head>
 
 <body>
@@ -102,23 +98,24 @@
 			        <td><form:errors path="policyAmount" cssClass="error" /></td>
 			    </tr>
 			    <tr>
-			        <td><form:label path="startDate">Start Date (Format DD-MM-YYYY e.g 01-01-2012)</form:label></td>
+			        <td><form:label path="startDate">Start Date </form:label></td>
 			        <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td>
-			        <td><form:errors path="startDate" cssClass="error" /></td>
-			        
 			        <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td>
+					<td><form:errors path="startDate" cssClass="error" /></td>
 			    </tr>
 			    <tr>
-			        <td><form:label path="endDate">End Date  (Format DD-MM-YYYY e.g 01-01-2012)</form:label></td>
+			        <td><form:label path="endDate">End Date </form:label></td>
 			        <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td>
 			        <td><form:errors path="endDate" cssClass="error" /></td>
 			    </tr>
-
+				
+				<tr>
+					<td><form:hidden path="policyID" value="${policy.policyID}"/></td>
+				</tr>
+				
 			    <tr>
 					 <c:choose>
-					 	<%-- <c:when test="${policy.customerId gt 0}"> --%>
-					 	<c:when test="${policy.policyID gt 0}">
-					 	<%-- <c:when test="${resultValue > 0}"> --%>	  		
+					 	<c:when test="${!empty policy.policyID }">
 					        <td>
 					            <input type="submit" value="Save" onClick="updatePolicy()"/>
 					        </td>

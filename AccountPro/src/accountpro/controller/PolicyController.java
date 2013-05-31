@@ -178,11 +178,12 @@ public class PolicyController {
 	public ModelAndView updatePolicy(@ModelAttribute("policy")  @Valid Policy policy,BindingResult result, SessionStatus status) {
 	
 		ModelAndView mav = new ModelAndView();
+		LOGGER.info("POLICY id during update "+policy.getPolicyID());
 		
 		if(result.hasErrors() ){
 			LOGGER.info("Error happend in loading AddPolicy");
-			 mav.setViewName("AddPolicy");
-			 return mav;
+			mav.setViewName("AddPolicy");
+			return mav;
 		}
 		else{
 			
@@ -196,6 +197,7 @@ public class PolicyController {
 		     }
 
 		     mav.addObject("policy", policy);
+		     
 			 mav.setViewName("AddPolicy");
 			 return mav;
 		}
