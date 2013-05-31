@@ -37,7 +37,6 @@
 
 <form:form method="post" action="addPolicy.htm" commandName="policy" id="policyForm">
  	
- 	
   		<tr>
  			<td><%@ include file="../jsp/Navigation.jsp" %></td>
  		</tr>
@@ -115,7 +114,7 @@
 				
 			    <tr>
 					 <c:choose>
-					 	<c:when test="${!empty policy.policyID }">
+					 	<c:when test="${policy.policyID gt 0}">
 					        <td>
 					            <input type="submit" value="Save" onClick="updatePolicy()"/>
 					        </td>
