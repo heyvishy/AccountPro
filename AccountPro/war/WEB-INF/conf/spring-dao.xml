@@ -3,18 +3,38 @@
 <beans>
 
     <!-- the DataSource (parameterized for configuration via a PropertyPlaceHolderConfigurer) -->
-    <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
-<!--  	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <!-- <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"> -->
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	
+<!--    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/AccountPro"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
- -->
- 	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-       <!-- <property name="url" value="jdbc:mysql://accountpro.cqoauszdwpu6.us-east-1.rds.amazonaws.com:3306/accountpro"/> -->
-       <!-- <property name="url" value="jdbc:mysql://ec2-184-73-20-183.compute-1.amazonaws.com:3306/accountpro"/> -->
-        <property name="url" value="jdbc:mysql://localhost:3306/accountpro"/>
+ 		<property name="url" value="jdbc:mysql://accountpro.cqoauszdwpu6.us-east-1.rds.amazonaws.com:3306/accountpro"/> 
+        <property name="url" value="jdbc:mysql://localhost:3306/accountpro"/> 
+-->
+
+<!--  	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+ 	    <property name="url" value="jdbc:mysql://ec2-23-20-51-20.compute-1.amazonaws.com:3306/accountpro"/>
         <property name="username" value="shukla81"/>
         <property name="password" value="shanker11"/>
+ -->	
+	
+	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+	<property name="jdbcUrl" value="jdbc:mysql://ec2-23-20-51-20.compute-1.amazonaws.com:3306/accountpro"/>
+	<property name="user" value="shukla81"/>
+	<property name="password" value="shanker11"/>	
+	
+	<property name="initialPoolSize" value="5"></property>
+	<property name="minPoolSize" value="5"></property>
+	<property name="maxPoolSize" value="15"/>
+	<property name="checkoutTimeout" value="1000"/> 
+	<property name="maxStatements" value="50"></property>
+	<property name="automaticTestTable" value="test"></property>
+	<property name="testConnectionOnCheckin" value="true"></property>
+	<property name="idleConnectionTestPeriod" value="60"></property>        
+        
  </bean>
 
 	<!-- Base Bean defintions for all the DAO which inject the appropriate datasource -->
@@ -30,6 +50,7 @@
 	<bean id="policyDao" class="accountpro.dao.impl.PolicyDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+
 
 <!-- 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

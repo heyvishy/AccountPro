@@ -1,31 +1,14 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-
-<style type="text/css">
-<%@ include file="../css/error.css" %>
-<%@ include file="../css/global.css" %>
-<%@ include file="../css/AddCustomer.css" %>
-</style>
-
-<script type="text/javascript">
-
- function updateCustomer(){
-     var form = document.getElementById("CustomerForm");
-     form.action = 'updateCustomer.htm';
- }
- 
- function addPolicy(id)
- {
-	// alert("addPolicy for customerID "+id);
-	 window.open('addPolicyForCustomer.htm?id='+id,'_self',false);
- }
-
-</script>
 
 <html>
 <head>
-    <title>Add Customer</title>
+	<title>Add Customer</title>
+	
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	<link href="css/AddCustomer.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="js/AddCust.js"></script>	
 </head>
 
 <body>

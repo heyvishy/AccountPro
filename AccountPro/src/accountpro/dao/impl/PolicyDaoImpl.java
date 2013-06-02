@@ -21,13 +21,14 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	public int insertPolicy(Policy policy) {
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("Insert into Policy ( CustomerID, PolicyType , PolicyNumber , PolicyAmount , StartDate , EndDate) ");
-		sql.append("VALUES (?,?,?,?,?,?)");
+		sql.append("Insert into Policy ( CustomerID, PolicyType, CardNumber, PolicyNumber, PolicyAmount, StartDate, EndDate) ");
+		sql.append("VALUES (?,?,?,?,?,?,?)");
 		
 		List<Object> args = new ArrayList<Object>();
 		
 		args.add(policy.getCustomerId());
 		args.add(policy.getPolicyType());
+		args.add(policy.getCardNumber());
 		args.add(policy.getPolicyNumber());
 		args.add(policy.getPolicyAmount());
 		args.add(policy.getStartDate());
@@ -53,6 +54,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 			pol.setCustomerId(rss.getInt("CustomerID"));
 			pol.setCustomerName(rss.getString("FirstName")+" "+rss.getString("LastName"));
 			pol.setPolicyType(rss.getString("PolicyType"));
+			pol.setCardNumber(rss.getInt("CardNumber"));
 			pol.setPolicyNumber(rss.getInt("PolicyNumber"));
 			pol.setPolicyAmount(rss.getDouble("PolicyAmount"));
 			pol.setStartDate(rss.getDate("StartDate"));
@@ -91,6 +93,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 			pol.setPolicyID(rss.getInt("Policy_Id"));
 			pol.setCustomerName(rss.getString("FirstName")+" "+rss.getString("LastName"));
 			pol.setCustomerId(rss.getInt("CustomerID"));
+			pol.setCardNumber(rss.getInt("CardNumber"));
 			pol.setPolicyType(rss.getString("PolicyType"));
 			pol.setPolicyNumber(rss.getInt("PolicyNumber"));
 			pol.setPolicyAmount(rss.getDouble("PolicyAmount"));
@@ -113,6 +116,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 			policy.setPolicyID(rss.getInt("Policy_Id"));
 			policy.setCustomerId(rss.getInt("CustomerID"));
 			policy.setPolicyType(rss.getString("PolicyType"));
+			policy.setCardNumber(rss.getInt("CardNumber"));
 			policy.setPolicyNumber(rss.getInt("PolicyNumber"));
 			policy.setPolicyAmount(rss.getDouble("PolicyAmount"));
 			policy.setStartDate(rss.getDate("StartDate"));
@@ -150,6 +154,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 			pol.setPolicyID(rss.getInt("Policy_Id"));
 			pol.setCustomerId(rss.getInt("CustomerID"));
 			pol.setPolicyType(rss.getString("PolicyType"));
+			pol.setCardNumber(rss.getInt("CardNumber"));
 			pol.setPolicyNumber(rss.getInt("PolicyNumber"));
 			pol.setPolicyAmount(rss.getDouble("PolicyAmount"));
 			pol.setStartDate(rss.getDate("StartDate"));
@@ -164,10 +169,11 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	public void updatePolicy(Policy policy) {
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("Update Policy set PolicyAmount =  ? , PolicyNumber = ?  , StartDate = ? , EndDate =  ?  where Policy_Id = ? ");
+		sql.append("Update Policy set PolicyAmount =  ? , CardNumber = ? , PolicyNumber = ?  , StartDate = ? , EndDate =  ?  where Policy_Id = ? ");
 		
 		List<Object> args = new ArrayList<Object>();
 		args.add(policy.getPolicyAmount());
+		args.add(policy.getCardNumber());
 		args.add(policy.getPolicyNumber());
 		args.add(policy.getStartDate());
 		args.add(policy.getEndDate());

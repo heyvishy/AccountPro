@@ -6,7 +6,7 @@ xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
 version="2.4">
   
-  	<filter>
+<!--   	<filter>
 		<filter-name>SecurityFilter</filter-name>
 		<filter-class>accountpro.security.SecurityFilter</filter-class>
 	</filter>
@@ -19,7 +19,7 @@ version="2.4">
 		<filter-name>SecurityFilter</filter-name>
 		<url-pattern>*.htm</url-pattern>
 	</filter-mapping>
-
+ -->
 
   <servlet>
     <servlet-name>accountpro</servlet-name>

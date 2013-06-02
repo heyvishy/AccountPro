@@ -145,7 +145,7 @@ public class CustomerController {
 			
 			LOGGER.info("Customer added !! ");
 		    mav.setViewName("AddCustomer");
-		    mav.addObject("resultValue", resultValue);
+		    //mav.addObject("resultValue", resultValue);
 		    mav.addObject("customer", customer);
 		    return mav;
 		}

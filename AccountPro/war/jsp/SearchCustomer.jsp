@@ -1,14 +1,6 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-
-<style type="text/css">
-<%@ include file="../css/error.css" %>
-<%@ include file="../css/global.css" %>
-<%@ include file="../css/ListCustomer.css" %>
-
-
-</style>
 
 <script type="text/javascript">
 
@@ -31,12 +23,15 @@
 </script>
 
 <html>
+
 <head>
     <title>Search Customer</title>
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	<link href="css/ListCustomer.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
-
 
 <form:form method="post" action="searchCustomer.htm" commandName="searchCustomerCriteria" id="searchCustomerForm">
  	
@@ -86,8 +81,6 @@
 							</td>
 						</tr>
 			     		<tr>
-					   			<!-- <td class="col1">FirstName</td> -->
-					   			<!-- <td class="col2">LastName</td> -->
 					   			<td class="colOpen">Select</td>
 					   			<td class="colName">Name</td>
 					   			<td class="col3">Phone</td>
@@ -98,9 +91,6 @@
 				   		</tr>		
 				    	<c:forEach items="${customerList}" var="customer">
 			    		  <tr>
-<%-- 			 	    		  	<td class="col1"><c:out value="${customer.firstName}"/></td>  
-				    		  	<td class="col2"><c:out value="${customer.lastName}"/></td>
- --%>				    		 
  								<td class="colOpen"><input type="button" value="open" onclick="openCustomer(${customer.customerID})"/></td>
  								<td class="colName"><c:out value="${customer.firstName} ${customer.lastName}"/></td>
  								<td class="col3"><c:out value="${customer.phone}"/></td>
@@ -108,9 +98,7 @@
 				    		  	<td class="col5"><c:out value="${customer.amountDue}"/></td>
 				    		  	<td class="col6"><c:out value="${customer.active}"/></td>
 				    		  	<td class="colDelete"><input type="submit" value="Delete" onClick="deleteCustomer(${customer.customerID})"></td>
-				    		  	<!-- <td class="colDelete"><img src="../../images/Del.jpg" ALT="Delete Customer" /> </td> -->
-				    		  	
-				    		  	
+				    		  	<%-- <td class="colDelete"><img src="images/delete.ico" ALT="Delete Customer" onClick="deleteCustomer(${customer.customerID})" /> </td> --%>
 						 </tr>							    		  	
 			    		</c:forEach>
 						 				 
@@ -118,14 +106,6 @@
 	 			</td>
 	 		</tr>
      
-      		
-<!--       		<tr>
-      			<td>	
-      				<table class="tblChild">
-     				</table>
-      			</td>
-      		</tr>
- -->     
      </table>
 </form:form>
 </body>

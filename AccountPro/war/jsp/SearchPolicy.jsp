@@ -1,14 +1,5 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-
-<style type="text/css">
-<%@ include file="../css/error.css" %>
-<%@ include file="../css/global.css" %>
-<%@ include file="../css/SearchPolicy.css" %>
-
-
-</style>
 
 <script type="text/javascript">
  function openPolicy(id)
@@ -34,6 +25,9 @@
 <html>
 <head>
     <title>Search Policy</title>
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
+	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	<link href="css/SearchPolicy.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -89,8 +83,9 @@
 					   			<!-- <td class="col1">Policy_Id</td> -->
 					   			<td class="colOpen">Select</td>
 					   			<td class="col2">CustomerName</td>
-					   			<td class="col3">PolicyType</td>
-					   			<td class="col4">PolicyNumber</td>
+					   			<!-- <td class="col3">PolicyType</td> -->
+					   			<td class="col3">Card Number</td>
+					   			<td class="col4">Account Number</td>
 					   			<td class="col5">PolicyAmount</td>
 					   			<td class="col6">StartDate</td>
 					   			<td class="col7">EndDate</td>
@@ -101,7 +96,8 @@
 			 	    		  	<%-- <td class="col1"><c:out value="${policy.policyID}"/></td> --%>  
 				    		  	<td class="colOpen"><input type="button" value="open" onclick="openPolicy(${policy.policyID})"/></td>
 				    		  	<td class="col2"><c:out value="${policy.customerName}"/></td>
-				    		  	<td class="col3"><c:out value="${policy.policyType}"/></td>
+				    		  	<%-- <td class="col3"><c:out value="${policy.policyType}"/></td> --%>
+				    		  	<td class="col3"><c:out value="${policy.cardNumber}"/></td>
 				    		  	<td class="col4"><c:out value="${policy.policyNumber}"/></td>
 				    		  	<td class="col5"><c:out value="${policy.policyAmount}"/></td>
 				    		  	<td class="col6"><c:out value="${policy.startDate}"/></td>
