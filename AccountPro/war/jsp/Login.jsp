@@ -27,13 +27,13 @@
 				    <table class="tblLogin">
 					    <tr>
 					        <td><form:label path="userid" >User Id</form:label></td>
-					        <td><form:input path="userid" placeholder="UserID"  /></td> 
+					        <td><form:input path="userid" placeholder="UserID" /></td> 
 					        <td><form:errors path="userid" cssClass="error"/></td>
 					    </tr>
 					    <tr>
 					        <td><form:label path="password">Password</form:label></td>
-					        <td><form:input path="password"  placeholder="password"/></td>
-					        <%-- <td><form:errors path="password" cssClass="error"/></td> --%>
+					        <td><form:input path="password" placeholder="password" /></td>
+					        <td><form:errors path="password" cssClass="error"/></td>
 					    </tr>
 					    <tr>
 					        <td>
