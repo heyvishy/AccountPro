@@ -1,6 +1,7 @@
 <%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Add Customer</title>
@@ -38,7 +39,7 @@
 					    </tr>
 					    <tr>
 					        <td><form:label path="lastName">Last Name</form:label></td>
-					        <td><form:input path="lastName"/></td>
+					        <td><form:input path="lastName"  /></td>
 					        <td><form:errors path="lastName" cssClass="error" /></td>
 					    </tr>
 					    <tr>
@@ -48,12 +49,12 @@
 					    </tr>
 					    <tr>
 					        <td><form:label path="city">City</form:label></td>
-					        <td><form:input path="city" /></td>
+					        <td><form:input path="city" type="text"/></td>
 					        <td><form:errors path="city" cssClass="error" /></td>
 					    </tr>
 					    <tr>
 					        <td><form:label path="zipCode">Pin Code</form:label></td>
-					        <td><form:input path="zipCode" /></td>
+					        <td><form:input path="zipCode" type="number" /></td>
 					        <td><form:errors path="zipCode" cssClass="error" /></td>
 					    </tr>
 						

@@ -6,9 +6,10 @@
 		  $("#datepicker").datepicker();
 		});
 	</script>
+	
 	    
 	<script type="text/javascript">
-
+	
 		function pickCustomer()
 		{
 			window.open('pickerCustomer.htm','customerpicker','resizable=no,height=400,width=600');
@@ -23,9 +24,23 @@
 		     var form = document.getElementById("policyForm");
 		     form.action = 'updatePolicy.htm';
 		}
-
+		
+		function validate_form(){
+			//validate customerName 
+			var customerId = document.getElementById('customerID').value;
+			//alert("customerId : " + customerId);
+			if(customerId == '0'){
+				alert("Please choose a customer first !");
+				return false;
+				//confirm("Press a button")
+			}else{
+				alert("dnd");
+			}
+			
+		}
+		
 	</script>
-
+<!DOCTYPE html>
 <html>	
 <head>
     <title>Add Policy</title>
@@ -35,7 +50,7 @@
 
 <body>
 
-<form:form method="post" action="addPolicy.htm" commandName="policy" id="policyForm">
+<form:form method="post" action="addPolicy.htm" commandName="policy" id="policyForm" onsubmit="return validate_form()">
  	
   		<tr>
  			<td><%@ include file="../jsp/Navigation.jsp" %></td>
@@ -82,13 +97,13 @@
 			    </tr>
 				<tr>
 			        <td><form:label path="cardNumber">Card Number</form:label></td>
-			        <td><form:input path="cardNumber"/></td>
+			        <td><form:input path="cardNumber"  /></td>
 			        <td><form:errors path="cardNumber" cssClass="error" /></td>
 				</tr>
 			    <tr>
 			        <%-- <td><form:label path="policyNumber">Policy Number</form:label></td> --%>
 			        <td><form:label path="policyNumber">Account Number</form:label></td>
-			        <td><form:input path="policyNumber"/></td>
+			        <td><form:input path="policyNumber" /></td>
 			        <td><form:errors path="policyNumber" cssClass="error" /></td>
 			    </tr>
 			    <tr>
@@ -98,13 +113,15 @@
 			    </tr>
 			    <tr>
 			        <td><form:label path="startDate">Start Date </form:label></td>
-			        <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td>
-			        <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td>
+			        <td><form:input type="date" id="sDate" path="startDate"/></td>
+			        <%-- <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td> --%>
+			        <!-- <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td> -->
 					<td><form:errors path="startDate" cssClass="error" /></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="endDate">End Date </form:label></td>
-			        <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td>
+			        <td><form:input type="date" id="eDate" path="endDate"/></td>
+			        <%-- <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td> --%>
 			        <td><form:errors path="endDate" cssClass="error" /></td>
 			    </tr>
 				

@@ -1,6 +1,7 @@
 <%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -32,7 +33,7 @@
 					    <tr>
 					        <td><form:label path="password">Password</form:label></td>
 					        <td><form:input path="password"  placeholder="password"/></td>
-					        <td><form:errors path="password" cssClass="error"/></td>
+					        <%-- <td><form:errors path="password" cssClass="error"/></td> --%>
 					    </tr>
 					    <tr>
 					        <td>

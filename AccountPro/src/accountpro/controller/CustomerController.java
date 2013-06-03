@@ -39,17 +39,6 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
-/*	@RequestMapping(value="/listCustomers.htm")
-	public ModelAndView showListCustomerForm(ModelMap model){
-		
-		List<Customer> customerList  = new ArrayList<Customer>();
-		customerList = customerService.getCustomers();
-		
-		LOGGER.info("customerList size :"+customerList.size()+ " "+customerList.toString() );	
-		return new ModelAndView("ListCustomer","customerList",customerList);
-	}
-*/
-
 	@RequestMapping(value="/addCustomer.htm")
 	public ModelAndView showAddCustomerForm(Model model) {
 	    Customer customer = new Customer(); 
@@ -106,7 +95,6 @@ public class CustomerController {
 	@RequestMapping(value="/openCustomer.htm")
 	public ModelAndView openCustomer(@RequestParam("id") String cutomerId) throws Exception
 	{
-		//LOGGER.info("id "+id);
 		ModelAndView mav = new ModelAndView();
 		LOGGER.info("cutomerId: "+cutomerId);
 		try{
@@ -122,9 +110,7 @@ public class CustomerController {
 		    mav.addObject("exceptionReason", e.getMessage());
 		    return mav;
 		}
-		
 	}
-	
 	
 	@RequestMapping(value="/addCustomer.htm",method=RequestMethod.POST)
 	public ModelAndView addCustomer(@ModelAttribute("customer")  @Valid Customer customer,BindingResult result, SessionStatus status) {
@@ -186,7 +172,7 @@ public class CustomerController {
 			    return mav;
 			}
 			else{
-				int resultValue = 0;
+				//int resultValue = 0;
 				LOGGER.info("customer ID RECEIVED :" +searchCustomerCriteria.getCustomerID());
 				//resultValue = customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
 				customerService.deleteCustomer(searchCustomerCriteria.getCustomerID());
