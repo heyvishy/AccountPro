@@ -25,21 +25,61 @@
 		     form.action = 'updatePolicy.htm';
 		}
 		
-		function validate_form(){
-			//validate customerName 
-			var customerId = document.getElementById('customerID').value;
-			//alert("customerId : " + customerId);
-			if(customerId == '0'){
-				alert("Please choose a customer first !");
+		
+		function validateDate(){
+			var sDate = document.getElementById('sDate').value;
+			//alert("sDate is : "+sDate);
+			
+			if(sDate==""){
+				alert("Please choose a start date");
 				return false;
-				//confirm("Press a button")
-			}else{
-				alert("dnd");
+			}
+			var dateArray = sDate.split("/");
+			
+			//in JS, month starts from 0
+			var month = dateArray[0]-1;
+			var day = dateArray[1];
+			var fullYear = dateArray[2];
+			//alert("month "+month+ " day "+day+" fullYear "+fullYear);
+			var startDate = new Date();
+			startDate.setMonth(month);
+			startDate.setDate(day);
+			startDate.setFullYear(fullYear);
+			//alert("startDate is now "+startDate);
+			
+			var today = new Date();
+			if(today.getTime() > startDate.getTime()){
+				alert("Please choose a future start date  !");
+				return false;
 			}
 			
 		}
 		
+		function validatePolicyAmount(){
+			var amount = document.getElementById('policyAmount').value;
+			if(amount < 100){
+				alert("Please choose an amount greater than or equal to 100  !");
+				return false;
+			}
+		}
+		
+		function validate_form(){
+			//validate customerName 
+			var customerId = document.getElementById('customerID').value;
+			if(customerId == '0'){
+				alert("Please choose a customer first !");
+				return false;
+			}
+			
+			validatePolicyAmount();
+			
+			return validateDate();
+			
+			
+		}
+		
 	</script>
+	
 <!DOCTYPE html>
 <html>	
 <head>
@@ -97,31 +137,31 @@
 			    </tr>
 				<tr>
 			        <td><form:label path="cardNumber">Card Number</form:label></td>
-			        <td><form:input path="cardNumber"  /></td>
+			        <td><form:input path="cardNumber" type="number"/></td>
 			        <td><form:errors path="cardNumber" cssClass="error" /></td>
 				</tr>
 			    <tr>
 			        <%-- <td><form:label path="policyNumber">Policy Number</form:label></td> --%>
 			        <td><form:label path="policyNumber">Account Number</form:label></td>
-			        <td><form:input path="policyNumber" /></td>
+			        <td><form:input path="policyNumber" type="number"/></td>
 			        <td><form:errors path="policyNumber" cssClass="error" /></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="policyAmount">Policy Amount</form:label></td>
-			        <td><form:input path="policyAmount" /></td>
+			        <td><form:input path="policyAmount" id="policyAmount" type="number"/></td>
 			        <td><form:errors path="policyAmount" cssClass="error" /></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="startDate">Start Date </form:label></td>
-			        <td><form:input type="date" id="sDate" path="startDate"/></td>
-			        <%-- <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td> --%>
-			        <!-- <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td> -->
+			        <%-- <td><form:input type="date" id="sDate" path="startDate"/></td> --%>
+ 			        <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td>
+			        <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td>
 					<td><form:errors path="startDate" cssClass="error" /></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="endDate">End Date </form:label></td>
-			        <td><form:input type="date" id="eDate" path="endDate"/></td>
-			        <%-- <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td> --%>
+			        <%-- <td><form:input type="date" id="eDate" path="endDate"/></td> --%>
+			        <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td>
 			        <td><form:errors path="endDate" cssClass="error" /></td>
 			    </tr>
 				
