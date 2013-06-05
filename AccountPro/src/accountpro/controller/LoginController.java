@@ -72,6 +72,20 @@ public class LoginController extends BaseController {
         return new ModelAndView("ContactSupport","support",null);
     }
 
+    @RequestMapping("/support1.htm")
+    public ModelAndView showSupportForm1() {
+    	
+        return new ModelAndView("TestPage","support",null);
+    }
+
+    @RequestMapping("/support2.htm")
+    public ModelAndView showSupportForm2() {
+    	
+        return new ModelAndView("TestBtspPage","support",null);
+    }
+
+    
+
 	public LoginService getLoginService() {
 		return loginService;
 	}
