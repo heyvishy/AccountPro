@@ -57,8 +57,8 @@
 		
 		function validatePolicyAmount(){
 			var amount = document.getElementById('policyAmount').value;
-			if(amount < 100){
-				alert("Please choose an amount greater than or equal to 100  !");
+			if(amount < 50){
+				alert("Please choose an amount greater than or equal to 50  !");
 				return false;
 			}
 		}
