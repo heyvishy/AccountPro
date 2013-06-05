@@ -27,7 +27,14 @@ public class Policy {
 	
 	public Date startDate;
 	public Date endDate;
+	public int policyStatusID;
 	
+	public int getPolicyStatusID() {
+		return policyStatusID;
+	}
+	public void setPolicyStatusID(int policyStatusID) {
+		this.policyStatusID = policyStatusID;
+	}
 	public int getPolicyID() {
 		return policyID;
 	}

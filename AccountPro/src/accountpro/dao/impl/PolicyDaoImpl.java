@@ -21,8 +21,8 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	public int insertPolicy(Policy policy) {
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("Insert into Policy ( CustomerID, PolicyType, CardNumber, PolicyNumber, PolicyAmount, StartDate, EndDate) ");
-		sql.append("VALUES (?,?,?,?,?,?,?)");
+		sql.append("Insert into Policy ( CustomerID, PolicyType, CardNumber, PolicyNumber, PolicyAmount, StartDate, EndDate, PolicyStatusID) ");
+		sql.append("VALUES (?,?,?,?,?,?,?,?)");
 		
 		List<Object> args = new ArrayList<Object>();
 		
@@ -33,6 +33,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 		args.add(policy.getPolicyAmount());
 		args.add(policy.getStartDate());
 		args.add(policy.getEndDate());
+		args.add(0);
 		
 		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
 		logger.info("result insertPolicy "+result);
@@ -121,6 +122,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 			policy.setPolicyAmount(rss.getDouble("PolicyAmount"));
 			policy.setStartDate(rss.getDate("StartDate"));
 			policy.setEndDate(rss.getDate("EndDate"));
+			policy.setPolicyStatusID(rss.getInt("PolicyStatusID"));
 			break;
 		}
 		return policy;
@@ -169,7 +171,7 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	public void updatePolicy(Policy policy) {
 		StringBuffer sql = new StringBuffer();
 		
-		sql.append("Update Policy set PolicyAmount =  ? , CardNumber = ? , PolicyNumber = ?  , StartDate = ? , EndDate =  ?  where Policy_Id = ? ");
+		sql.append("Update Policy set PolicyAmount =  ? , CardNumber = ? , PolicyNumber = ?  , StartDate = ? , EndDate =  ? , PolicyStatusID = ?  where Policy_Id = ? ");
 		
 		List<Object> args = new ArrayList<Object>();
 		args.add(policy.getPolicyAmount());
@@ -177,7 +179,9 @@ public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 		args.add(policy.getPolicyNumber());
 		args.add(policy.getStartDate());
 		args.add(policy.getEndDate());
+		args.add(policy.getPolicyStatusID());
 		args.add(policy.getPolicyID());
+		
 		
 		int result = this.getJdbcTemplate().update(sql.toString(), args.toArray());
 		logger.info("result updatePolicy "+result);

@@ -9,7 +9,42 @@
 	
 	    
 	<script type="text/javascript">
+		
+		function disableFormFields() {
+			//document.getElementById('customerID').readOnly =true;
+			document.getElementById('cardNumber').disabled ='disabled';
+			document.getElementById('policyNumber').disabled ='disabled';
+			document.getElementById('policyAmount').disabled ='disabled';
+			document.getElementById('sDate').disabled ='disabled';
+			document.getElementById('eDate').disabled ='disabled';
+		}
+		
+		function enableFormFields() {
+			document.getElementById('customerID').disabled ='';
+			document.getElementById('cardNumber').disabled ='';
+			document.getElementById('policyNumber').disabled ='';
+			document.getElementById('policyAmount').disabled ='';
+			document.getElementById('sDate').disabled ='';
+			document.getElementById('eDate').disabled ='';
+		}
 	
+		function startPolicy(){
+			//disableFormFields();
+		    var form = document.getElementById("policyForm");
+		    document.getElementById("policyStatusID").value=1;
+		    form.action = 'updatePolicy.htm';
+		    alert("Policy Started");
+		    //disableFormFields();
+		}
+		
+		function stopPolicy(){
+			enableFormFields();
+		    var form = document.getElementById("policyForm");
+		    document.getElementById("policyStatusID").value=0;
+		    form.action = 'updatePolicy.htm';
+			alert("Policy Stopped");
+		}
+		
 		function pickCustomer()
 		{
 			window.open('pickerCustomer.htm','customerpicker','resizable=no,height=400,width=600');
@@ -137,13 +172,13 @@
 			    </tr>
 				<tr>
 			        <td><form:label path="cardNumber">Card Number</form:label></td>
-			        <td><form:input path="cardNumber" type="number"/></td>
+			        <td><form:input path="cardNumber" id="cardNumber" type="number"/></td>
 			        <td><form:errors path="cardNumber" cssClass="error" /></td>
 				</tr>
 			    <tr>
 			        <%-- <td><form:label path="policyNumber">Policy Number</form:label></td> --%>
 			        <td><form:label path="policyNumber">Account Number</form:label></td>
-			        <td><form:input path="policyNumber" type="number"/></td>
+			        <td><form:input path="policyNumber" id="policyNumber" type="number"/></td>
 			        <td><form:errors path="policyNumber" cssClass="error" /></td>
 			    </tr>
 			    <tr>
@@ -168,10 +203,15 @@
 				<tr>
 					<td><form:hidden path="policyID" value="${policy.policyID}"/></td>
 				</tr>
-				
+
+ 				<tr>
+					<td><form:hidden path="policyStatusID" id="policyStatusID" /></td>
+				</tr>
+ 				
 			    <tr>
+					 
 					 <c:choose>
-					 	<c:when test="${policy.policyID gt 0}">
+					 	<c:when test="${policy.policyID gt 0 }">
 					        <td>
 					            <input type="submit" value="Save" onClick="updatePolicy()"/>
 					        </td>
@@ -185,6 +225,27 @@
 					        </td>
 					 	</c:otherwise>
 					 </c:choose>
+
+					<!-- Once policy is saved, show the option to start/stop policy -->
+					<c:choose>
+						<c:when test="${policy.policyID gt 0 && policy.policyStatusID eq 0}">
+					 		<td>
+					 			<input type="submit" value="Start Policy" onclick="startPolicy()" />
+					 		</td>
+						</c:when>
+						
+						<c:when test="${policy.policyID gt 0 && policy.policyStatusID gt 0}">
+					 		<td>
+					 			<input type="submit" value="Stop Policy" onclick="stopPolicy()"/>
+					 		</td>
+						</c:when>
+						<c:otherwise>
+								<!-- Nothing -->
+						</c:otherwise>
+					</c:choose>
+					 	
+ 	
+					 	
 			    </tr>
 			
 			</table>  

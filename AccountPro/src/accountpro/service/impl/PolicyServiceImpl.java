@@ -1,6 +1,7 @@
 package accountpro.service.impl;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import accountpro.dao.PolicyDao;
 import accountpro.domain.Policy;
@@ -10,6 +11,8 @@ import accountpro.service.PolicyService;
 
 public class PolicyServiceImpl implements PolicyService {
 
+	private static final Logger LOGGER = Logger.getLogger(PolicyServiceImpl.class.getName());
+	
 	private PolicyDao policyDao;
 	
 	@Override
@@ -64,7 +67,7 @@ public class PolicyServiceImpl implements PolicyService {
 
 	@Override
 	public void updatePolicy(Policy policy) {
-		 policyDao.updatePolicy(policy);
+		policyDao.updatePolicy(policy);
 	}
 
 }

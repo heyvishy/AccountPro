@@ -34,7 +34,6 @@ public class PolicyController {
 
 	private static final Logger LOGGER = Logger.getLogger(PolicyController.class.getName());
 	
-	//public static List<String> customerList = new ArrayList<String>(Arrays.asList("Vishal", "Abha", "Dad"));
 	
 	private PolicyService policyService;
 	private CustomerService customerService;
@@ -181,6 +180,7 @@ public class PolicyController {
 	
 		ModelAndView mav = new ModelAndView();
 		LOGGER.info("POLICY id during update "+policy.getPolicyID());
+		LOGGER.info("POLICY STATUS ID DURING UPDATE " +policy.getPolicyStatusID());
 		
 		if(result.hasErrors() ){
 			LOGGER.info("Error happend in loading AddPolicy");

@@ -30,5 +30,19 @@ PolicyNumber INT NULL,
 PolicyAmount DOUBLE NOT NULL,
 StartDate DATE ,
 EndDate DATE,
-FOREIGN KEY (CustomerID) REFERENCES Customer(P_Id)
+PolicyStatusID INT NOT NULL,
+FOREIGN KEY (CustomerID) REFERENCES Customer(P_Id),
+FOREIGN KEY (PolicyStatusID) REFERENCES PolicyStatus(ID)
 );
+
+Create Table PolicyStatus
+(
+ ID INT NOT NULL PRIMARY KEY,
+ Status VARCHAR(50) NOT NULL,
+ Description VARCHAR(100)
+);
+
+INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (0,'Created','Policy is created');
+INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (1,'Started','Policy is started');
+INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (2,'Stopped','Policy is stopped');
+
