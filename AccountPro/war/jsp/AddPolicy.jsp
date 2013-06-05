@@ -6,7 +6,7 @@
 		  $("#datepicker").datepicker();
 		});
 	</script>
-	
+		
 	    
 	<script type="text/javascript">
 		
@@ -209,20 +209,27 @@
 				</tr>
  				
 			    <tr>
-					 
 					 <c:choose>
-					 	<c:when test="${policy.policyID gt 0 }">
-					        <td>
-					            <input type="submit" value="Save" onClick="updatePolicy()"/>
-					        </td>
-					 	</c:when>
-					 	<c:otherwise>
+					 	<c:when test="${policy.policyID eq 0 }">
 					        <td>
 					            <input type="submit" value="Add"/>
 					        </td>
 					        <td>
 					            <input type="reset" value="Reset" />
 					        </td>
+					 	</c:when>
+					 	<c:when test="${policy.policyID gt 0 && policy.policyStatusID eq 0}">
+					        <td>
+					            <input type="submit" value="Save" onClick="updatePolicy()"/>
+					        </td>
+					 	</c:when>
+					 	<c:when test="${policy.policyID gt 0 && policy.policyStatusID gt 0}">
+					        <td>
+					            <input type="submit" value="Save" disabled/>
+					        </td>
+					 	</c:when>
+					 	<c:otherwise>
+					 		<!-- Nothing -->
 					 	</c:otherwise>
 					 </c:choose>
 
@@ -243,9 +250,6 @@
 								<!-- Nothing -->
 						</c:otherwise>
 					</c:choose>
-					 	
- 	
-					 	
 			    </tr>
 			
 			</table>  
