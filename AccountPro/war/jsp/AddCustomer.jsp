@@ -1,6 +1,7 @@
 <%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Add Customer</title>
@@ -33,27 +34,27 @@
 				    	
 					    <tr>
 					        <td><form:label path="firstName">First Name</form:label></td>
-					        <td><form:input path="firstName" /></td>
+					        <td><form:input path="firstName" type="text" maxlength="25" /></td>
 					        <td><form:errors path="firstName" cssClass="error" /></td> 
 					    </tr>
 					    <tr>
 					        <td><form:label path="lastName">Last Name</form:label></td>
-					        <td><form:input path="lastName"/></td>
+					        <td><form:input path="lastName"  type="text" maxlength="25"/></td>
 					        <td><form:errors path="lastName" cssClass="error" /></td>
 					    </tr>
 					    <tr>
 					        <td><form:label path="address">Address</form:label></td>
-					        <td><form:input path="address" /></td>
+					        <td><form:input path="address" type="text" maxlength="100"/></td>
 					        <td><form:errors path="address" cssClass="error" /></td>
 					    </tr>
 					    <tr>
 					        <td><form:label path="city">City</form:label></td>
-					        <td><form:input path="city" /></td>
+					        <td><form:input path="city" type="text" maxlength="50"/></td>
 					        <td><form:errors path="city" cssClass="error" /></td>
 					    </tr>
 					    <tr>
 					        <td><form:label path="zipCode">Pin Code</form:label></td>
-					        <td><form:input path="zipCode" /></td>
+					        <td><form:input path="zipCode" type="number" maxlength="6"/></td>
 					        <td><form:errors path="zipCode" cssClass="error" /></td>
 					    </tr>
 						
