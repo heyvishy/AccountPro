@@ -5,8 +5,8 @@
 
 <head>
     <title>Welcome to AccountPro</title>
-	<link href="<c:url value="/css/Login.css"/>" rel="stylesheet" type="text/css"/>
-	<link href="<c:url value="/css/error.css"/>" rel="stylesheet" type="text/css"/>
+	<link href="css/Login.css" rel="stylesheet" type="text/css"/>
+	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
