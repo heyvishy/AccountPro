@@ -211,44 +211,28 @@
 			    <tr>
 					 <c:choose>
 					 	<c:when test="${policy.policyID eq 0 }">
-					        <td>
-					            <input type="submit" value="Add"/>
-					        </td>
-					        <td>
-					            <input type="reset" value="Reset" />
-					        </td>
+					        <td><input type="submit" value="Add"/></td>
+					        <td><input type="reset" value="Reset" /></td>
 					 	</c:when>
 					 	<c:when test="${policy.policyID gt 0 && policy.policyStatusID eq 0}">
-					        <td>
-					            <input type="submit" value="Save" onClick="updatePolicy()"/>
-					        </td>
+					        <td><input type="submit" value="Save" onClick="updatePolicy()"/></td>
 					 	</c:when>
 					 	<c:when test="${policy.policyID gt 0 && policy.policyStatusID gt 0}">
-					        <td>
-					            <input type="submit" value="Save" disabled/>
-					        </td>
+					        <td><input type="submit" value="Save" disabled/></td>
 					 	</c:when>
-					 	<c:otherwise>
-					 		<!-- Nothing -->
-					 	</c:otherwise>
+					 	<c:otherwise><!-- Nothing --></c:otherwise>
 					 </c:choose>
 
 					<!-- Once policy is saved, show the option to start/stop policy -->
 					<c:choose>
 						<c:when test="${policy.policyID gt 0 && policy.policyStatusID eq 0}">
-					 		<td>
-					 			<input type="submit" value="Start Policy" onclick="startPolicy()" />
-					 		</td>
+					 		<td><input type="submit" value="Start Policy" onclick="startPolicy()" /></td>
 						</c:when>
 						
 						<c:when test="${policy.policyID gt 0 && policy.policyStatusID gt 0}">
-					 		<td>
-					 			<input type="submit" value="Stop Policy" onclick="stopPolicy()"/>
-					 		</td>
+					 		<td><input type="submit" value="Stop Policy" onclick="stopPolicy()"/></td>
 						</c:when>
-						<c:otherwise>
-								<!-- Nothing -->
-						</c:otherwise>
+						<c:otherwise><!-- Nothing --></c:otherwise>
 					</c:choose>
 			    </tr>
 			
