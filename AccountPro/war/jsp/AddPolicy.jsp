@@ -140,7 +140,7 @@
 	</tr> 	
  	<tr>
  		<td>
-			  <table class="tblChild">
+			  <table class="tblChild" border="0">
 			    <tr>
 			        <td>
 			        	<form:label path="customerId">Select Customer</form:label>
@@ -160,6 +160,7 @@
 									    </c:forEach>
 								</form:select>
 								<td><input id="chooseCustomer" type="button" value="choose" onClick="pickCustomer()"/></td>
+								<td></td>
 						 	</c:otherwise>
 						 </c:choose>
 			        	
@@ -192,6 +193,7 @@
  			        <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td>
 			        <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td>
 					<td><form:errors path="startDate" cssClass="error" /></td>
+					<td></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="endDate">End Date </form:label></td>

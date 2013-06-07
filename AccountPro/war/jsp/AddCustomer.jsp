@@ -6,6 +6,15 @@
 <head>
 	<title>Add Customer</title>
 	
+		<script type="text/javascript">
+		
+		function setColor() {
+			alert("Set color");
+			var element = document.getElementById('fName');
+			element.style.borderColor =  'red';
+		}
+		</script>
+		
 	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 	<link href="css/global.css" rel="stylesheet" type="text/css"/>
 	<link href="css/AddCustomer.css" rel="stylesheet" type="text/css"/>
@@ -25,16 +34,16 @@
 			<tr>
 				<td class="Heading" >Add Customer</td>
 			</tr> 	
-	 		<tr>
+<%-- 	 		<tr>
 	 			<td><form:errors path="*" cssClass="errorblock" element="div" /></td>
 	 		</tr>
-	 		<tr>
+ --%>	 		<tr>
 	 			<td>
 				    <table class="tblChild">
 				    	
 					    <tr>
 					        <td><form:label path="firstName">First Name</form:label></td>
-					        <td><form:input path="firstName" type="text" maxlength="25" /></td>
+					        <td><form:input id="fName" path="firstName" type="text" maxlength="25" /></td>
 					        <td><form:errors path="firstName" cssClass="error" /></td> 
 					    </tr>
 					    <tr>
@@ -63,25 +72,30 @@
 						</tr>
 						
 					    <tr>
-						 <c:choose>
-						 	<c:when test="${!empty customer.customerID }"> 
-						        <td>
-						            <input type="submit" value="Save" onClick="updateCustomer()">
-						        </td>
-						        <td>
-						            <input type="button" value="AddPolicy" onClick="addPolicy(${customer.customerID})">
-						        </td>
-						 	</c:when>
-						 	
-						 	<c:otherwise>
-						        <td>
-						            <input type="submit" value="Add"/>
-						        </td>
-						        <td>
-						            <input type="reset" value="Reset" />
-						        </td>
-						 	</c:otherwise>
-						 </c:choose>
+							 <c:choose>
+							 	<c:when test="${!empty customer.customerID }"> 
+							        <td>
+							            <input type="submit" value="Save" onClick="updateCustomer()">
+							        </td>
+							        <td>
+							            <input type="button" value="AddPolicy" onClick="addPolicy(${customer.customerID})">
+							        </td>
+							 	</c:when>
+							 	
+							 	<c:otherwise>
+							        <td>
+							            <input type="submit" value="Add"/>
+							        </td>
+							        <td>
+							            <input type="reset" value="Reset" />
+							        </td>
+							 	</c:otherwise>
+							 </c:choose>
+	
+					 		<!-- Test button to set color of elements -->
+					 	    <td>
+					            <input type="button" value="setColor" onClick="setColor()" />
+					        </td>
 					    </tr>
 						
 					 <c:if test="${!empty policies}" >
