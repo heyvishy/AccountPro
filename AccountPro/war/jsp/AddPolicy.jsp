@@ -1,6 +1,13 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/jsp/include.jsp" %>
 
+	<!-- Disables back button -->
+   	<script type = "text/javascript" >
+	    function preventBack(){window.history.forward();}
+	    setTimeout("preventBack()", 0);
+	    window.onunload=function(){null};
+	</script>
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 		  $("#datepicker").datepicker();

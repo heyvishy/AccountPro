@@ -2,6 +2,14 @@
 <%@ include file="/jsp/include.jsp" %>
 <html>
 	<head>
+	
+		<!-- Disables back button -->
+	   	<script type = "text/javascript" >
+		    function preventBack(){window.history.forward();}
+		    setTimeout("preventBack()", 0);
+		    window.onunload=function(){null};
+		</script>
+
 		<title>Contact Customer Support</title>
 		<link href="css/global.css" rel="stylesheet" type="text/css"/>
 	</head>
