@@ -1,13 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/jsp/include.jsp" %>
 
-	<!-- Disables back button -->
-   	<script type = "text/javascript" >
-	    function preventBack(){window.history.forward();}
-	    setTimeout("preventBack()", 0);
-	    window.onunload=function(){null};
-	</script>
-	
 	<script type="text/javascript">
 		$(document).ready(function() {
 		  $("#datepicker").datepicker();
@@ -147,7 +140,7 @@
 	</tr> 	
  	<tr>
  		<td>
-			  <table class="tblChild">
+			  <table class="tblChild" border="0">
 			    <tr>
 			        <td>
 			        	<form:label path="customerId">Select Customer</form:label>
@@ -167,6 +160,7 @@
 									    </c:forEach>
 								</form:select>
 								<td><input id="chooseCustomer" type="button" value="choose" onClick="pickCustomer()"/></td>
+								<td></td>
 						 	</c:otherwise>
 						 </c:choose>
 			        	
@@ -199,6 +193,7 @@
  			        <td><form:input type="text" readonly="true" id="sDate" path="startDate"/></td>
 			        <td><input type="button" value="Pick Dates" onclick="chooseDate()"/></td>
 					<td><form:errors path="startDate" cssClass="error" /></td>
+					<td></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="endDate">End Date </form:label></td>
@@ -218,44 +213,28 @@
 			    <tr>
 					 <c:choose>
 					 	<c:when test="${policy.policyID eq 0 }">
-					        <td>
-					            <input type="submit" value="Add"/>
-					        </td>
-					        <td>
-					            <input type="reset" value="Reset" />
-					        </td>
+					        <td><input type="submit" value="Add"/></td>
+					        <td><input type="reset" value="Reset" /></td>
 					 	</c:when>
 					 	<c:when test="${policy.policyID gt 0 && policy.policyStatusID eq 0}">
-					        <td>
-					            <input type="submit" value="Save" onClick="updatePolicy()"/>
-					        </td>
+					        <td><input type="submit" value="Save" onClick="updatePolicy()"/></td>
 					 	</c:when>
 					 	<c:when test="${policy.policyID gt 0 && policy.policyStatusID gt 0}">
-					        <td>
-					            <input type="submit" value="Save" disabled/>
-					        </td>
+					        <td><input type="submit" value="Save" disabled/></td>
 					 	</c:when>
-					 	<c:otherwise>
-					 		<!-- Nothing -->
-					 	</c:otherwise>
+					 	<c:otherwise><!-- Nothing --></c:otherwise>
 					 </c:choose>
 
 					<!-- Once policy is saved, show the option to start/stop policy -->
 					<c:choose>
 						<c:when test="${policy.policyID gt 0 && policy.policyStatusID eq 0}">
-					 		<td>
-					 			<input type="submit" value="Start Policy" onclick="startPolicy()" />
-					 		</td>
+					 		<td><input type="submit" value="Start Policy" onclick="startPolicy()" /></td>
 						</c:when>
 						
 						<c:when test="${policy.policyID gt 0 && policy.policyStatusID gt 0}">
-					 		<td>
-					 			<input type="submit" value="Stop Policy" onclick="stopPolicy()"/>
-					 		</td>
+					 		<td><input type="submit" value="Stop Policy" onclick="stopPolicy()"/></td>
 						</c:when>
-						<c:otherwise>
-								<!-- Nothing -->
-						</c:otherwise>
+						<c:otherwise><!-- Nothing --></c:otherwise>
 					</c:choose>
 			    </tr>
 			

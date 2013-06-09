@@ -11,18 +11,42 @@
  <script>
   $(document).ready(function() {
     $("#datepicker1").datepicker();
-    $("#datepicker2").datepicker();
+    //$("#datepicker2").datepicker();
   });
   </script>
   
   <script type="text/javascript">
-    function setDates(){
-    	//alert("value of date being set ");
-    	//alert(" is :"+document.getElementById("datepicker").value);
+    
+
+  function setDates(){
     	var sDateValue = document.getElementById("datepicker1").value;
-    	var eDateValue = document.getElementById("datepicker2").value;
+    	//var eDateValue = document.getElementById("datepicker2").value;
       	window.opener.document.getElementById("sDate").value = sDateValue;
-      	window.opener.document.getElementById("eDate").value = eDateValue;
+        //window.opener.document.getElementById("eDate").value = eDateValue;
+        //alert("sDateValue :"+sDateValue);
+      
+		var dateArray = sDateValue.split("/");
+		
+		//in JS, month starts from 0
+		var month = dateArray[0]-1;
+		var day = dateArray[1];
+		var fullYear = dateArray[2];
+		//alert("month "+month+ " day "+day+" fullYear "+fullYear);
+		var startDate = new Date();
+		startDate.setMonth(month);
+		startDate.setDate(day);
+		startDate.setFullYear(fullYear);
+		
+		//alert("constructed startDate :"+startDate);
+		
+		//add 5 yrs - 1 day, to get end date
+      	startDate.setMonth(startDate.getMonth()+60 );
+      	startDate.setDate(startDate.getDate() - 1);
+	    
+        //alert((startDate.getMonth() + 1) + '/' + startDate.getDate() + '/' +  startDate.getFullYear());
+      	window.opener.document.getElementById("eDate").value = (startDate.getMonth() + 1) + '/' + startDate.getDate() + '/' +  startDate.getFullYear();
+      	
+      	
     	window.close();
     }
   </script>
@@ -38,12 +62,12 @@
 	    	<!-- <td><input type="label" value="Start Date"/></td> --> 
 	    	<td><input id="datepicker1" /></td>
 	    </tr>
-	    <tr>
-	    	<!-- <td><input type="label" value="End Date"/></td> -->
+<!--  	    <tr>
+	    	<td><input type="label" value="End Date"/></td>
 	    	<td><label for="endDateLabel">End Date</label></td> 
 	    	<td><input id="datepicker2" /></td>
 	    </tr>
-	
+ -->	
 	    <tr>
 	    	<td><input id="setDate" type="button" value="submit" onclick="setDates()"/></td>
 	    </tr>
