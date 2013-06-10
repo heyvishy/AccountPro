@@ -9,7 +9,7 @@
 		<script type="text/javascript">
 		
 		function setColor() {
-			alert("Set color");
+			//alert("Set color");
 			var element = document.getElementById('fName');
 			element.style.borderColor =  'red';
 		}

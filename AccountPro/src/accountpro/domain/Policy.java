@@ -2,6 +2,7 @@ package accountpro.domain;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -16,13 +17,14 @@ public class Policy {
 	
 	@NotEmpty
 	public String policyType;
-	
-	@NotNull
+
+	@Min(0)
 	public int cardNumber;
 	
 	//accountNumber
 	public int policyNumber;
 	
+	@Min(50)
 	public double policyAmount;
 	
 	public Date startDate;

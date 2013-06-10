@@ -1,16 +1,22 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ include file="/jsp/include.jsp" %>
 
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
+			//alert("hi");
 		  $("#datepicker").datepicker();
 		});
 	</script>
+
 		
 	    
 	<script type="text/javascript">
 		
-		function disableFormFields() {
+/* 		function disableFormFields() {
 			//document.getElementById('customerID').readOnly =true;
 			document.getElementById('cardNumber').disabled ='disabled';
 			document.getElementById('policyNumber').disabled ='disabled';
@@ -27,7 +33,7 @@
 			document.getElementById('sDate').disabled ='';
 			document.getElementById('eDate').disabled ='';
 		}
-	
+ */	
 		function startPolicy(){
 			//disableFormFields();
 		    var form = document.getElementById("policyForm");
@@ -106,7 +112,7 @@
 				return false;
 			}
 			
-			validatePolicyAmount();
+			//validatePolicyAmount();
 			
 			return validateDate();
 			
@@ -119,8 +125,18 @@
 <html>	
 <head>
     <title>Add Policy</title>
+
 	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 	<link href="css/global.css" rel="stylesheet" type="text/css"/>
+	
+		<style type="text/css">
+	
+			div.ui-datepicker{
+	 			font-size:10px;
+			}
+	</style>
+	
+
 </head>
 
 <body>
@@ -135,12 +151,17 @@
 	<tr>
 		<td class="Heading" >Add Policy</td>
 	</tr> 	
-	<tr>
+<%-- 	<tr>
 		<td><form:errors path="*" cssClass="errorblock" element="div" /></td>
 	</tr> 	
- 	<tr>
+ --%> 	<tr>
  		<td>
 			  <table class="tblChild" border="0">
+			  
+<!-- 				    <tr>
+				    	<td><p>Date: <input type="text" id="datepicker" /></p></td>
+				    </tr>
+ -->			  
 			    <tr>
 			        <td>
 			        	<form:label path="customerId">Select Customer</form:label>
@@ -201,6 +222,7 @@
 			        <td><form:input type="text" id="eDate" readonly="true" path="endDate" /></td>
 			        <td><form:errors path="endDate" cssClass="error" /></td>
 			    </tr>
+			    
 				
 				<tr>
 					<td><form:hidden path="policyID" value="${policy.policyID}"/></td>

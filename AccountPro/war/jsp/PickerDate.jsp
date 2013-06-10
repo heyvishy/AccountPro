@@ -3,14 +3,19 @@
 <html>
 <head>
 
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
+<!-- 
  <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
  <script type="text/javascript" src="js/jquery.min.js"></script>
  <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
+ --> 
+ 
  <script>
   $(document).ready(function() {
-    $("#datepicker1").datepicker();
+    $("#datepicker1").datepicker({minDate:0});
     //$("#datepicker2").datepicker();
   });
   </script>
