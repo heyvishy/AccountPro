@@ -40,6 +40,10 @@
    	<bean name="/report.htm" class="accountpro.controller.ReportController">
    		<property name="reportService" ref="reportService"/>
     </bean>
+
+   	<bean name="/policyPayment.htm" class="accountpro.controller.BalanceController">
+   		<property name="balanceService" ref="balanceService"/>
+    </bean>
  
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>

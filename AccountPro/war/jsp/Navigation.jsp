@@ -37,6 +37,10 @@
 						                </ul>
 								</li>
 								<li>
+									<a href="policyPayment.htm">Payment</a>
+								</li>
+
+								<li>
 									<a href="report.htm">Report</a>
 								</li>
 								<li>

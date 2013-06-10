@@ -50,7 +50,10 @@
 	<bean id="policyDao" class="accountpro.dao.impl.PolicyDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-
+	
+	<bean id="balanceDao" class="accountpro.dao.impl.BalanceDaoImpl">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
 
 <!-- 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
