@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	
 	 function radioSelect(){
-		 alert("hi");
+		 alert("hii");
 	 }
 </script>
 
