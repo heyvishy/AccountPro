@@ -18,5 +18,9 @@
     <bean id="reportService" class="accountpro.service.impl.ReportServiceImpl">
     	<property name="customerDao" ref="customerDao"/>
     </bean>
+    
+    <bean id="balanceService" class="accountpro.service.impl.BalanceServiceImpl">
+    	<property name="balanceDao" ref="balanceDao"/>
+    </bean>
 
 </beans>

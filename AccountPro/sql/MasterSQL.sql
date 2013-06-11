@@ -41,8 +41,30 @@ Create Table PolicyStatus
  Status VARCHAR(50) NOT NULL,
  Description VARCHAR(100)
 );
-
+/*Master data creation for PolicyStatus*/
 INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (0,'Created','Policy is created');
 INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (1,'Started','Policy is started');
 INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (2,'Stopped','Policy is stopped');
+
+/*Payment Table Creation*/
+CREATE TABLE Payment
+(
+Payment_Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+PolicyID INT NOT NULL,
+PolicyNumber INT NOT NULL,
+PaymentAmount DOUBLE NOT NULL,
+PaymentDate DATE,
+IsPaymentProcessed BIT,
+FOREIGN KEY (PolicyID) REFERENCES Policy(Policy_Id)
+);
+
+CREATE TABLE Balance
+(
+CustomerId INT NOT NULL ,
+PolicyID INT NOT NULL,
+PaymentDue DOUBLE NULL,
+LastUpdated DATE,
+FOREIGN KEY (CustomerId) REFERENCES Customer(P_Id),
+FOREIGN KEY (PolicyID) REFERENCES Policy(Policy_Id)
+);
 
