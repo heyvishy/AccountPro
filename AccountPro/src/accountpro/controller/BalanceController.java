@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.BalanceDue;
+import accountpro.domain.Payment;
 import accountpro.service.BalanceService;
 
 @Controller
@@ -16,6 +18,18 @@ public class BalanceController {
 	private BalanceService balanceService;
 	
 	private static final Logger logger = Logger.getLogger(BalanceController.class.getName());
+
+	@RequestMapping(value="/paymentpopup.htm")
+	public ModelAndView showPaymentPopUpForm(Model model) {
+		Payment payment = new Payment();
+	    ModelAndView mav = new ModelAndView();
+	    
+	    //List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
+	    //mav.addObject("customerList", customers);
+	    mav.setViewName("PaymentPopup");
+	    mav.addObject("payment", payment);
+	    return mav;
+	}
 
 	@RequestMapping(value="/policyPayment.htm")	
 	public ModelAndView geBalances(){
