@@ -55,6 +55,10 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 
+	<bean id="paymentDao" class="accountpro.dao.impl.PaymentDaoImpl">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
 <!-- 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">

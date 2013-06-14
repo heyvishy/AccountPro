@@ -8,4 +8,6 @@ public interface BalanceService {
 
 	public List<BalanceDue> getBalances();
 	
+	public BalanceDue getBalance(String policyID);
+	
 }

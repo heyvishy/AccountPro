@@ -7,4 +7,5 @@ import accountpro.domain.BalanceDue;
 public interface BalanceDao{
 	
 	public List<BalanceDue> getBalances();
+	public BalanceDue getBalance(String policyID);
 }

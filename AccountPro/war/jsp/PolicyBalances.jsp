@@ -29,7 +29,7 @@
 	 function onPayClick(name,policyid,paydue){
 		 //alert("pay");
 		 alert("name :"+name+" policyid :"+policyid+" paydue :"+paydue);
-		 window.open('paymentpopup.htm','payment','resizable=no,height=400,width=600');
+		 window.open('paymentpopup.htm?policyID='+policyid+'&paydue='+paydue,'payment','resizable=no,height=400,width=600');
 		 
 	 }
 	 
@@ -55,7 +55,7 @@
 
 <body>
 
-<form:form method="post" action="policyPayment.htm" commandName="balanceDue" >
+<form:form method="post" action="balance.htm" commandName="balanceDue" >
  	
  	 	<tr>
  			<td><%@ include file="../jsp/Navigation.jsp" %></td>

@@ -3,8 +3,8 @@
 
 <script type="text/javascript">
 
-	function selectCustomer(name,id){
- 		window.opener.document.getElementById("customerID").value = id;
+	function pay(){
+ 		//window.opener.document.getElementById("customerID").value = id;
 		window.close();
 	}
 	
@@ -35,30 +35,21 @@
 	 		<tr>
 	 			<td>
 				    <table class="">
-<%-- 					    <tr>
-					        <td><form:label >Customer Name</form:label></td>
-					        <td><form:input  /></td>
-					    </tr>
- --%>
 					    <tr>
 					        <td><form:label path="policyId">Policy ID</form:label></td>
 					        <td><form:input path="policyId" /></td>
 					    </tr>
 					    <tr>
-<%-- 					        <td><form:label path="">Balance Due</form:label></td>
-					        <td><form:input path="" /></td>
- --%>					        
  							<td><label for="balanceDue">Balance Due</label></td>
  							<td><input type="text" value="100.00" disabled="disabled"></td>
 					    </tr>
-
 					    <tr>
 					        <td><form:label path="paymentAmount">Payment Amount</form:label></td>
 					        <td><form:input path="paymentAmount" /></td>
 					    </tr>
 					    
 					    <tr>
-							<td><input type="submit" value="Pay"/></td>
+							<td><input type="submit" value="Pay" onclick="pay()"/></td>
 					        <td><input type="reset" value="Reset" /></td>
 					    </tr>
 						 				 

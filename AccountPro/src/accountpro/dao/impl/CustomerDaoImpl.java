@@ -24,7 +24,7 @@ import accountpro.domain.SearchCustomerCriteria;
 public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 	
 	private static final Logger logger = Logger.getLogger(CustomerDaoImpl.class.getName());
-    private DataSource dataSource;
+    //private DataSource dataSource;
 
 	public int insertCustomer(Customer customer){
 		StringBuffer sql = new StringBuffer();

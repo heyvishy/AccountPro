@@ -37,7 +37,7 @@
 						                </ul>
 								</li>
 								<li>
-									<a href="policyPayment.htm">Payment</a>
+									<a href="balance.htm">Payment</a>
 								</li>
 
 								<li>

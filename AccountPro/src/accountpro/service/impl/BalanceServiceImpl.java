@@ -3,6 +3,7 @@ package accountpro.service.impl;
 import java.util.List;
 
 import accountpro.dao.BalanceDao;
+import accountpro.domain.BalanceDue;
 import accountpro.service.BalanceService;
 
 public class BalanceServiceImpl implements BalanceService {
@@ -14,6 +15,11 @@ public class BalanceServiceImpl implements BalanceService {
 		return balanceDao.getBalances();
 	}
 
+	@Override
+	public BalanceDue getBalance(String policyID) {
+		return balanceDao.getBalance(policyID);
+	}
+
 	public BalanceDao getBalanceDao() {
 		return balanceDao;
 	}
@@ -21,6 +27,7 @@ public class BalanceServiceImpl implements BalanceService {
 	public void setBalanceDao(BalanceDao balanceDao) {
 		this.balanceDao = balanceDao;
 	}
+
 
 
 }

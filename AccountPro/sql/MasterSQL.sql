@@ -51,7 +51,7 @@ CREATE TABLE Payment
 (
 Payment_Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 PolicyID INT NOT NULL,
-PolicyNumber INT NOT NULL,
+PolicyNumber INT NULL,
 PaymentAmount DOUBLE NOT NULL,
 PaymentDate DATE,
 IsPaymentProcessed BIT,

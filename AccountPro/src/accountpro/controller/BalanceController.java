@@ -19,28 +19,26 @@ public class BalanceController {
 	
 	private static final Logger logger = Logger.getLogger(BalanceController.class.getName());
 
-	@RequestMapping(value="/paymentpopup.htm")
-	public ModelAndView showPaymentPopUpForm(Model model) {
-		Payment payment = new Payment();
-	    ModelAndView mav = new ModelAndView();
-	    
-	    //List<Customer> customers = customerService.searchCustomers(searchCustomerCriteria);
-	    //mav.addObject("customerList", customers);
-	    mav.setViewName("PaymentPopup");
-	    mav.addObject("payment", payment);
-	    return mav;
-	}
-
-	@RequestMapping(value="/policyPayment.htm")	
+	@RequestMapping(value="/balance.htm")	
 	public ModelAndView geBalances(){
 	    ModelAndView mav = new ModelAndView();
 	    List<BalanceDue> balanceDues  = balanceService.getBalances();
 	    
 	    mav.addObject("balanceDues",balanceDues);
-	    mav.setViewName("PaymentBalance");
+	    mav.setViewName("PolicyBalances");
 	    return mav;
 	}
 
+/*	@RequestMapping(value="/policyPayment.htm")	
+	public ModelAndView geBalance(){
+	    ModelAndView mav = new ModelAndView();
+	    List<BalanceDue> balanceDues  = balanceService.getBalances();
+	    
+	    mav.addObject("balanceDues",balanceDues);
+	    mav.setViewName("PolicyBalances");
+	    return mav;
+	}
+*/
 	public BalanceService getBalanceService() {
 		return balanceService;
 	}

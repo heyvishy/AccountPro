@@ -23,4 +23,8 @@
     	<property name="balanceDao" ref="balanceDao"/>
     </bean>
 
+    <bean id="paymentService" class="accountpro.service.impl.PaymentServiceImpl">
+    	<property name="paymentDao" ref="paymentDao"/>
+    </bean>
+
 </beans>

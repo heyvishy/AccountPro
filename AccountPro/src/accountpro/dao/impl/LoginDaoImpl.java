@@ -10,7 +10,7 @@ import accountpro.dao.LoginDao;
 
 public class LoginDaoImpl extends BaseDao implements LoginDao{
 	
-	private DataSource dataSource; 
+	//private DataSource dataSource; 
 	
 	@Override
 	public boolean validateLogin(String userid, String password) {

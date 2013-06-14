@@ -14,7 +14,6 @@ import accountpro.domain.BalanceDue;
 public class BalanceDaoImpl extends BaseDao implements BalanceDao {
 
 	private static final Logger logger = Logger.getLogger(BalanceDaoImpl.class.getName());
-   // private DataSource dataSource;
 
 	//Eventually this query will change , to get data from Balance Table
 	@Override
@@ -41,4 +40,24 @@ public class BalanceDaoImpl extends BaseDao implements BalanceDao {
 		return balanceDues;
 	}
 
+	
+	@Override
+	public BalanceDue getBalance(String policyID) {
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from  Policy P INNER JOIN Customer C on P.CustomerID = C.P_Id where P.Policy_Id= "+Integer.parseInt(policyID));
+		
+		SqlRowSet rss  = this.getJdbcTemplate().queryForRowSet(sql.toString());
+		BalanceDue balanceDue =  new BalanceDue();
+		
+		while(rss.next()){
+			balanceDue.setCustomerId(rss.getInt("CustomerID"));
+			balanceDue.setPolicyId(rss.getInt("Policy_Id"));
+			balanceDue.setLastUpdated(new Date());
+			balanceDue.setPaymentDue(rss.getDouble("PolicyAmount"));
+			balanceDue.setCustomerName(rss.getString("FirstName")+" "+rss.getString("LastName"));
+			break;
+		}
+		return balanceDue;
+	}
 }

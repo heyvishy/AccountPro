@@ -15,7 +15,7 @@ import accountpro.domain.SearchPolicyCriteria;
 
 public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	
-	private DataSource dataSource;
+	//private DataSource dataSource;
 
 	@Override
 	public int insertPolicy(Policy policy) {

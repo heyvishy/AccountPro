@@ -41,10 +41,15 @@
    		<property name="reportService" ref="reportService"/>
     </bean>
 
-   	<bean name="/policyPayment.htm" class="accountpro.controller.BalanceController">
+   	<bean name="/balance.htm" class="accountpro.controller.BalanceController">
    		<property name="balanceService" ref="balanceService"/>
     </bean>
  
+ 	<bean name="/paymentpopup.htm" class="accountpro.controller.PaymentController">
+ 		<property name="paymentService" ref="paymentService"/>
+ 		<property name="balanceService" ref="balanceService"/>
+ 	</bean>
+ 	 
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>
     </bean>
