@@ -38,7 +38,13 @@ public class PolicyController {
 	private PolicyService policyService;
 	private CustomerService customerService;
 	
-	public CustomerService getCustomerService() {
+	public PolicyController (PolicyService policyService,CustomerService customerService) {
+		this.policyService = policyService;
+		this.customerService = customerService;
+	}
+
+	
+/*	public CustomerService getCustomerService() {
 		return customerService;
 	}
 
@@ -53,7 +59,7 @@ public class PolicyController {
 	public void setPolicyService(PolicyService policyService) {
 		this.policyService = policyService;
 	}
-
+*/
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

@@ -15,8 +15,10 @@
     <!-- the application context definition for the accountpro DispatcherServlet -->
 
  	<bean name="/searchPolicy.htm" class="accountpro.controller.PolicyController">
-		<property name="policyService" ref="policyService"></property>
-		<property name="customerService" ref="customerService"></property>
+ 		<constructor-arg ref="policyService"></constructor-arg>
+ 		<constructor-arg ref="customerService"></constructor-arg>
+		<!-- <property name="policyService" ref="policyService"></property>
+		<property name="customerService" ref="customerService"></property> -->
     </bean>
 
 <!--  	<bean name="/pickerCustomer.htm" class="accountpro.controller.CustomerController">
@@ -60,6 +62,16 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+<!-- 	<bean id="messageLoader" class="accountpro.util.MessageLoader">
+		<property name="messages">
+			<bean class="org.springframework.context.support.ResourceBundleMessageSource">
+				<property name="basename">
+					<value>errormessages</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+ -->
 	
 
 </beans>

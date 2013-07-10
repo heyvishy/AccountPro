@@ -1,6 +1,7 @@
 <%@ include file="/jsp/include.jsp" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+
 <!DOCTYPE HTML>
 <html>
 
@@ -18,8 +19,17 @@
 	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 </head>
 
-<body>
-	<form:form method="post" action="doLogin.htm" commandName="login">
+<body onload='document.f.userid.focus();'>
+
+
+	<c:if test="${not empty error}">
+		<div class="errorblock">
+			Your login attempt was not successful, try again.<br /> Caused :
+			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+		</div>
+	</c:if>
+ 
+	<form:form name='f' method="post" action="<c:url value='j_spring_security_check' />" commandName="login">
 	
 		<table class="tblParent">
 			<tr>
@@ -35,12 +45,12 @@
 				    <table class="tblLogin">
 					    <tr>
 					        <td><form:label path="userid" >User Id</form:label></td>
-					        <td><form:input path="userid" placeholder="UserID" /></td> 
+					        <td><form:input name="j_username" path="userid" placeholder="UserID" /></td> 
 					        <td><form:errors path="userid" cssClass="error"/></td>
 					    </tr>
 					    <tr>
 					        <td><form:label path="password">Password</form:label></td>
-					        <td><form:input path="password" placeholder="password" /></td>
+					        <td><form:input name='j_password' path="password" placeholder="password" /></td>
 					        <td><form:errors path="password" cssClass="error"/></td>
 					    </tr>
 					    <tr>

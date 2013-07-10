@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,10 +61,30 @@ public class LoginController extends BaseController {
 		}
 	}
 
+/*	@RequestMapping(value="/loginfailed.htm", method = RequestMethod.GET)
+	public ModelAndView loginerror() {
+		Login loginBean = new Login();
+		return new ModelAndView("Error", "login", loginBean);
+ 
+	}
+*/	
+	@RequestMapping(value="/loginfailed", method = RequestMethod.GET)
+	public String loginerror(ModelMap model) {
+ 		model.addAttribute("error", "true");
+		return "login";
+ 
+	}
+	
+	@RequestMapping(value="/logout.htm", method = RequestMethod.GET)
+	public ModelAndView logout() {
+	   	Login loginBean = new Login();
+        return new ModelAndView("login", "login", loginBean);
+	}
+	
     @RequestMapping("/login.htm")
     public ModelAndView showForm() {
     	Login loginBean = new Login();
-        return new ModelAndView("Login", "login", loginBean);
+        return new ModelAndView("login", "login", loginBean);
     }
 
     @RequestMapping("/support.htm")
@@ -72,21 +93,7 @@ public class LoginController extends BaseController {
         return new ModelAndView("ContactSupport","support",null);
     }
 
-    @RequestMapping("/support1.htm")
-    public ModelAndView showSupportForm1() {
-    	
-        return new ModelAndView("TestPage","support",null);
-    }
-
-    @RequestMapping("/support2.htm")
-    public ModelAndView showSupportForm2() {
-    	
-        return new ModelAndView("TestBtspPage","support",null);
-    }
-
-    
-
-	public LoginService getLoginService() {
+ 	public LoginService getLoginService() {
 		return loginService;
 	}
 

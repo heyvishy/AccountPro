@@ -1,0 +1,44 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+   
+ 
+  <http pattern="/login*" security="none"/>
+  <http auto-config="true">
+ 		<intercept-url pattern="/**" access="ROLE_USER" />
+		<form-login login-page="/login.htm" default-target-url="/mainMenu.htm"
+			authentication-failure-url="/loginfailed.htm" />
+		<logout logout-success-url="/logout.htm" delete-cookies="JSESSIONID"/>   
+  </http> 
+
+<!--   <authentication-manager>
+	  <authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+	 		   users-by-username-query="select userid,password, enabled from Users where userid= ?" 
+	 		   authorities-by-username-query="select u.userid, ur.authority from Users u, user_roles ur  where u.Id = ur.Id and u.userid = ? "	/>	  
+ 	  </authentication-provider>
+   </authentication-manager>	
+ -->   
+
+  <authentication-manager>
+    <authentication-provider user-service-ref='myUserDetailsService'/>
+  </authentication-manager>
+
+  <beans:bean id="myUserDetailsService"
+      class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+    <beans:property name="dataSource" ref="dataSource"/>
+ 	<beans:property name="usersByUsernameQuery" value="select userid,password, enabled from Users where userid= ?">
+	</beans:property>
+
+	<beans:property name="authoritiesByUsernameQuery" value="select u.userid, ur.authority from Users u, user_roles ur  where u.Id = ur.Id and u.userid = ?">
+	</beans:property>
+
+	
+
+  </beans:bean>
+
+</beans:beans>

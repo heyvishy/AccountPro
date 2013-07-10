@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,7 +55,10 @@
  -->
  							</ul>
 					</td>
-					<td align="right"><a href="login.htm">Sign out</a></td>
+					<!-- <td align="right"><a href="login.htm">Sign out</a></td> -->
+					<%-- <td align="right"><a href="<c:url value="/j_spring_security_logout" />Logout</a></td> --%>
+					<td align="right"><a href="<c:url value="/j_spring_security_logout" /> ">Logout</a></td>
+					
 				</tr>
 		</table>
 	</body>

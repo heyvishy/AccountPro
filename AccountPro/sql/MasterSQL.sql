@@ -4,11 +4,12 @@ Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 LastName VARCHAR(255) ,
 FirstName VARCHAR(255),
 userid VARCHAR(20) NOT NULL,
-PASSWORD VARCHAR(20) NOT NULL
+PASSWORD VARCHAR(20) NOT NULL,
+ENABLED tinyint(1) NOT NULL
 );
 
 /*sets up user account*/
-INSERT INTO accountpro.`Users` (LastName,FirstName,userid,PASSWORD) VALUES ('SHUKLA','VISHAL','vishal','password');
+INSERT INTO accountpro.`Users` (LastName,FirstName,userid,PASSWORD) VALUES ('SHUKLA','VISHAL','vishal','password','TRUE');
 
 CREATE TABLE Customer
 (
@@ -19,6 +20,17 @@ Address VARCHAR(255),
 City VARCHAR(255),
 ZipCode VARCHAR(10)
 );
+
+Create Table PolicyStatus
+(
+ ID INT NOT NULL PRIMARY KEY,
+ Status VARCHAR(50) NOT NULL,
+ Description VARCHAR(100)
+);
+/*Master data creation for PolicyStatus*/
+INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (0,'Created','Policy is created');
+INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (1,'Started','Policy is started');
+INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (2,'Stopped','Policy is stopped');
 
 CREATE TABLE Policy
 (
@@ -35,16 +47,6 @@ FOREIGN KEY (CustomerID) REFERENCES Customer(P_Id),
 FOREIGN KEY (PolicyStatusID) REFERENCES PolicyStatus(ID)
 );
 
-Create Table PolicyStatus
-(
- ID INT NOT NULL PRIMARY KEY,
- Status VARCHAR(50) NOT NULL,
- Description VARCHAR(100)
-);
-/*Master data creation for PolicyStatus*/
-INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (0,'Created','Policy is created');
-INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (1,'Started','Policy is started');
-INSERT INTO accountpro.`PolicyStatus` (ID,Status,Description) VALUES (2,'Stopped','Policy is stopped');
 
 /*Payment Table Creation*/
 CREATE TABLE Payment

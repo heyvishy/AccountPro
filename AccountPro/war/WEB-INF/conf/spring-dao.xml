@@ -3,11 +3,9 @@
 <beans>
 
     <!-- the DataSource (parameterized for configuration via a PropertyPlaceHolderConfigurer) -->
-    <!-- <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource"> -->
-	
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-	
-<!--    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+
+<!-- <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+    	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/AccountPro"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
@@ -15,14 +13,11 @@
         <property name="url" value="jdbc:mysql://localhost:3306/accountpro"/> 
 -->
 
-<!--  	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
- 	    <property name="url" value="jdbc:mysql://ec2-23-20-51-20.compute-1.amazonaws.com:3306/accountpro"/>
-        <property name="username" value="shukla81"/>
-        <property name="password" value="shanker11"/>
- -->	
-	
+<!-- 	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 	<property name="jdbcUrl" value="jdbc:mysql://ec2-23-20-51-20.compute-1.amazonaws.com:3306/accountpro"/>
+	<property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/accountpro"/>
 	<property name="user" value="shukla81"/>
 	<property name="password" value="shanker11"/>	
 	
@@ -33,8 +28,13 @@
 	<property name="maxStatements" value="50"></property>
 	<property name="automaticTestTable" value="test"></property>
 	<property name="testConnectionOnCheckin" value="true"></property>
-	<property name="idleConnectionTestPeriod" value="60"></property>        
-        
+	<property name="idleConnectionTestPeriod" value="60"></property>         -->
+ 
+ <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="url" value="jdbc:mysql://localhost:3306/accountpro" />
+	<property name="username" value="shukla81" />
+	<property name="password" value="shanker11" />
  </bean>
 
 	<!-- Base Bean defintions for all the DAO which inject the appropriate datasource -->
@@ -58,6 +58,7 @@
 	<bean id="paymentDao" class="accountpro.dao.impl.PaymentDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+	
 
 <!-- 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

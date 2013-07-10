@@ -3,8 +3,9 @@
 <beans>
 	<import resource="/conf/spring-dao.xml" />
 	<import resource="/conf/spring-service.xml" />
+	<import resource="/conf/spring-security.xml" />	
 	
-	<bean id="messageLoader" class="accountpro.util.MessageLoader">
+ 	<bean id="messageLoader" class="accountpro.util.MessageLoader">
 		<property name="messages">
 			<bean class="org.springframework.context.support.ResourceBundleMessageSource">
 				<property name="basename">
@@ -13,5 +14,4 @@
 			</bean>
 		</property>
 	</bean>
-	
 </beans>
