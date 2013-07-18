@@ -2,12 +2,17 @@ package accountpro.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import accountpro.dao.CustomerDao;
 import accountpro.domain.Customer;
 import accountpro.service.ReportService;
 
+@Service("reportService")
 public class ReportServiceImpl implements ReportService {
 
+	@Autowired
 	private CustomerDao customerDao;
 	
 	public CustomerDao getCustomerDao() {

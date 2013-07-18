@@ -48,10 +48,11 @@ version="2.4">
 <!--   <context-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>
-  		/WEB-INF/conf/*.xml
+  		/WEB-INF/accountpro-servlet.xml
   	</param-value>
   </context-param>
- -->  <listener>
+ -->  
+  <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
  

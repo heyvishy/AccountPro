@@ -2,7 +2,8 @@
 <!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-    <bean id="loginService" class="accountpro.service.impl.LoginServiceImpl">
+
+<!--     <bean id="loginService" class="accountpro.service.impl.LoginServiceImpl">
         <property name="loginDao" ref="loginDao"/>
     </bean>
     
@@ -26,5 +27,5 @@
     <bean id="paymentService" class="accountpro.service.impl.PaymentServiceImpl">
     	<property name="paymentDao" ref="paymentDao"/>
     </bean>
-
+ -->
 </beans>

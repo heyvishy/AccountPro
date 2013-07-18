@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,7 +35,9 @@ public class PaymentController {
 		this.balanceService = balanceService;
 	}
 
+	@Autowired
 	private PaymentService paymentService;
+	@Autowired
 	private BalanceService balanceService;
 	
 	private static final Logger logger = Logger.getLogger(PaymentController.class.getName());

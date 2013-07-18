@@ -3,18 +3,18 @@ package accountpro.controller;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import accountpro.domain.BalanceDue;
-import accountpro.domain.Payment;
 import accountpro.service.BalanceService;
 
 @Controller
 public class BalanceController {
 
+	@Autowired
 	private BalanceService balanceService;
 	
 	private static final Logger logger = Logger.getLogger(BalanceController.class.getName());
@@ -29,16 +29,6 @@ public class BalanceController {
 	    return mav;
 	}
 
-/*	@RequestMapping(value="/policyPayment.htm")	
-	public ModelAndView geBalance(){
-	    ModelAndView mav = new ModelAndView();
-	    List<BalanceDue> balanceDues  = balanceService.getBalances();
-	    
-	    mav.addObject("balanceDues",balanceDues);
-	    mav.setViewName("PolicyBalances");
-	    return mav;
-	}
-*/
 	public BalanceService getBalanceService() {
 		return balanceService;
 	}

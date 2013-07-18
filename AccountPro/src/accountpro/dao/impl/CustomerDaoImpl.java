@@ -5,26 +5,32 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Repository;
 
 import accountpro.dao.BaseDao;
 import accountpro.dao.CustomerDao;
 import accountpro.domain.Customer;
 import accountpro.domain.SearchCustomerCriteria;
 
+@Repository("customerDao")
 public class CustomerDaoImpl extends BaseDao implements CustomerDao {
 	
 	private static final Logger logger = Logger.getLogger(CustomerDaoImpl.class.getName());
-    //private DataSource dataSource;
+
+	@Autowired
+	public CustomerDaoImpl(DataSource dataSource) {
+		super(dataSource);
+	}
 
 	public int insertCustomer(Customer customer){
 		StringBuffer sql = new StringBuffer();

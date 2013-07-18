@@ -5,13 +5,20 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import accountpro.dao.BaseDao;
 import accountpro.dao.LoginDao;
 
+@Repository("loginDao")
 public class LoginDaoImpl extends BaseDao implements LoginDao{
 	
-	//private DataSource dataSource; 
-	
+	@Autowired
+	public LoginDaoImpl(DataSource dataSource) {
+		super(dataSource);
+	}
+
 	@Override
 	public boolean validateLogin(String userid, String password) {
 		

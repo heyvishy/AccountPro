@@ -6,16 +6,23 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Repository;
 
 import accountpro.dao.BaseDao;
 import accountpro.dao.PolicyDao;
 import accountpro.domain.Policy;
 import accountpro.domain.SearchPolicyCriteria;
 
+@Repository("policyDao")
 public class PolicyDaoImpl extends BaseDao implements PolicyDao{
 	
-	//private DataSource dataSource;
+	@Autowired
+	public PolicyDaoImpl(DataSource dataSource) {
+		super(dataSource);
+	}
+
 
 	@Override
 	public int insertPolicy(Policy policy) {

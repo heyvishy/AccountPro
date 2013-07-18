@@ -39,7 +39,7 @@
 
 	<!-- Base Bean defintions for all the DAO which inject the appropriate datasource -->
 
-	<bean id="loginDao" class="accountpro.dao.impl.LoginDaoImpl">
+<!-- 	<bean id="loginDao" class="accountpro.dao.impl.LoginDaoImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
@@ -57,7 +57,7 @@
 
 	<bean id="paymentDao" class="accountpro.dao.impl.PaymentDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
-	</bean>
+	</bean> -->
 	
 
 <!-- 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

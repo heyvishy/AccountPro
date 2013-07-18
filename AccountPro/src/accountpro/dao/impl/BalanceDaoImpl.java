@@ -5,16 +5,29 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Repository;
 
 import accountpro.dao.BalanceDao;
 import accountpro.dao.BaseDao;
 import accountpro.domain.BalanceDue;
 
+@Repository("balanceDao")
 public class BalanceDaoImpl extends BaseDao implements BalanceDao {
+	
 
+	@Autowired
+	public BalanceDaoImpl(DataSource dataSource) {
+		super(dataSource);
+	}
+	
 	private static final Logger logger = Logger.getLogger(BalanceDaoImpl.class.getName());
 
+
+	 
 	//Eventually this query will change , to get data from Balance Table
 	@Override
 	public List<BalanceDue> getBalances() {
@@ -60,4 +73,6 @@ public class BalanceDaoImpl extends BaseDao implements BalanceDao {
 		}
 		return balanceDue;
 	}
+
+
 }

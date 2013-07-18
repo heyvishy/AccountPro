@@ -7,15 +7,25 @@ import java.sql.SQLException;
 
 import java.util.logging.Logger;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import accountpro.dao.BaseDao;
 import accountpro.dao.PaymentDao;
 import accountpro.domain.Payment;
 
+@Repository("paymentDao")
 public class PaymentDaoImpl extends BaseDao implements PaymentDao{
+
+	@Autowired
+	public PaymentDaoImpl(DataSource dataSource) {
+		super(dataSource);
+	}
 
 	private static final Logger logger = Logger.getLogger(PaymentDaoImpl.class.getName());
 	

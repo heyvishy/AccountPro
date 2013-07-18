@@ -3,16 +3,21 @@ package accountpro.service.impl;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import accountpro.dao.PolicyDao;
 import accountpro.domain.Policy;
 import accountpro.domain.SearchPolicyCriteria;
 import accountpro.exception.ServiceException;
 import accountpro.service.PolicyService;
 
+@Service("policyService")
 public class PolicyServiceImpl implements PolicyService {
 
 	private static final Logger LOGGER = Logger.getLogger(PolicyServiceImpl.class.getName());
 	
+	@Autowired
 	private PolicyDao policyDao;
 	
 	@Override

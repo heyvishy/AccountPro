@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,7 +29,9 @@ public class CustomerController {
 	
 	private static final Logger LOGGER = Logger.getLogger(CustomerController.class.getName());
 
+	@Autowired
 	private CustomerService customerService;
+	@Autowired
 	private PolicyService policyService;
 	
 	public CustomerService getCustomerService() {

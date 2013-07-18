@@ -3,6 +3,9 @@ package accountpro.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import accountpro.dao.CustomerDao;
 import accountpro.domain.Customer;
 import accountpro.domain.SearchCustomerCriteria;
@@ -10,9 +13,12 @@ import accountpro.exception.ServiceException;
 import accountpro.service.CustomerService;
 import accountpro.util.MessageLoader;
 
+@Service("customerService")
 public class CustomerServiceImpl implements CustomerService{
 
+	@Autowired
 	private CustomerDao customerDao;
+	@Autowired
 	private MessageLoader messages;
 
 	public MessageLoader getMessages() {

@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,15 +35,16 @@ public class PolicyController {
 
 	private static final Logger LOGGER = Logger.getLogger(PolicyController.class.getName());
 	
-	
+	@Autowired
 	private PolicyService policyService;
+	@Autowired
 	private CustomerService customerService;
 	
-	public PolicyController (PolicyService policyService,CustomerService customerService) {
+/*	public PolicyController (PolicyService policyService,CustomerService customerService) {
 		this.policyService = policyService;
 		this.customerService = customerService;
 	}
-
+*/
 	
 /*	public CustomerService getCustomerService() {
 		return customerService;
