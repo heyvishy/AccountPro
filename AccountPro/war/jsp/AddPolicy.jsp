@@ -1,4 +1,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <%@ include file="/jsp/include.jsp" %>
 
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -7,7 +8,6 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			//alert("hi");
 		  $("#datepicker").datepicker();
 		});
 	</script>
@@ -16,31 +16,12 @@
 	    
 	<script type="text/javascript">
 		
-/* 		function disableFormFields() {
-			//document.getElementById('customerID').readOnly =true;
-			document.getElementById('cardNumber').disabled ='disabled';
-			document.getElementById('policyNumber').disabled ='disabled';
-			document.getElementById('policyAmount').disabled ='disabled';
-			document.getElementById('sDate').disabled ='disabled';
-			document.getElementById('eDate').disabled ='disabled';
-		}
-		
-		function enableFormFields() {
-			document.getElementById('customerID').disabled ='';
-			document.getElementById('cardNumber').disabled ='';
-			document.getElementById('policyNumber').disabled ='';
-			document.getElementById('policyAmount').disabled ='';
-			document.getElementById('sDate').disabled ='';
-			document.getElementById('eDate').disabled ='';
-		}
- */	
+	
 		function startPolicy(){
-			//disableFormFields();
 		    var form = document.getElementById("policyForm");
 		    document.getElementById("policyStatusID").value=1;
 		    form.action = 'updatePolicy.htm';
 		    alert("Policy Started");
-		    //disableFormFields();
 		}
 		
 		function stopPolicy(){
@@ -129,6 +110,7 @@
 	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 	<link href="css/global.css" rel="stylesheet" type="text/css"/>
 	
+	
 		<style type="text/css">
 	
 			div.ui-datepicker{
@@ -176,9 +158,9 @@
 						 	<c:otherwise>
 					        	<form:select id="customerID" path="customerId">
 								    <option value="0">Select</option>
-									    <c:forEach var="customer" items="${customerList}">
-									        <form:option value="${customer.customerID}" label="${customer.firstName} ${customer.lastName}"> </form:option>
-									    </c:forEach>
+								    <c:forEach var="customer" items="${customerList}">
+								        <form:option value="${customer.customerID}" label="${customer.firstName} ${customer.lastName}"> </form:option>
+								    </c:forEach>
 								</form:select>
 								<td><input id="chooseCustomer" type="button" value="choose" onClick="pickCustomer()"/></td>
 								<td></td>

@@ -15,8 +15,6 @@
 	</head>
 
 	<body>
-		<form:form method="post" action="mainMenu.htm" commandName="mainMenu">
-		 
 	 		<tr>
 	 			<td><%@ include file="../jsp/Navigation.jsp" %></td>
 	 		</tr>
@@ -27,7 +25,6 @@
 						<td class="Heading"></td>
 					</tr> 	
 			</table>
-		</form:form>
 	</body>
 
 </html>

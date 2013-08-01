@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+    <definition name="base.definition" template="/jsp/layout.jsp">
+        <put-attribute name="title" value="AccountPro" />
+        <put-attribute name="header" value="/jsp/header.jsp" />	
+        <put-attribute name="menu" value="/jsp/menu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/jsp/footer.jsp" />
+    </definition>
+    <definition name="contact" extends="base.definition">
+        <put-attribute name="title" value="Contact Manager" />
+        <put-attribute name="body" value="/jsp/contact.jsp" />
+    </definition>
+
+    <definition name="accountpro.base.definition" template="/jsp/AccProLayout.jsp">
+        <put-attribute name="title" value="AccountPro" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/jsp/footer.jsp" />
+    </definition>
+
+    <definition name="ContactSupport" extends="accountpro.base.definition">
+        <put-attribute name="title" value="Contact Support" />
+        <put-attribute name="body" value="/jsp/ContactSupport.jsp" />
+    </definition>
+ 
+</tiles-definitions>

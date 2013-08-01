@@ -1,4 +1,4 @@
-<%@ include file="/jsp/include.jsp" %>
+<%@ include file="/jsp/include.jsp"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <script type="text/javascript">

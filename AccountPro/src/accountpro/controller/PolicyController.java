@@ -71,7 +71,7 @@ public class PolicyController {
  	}
 	
 	
-	@RequestMapping(value="/pickerDate.htm")
+	@RequestMapping(value="/pickerDate.htm" )
 	public ModelAndView showPickerCustomerForm(Model model) {
 	    ModelAndView mav = new ModelAndView();
 	    mav.setViewName("PickerDate");
@@ -107,12 +107,13 @@ public class PolicyController {
 	    mav.addObject("customerList", customerList);
 	    return mav;
 	}
+	
 
 /*	@RequestMapping(value="/deletePolicy.htm",method=RequestMethod.POST)
 	public ModelAndView deletePolicy(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status) {
 */	
 	@RequestMapping(value="/searchPolicy.htm",method=RequestMethod.POST)
-	public ModelAndView searchPolicyForm(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status){
+	public ModelAndView searchPolicyForm(@ModelAttribute("searchPolicyCriteria")  SearchPolicyCriteria searchPolicyCriteria,BindingResult result, SessionStatus status ){
 		LOGGER.info("inside searchPolicyForm");
 		LOGGER.info("values searchPolicyCriteria "+searchPolicyCriteria.getCustomerName()+" "+searchPolicyCriteria.getPolicyType());
 		List<Policy> policies = policyService.searchPolicies(searchPolicyCriteria);

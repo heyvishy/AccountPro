@@ -45,13 +45,13 @@ version="2.4">
   </jsp-config>
   
   
-<!--   <context-param>
-  	<param-name>contextConfigLocation</param-name>
+<!--    <context-param>
+  	<param-name> contextConfigLocation</param-name>
   	<param-value>
   		/WEB-INF/accountpro-servlet.xml
   	</param-value>
   </context-param>
- -->  
+ -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
