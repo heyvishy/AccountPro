@@ -8,13 +8,6 @@
 <head>
     <title>Welcome to AccountPro</title>
 
-	<!-- Disables back button -->
-   	<script type = "text/javascript" >
-	    function preventBack(){window.history.forward();}
-	    setTimeout("preventBack()", 0);
-	    window.onunload=function(){null};
-	</script>
-    
 	<link href="css/Login.css" rel="stylesheet" type="text/css"/>
 	<link href="css/error.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -22,50 +15,57 @@
 <body onload='document.f.userid.focus();'>
 
 
-	<c:if test="${not empty error}">
+ 	<c:if test="${not empty error}">
 		<div class="errorblock">
 			Your login attempt was not successful, try again.<br /> Caused :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 		</div>
 	</c:if>
- 
-	<form:form name='f' method="post" action="<c:url value='j_spring_security_check' />" commandName="login">
+  
+ <form name='f' action="<c:url value='j_spring_security_check' />" 	method='POST'>
 	
-		<table class="tblParent">
-			<tr>
-				<td class="Heading" >AccountPro</td>
-			</tr>
-			<tr>
-				<td>
-					<form:errors path="*" cssClass="errorblock" element="div" />
-				</td>
-			</tr> 	
-			<tr>
-				<td>
-				    <table class="tblLogin">
-					    <tr>
-					        <td><form:label path="userid" >User Id</form:label></td>
-					        <td><form:input name="j_username" path="userid" placeholder="UserID" /></td> 
-					        <td><form:errors path="userid" cssClass="error"/></td>
-					    </tr>
-					    <tr>
-					        <td><form:label path="password">Password</form:label></td>
-					        <td><form:input name='j_password' path="password" placeholder="password" /></td>
-					        <td><form:errors path="password" cssClass="error"/></td>
-					    </tr>
-					    <tr>
+	<table class="tblParent">
+		<tr>
+			<td class="Heading" >AccountPro</td>
+		</tr>
+		
+		
+		<tr><td>
+		<c:if test="${not empty error}">
+			<div class="errorblock">
+				Your login attempt was not successful, try again.<br /> Caused :
+				${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+			</div>
+		</c:if>
+		</td></tr>
+	 	
+		<tr>
+			<td>
+		 		<table class="tblLogin">
+					<tr>
+						<td>User:</td>
+						<td><input type='text' name='j_username' value=''>
+						</td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type='password' name='j_password' />
+						</td>
+					</tr>
+					<tr>
 					        <td>
 					            <input type="submit" value="Login"/>
 					        </td>
 					         <td class="und">
 					            	Forgot your password ?
 					        </td>
-					        
-					    </tr>
-					</table>  		
-				</td>
-			</tr>
-		</table>
-	</form:form>
+					</tr>
+					
+			</table>
+			</td>
+		</tr>
+	</table>	
+</form>
+ 
 </body>
 </html>

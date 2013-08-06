@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-	<import resource="/conf/spring-dao.xml" />
+
+ 	<import resource="/conf/spring-dao.xml" />
 	<import resource="/conf/spring-service.xml" />
 	<import resource="/conf/spring-security.xml" />	
 	
+	<!--  <context:property-placeholder  location="/WEB-INF/conf/database.properties"/>  -->
+	
+    <bean id="propertyConfigurer" 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/conf/database.properties</value>
+			</list>
+		</property>
+	</bean>
+ 
  	<bean id="messageLoader" class="accountpro.util.MessageLoader">
 		<property name="messages">
 			<bean class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -14,5 +26,6 @@
 			</bean>
 		</property>
 	</bean>
+	
 
 </beans>

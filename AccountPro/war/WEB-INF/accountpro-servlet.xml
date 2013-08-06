@@ -10,19 +10,15 @@
        http://www.springframework.org/schema/context/spring-context-3.0.xsd
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-     
+       
      <!-- supports @Controller, @RequestMapping , @ExceptionHandler , @Valid  -->
+     <!-- JSR-303 support will be detected on classpath and enabled automatically -->
 	<mvc:annotation-driven/>
 	
  	<!-- <context:annotation-config/> -->
 	<context:component-scan base-package="accountpro"/>
 
     <!-- the application context definition for the accountpro DispatcherServlet -->
-
-<!--     <import resource="/conf/spring-dao.xml" />
-	<import resource="/conf/spring-service.xml" />
-	<import resource="/conf/spring-security.xml" />
- -->		
 
 <!--   	<bean name="/searchPolicy.htm" class="accountpro.controller.PolicyController">
  		<constructor-arg ref="policyService"></constructor-arg>
@@ -57,7 +53,8 @@
  		<property name="paymentService" ref="paymentService"/>
  		<property name="balanceService" ref="balanceService"/>
  	</bean>
-  -->	 
+  -->	
+    
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages"/>
     </bean>
@@ -86,7 +83,8 @@
 	        </list>
 	    </property>
 	</bean>
-<!--  	<bean id="messageLoader" class="accountpro.util.MessageLoader">
+	
+<!--   	<bean id="messageLoader" class="accountpro.util.MessageLoader">
 		<property name="messages">
 			<bean class="org.springframework.context.support.ResourceBundleMessageSource">
 				<property name="basename">

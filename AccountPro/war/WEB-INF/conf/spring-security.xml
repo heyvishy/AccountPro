@@ -7,11 +7,10 @@
            http://www.springframework.org/schema/security/spring-security-3.2.xsd">
    
  
- 
   <http pattern="/login*" security="none"/>
   <http auto-config="true">
  		<intercept-url pattern="/**"  access="ROLE_USER" />
-		<form-login login-page="/login.htm" default-target-url="/mainMenu.htm"
+		<form-login login-page="/login.htm" default-target-url="/mainMenu.htm" always-use-default-target='true'
 			authentication-failure-url="/loginfailed.htm" />
 		<logout logout-success-url="/logout.htm" />   
   </http> 

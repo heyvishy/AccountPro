@@ -23,20 +23,22 @@ public class LoginController {
 	@RequestMapping(value="/loginfailed", method = RequestMethod.GET)
 	public String loginerror(ModelMap model) {
  		model.addAttribute("error", "true");
-		return "login";
+		return "Login_11";
  
 	}
 	
 	@RequestMapping(value="/logout.htm", method = RequestMethod.GET)
 	public ModelAndView logout() {
 	   	Login loginBean = new Login();
-        return new ModelAndView("login", "login", loginBean);
+        //return new ModelAndView("login", "login", loginBean);
+	   	return new ModelAndView("Login_11", "login", loginBean);
 	}
 	
     @RequestMapping("/login.htm")
     public ModelAndView showForm() {
     	Login loginBean = new Login();
-        return new ModelAndView("login", "login", loginBean);
+        //return new ModelAndView("login", "login", loginBean);
+    	return new ModelAndView("Login_11", "login", loginBean);
     }
 
     @RequestMapping("/support.htm")

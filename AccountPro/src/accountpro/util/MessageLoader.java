@@ -33,4 +33,5 @@ public class MessageLoader {
 			return messages.getMessage(key, arguments, Locale.getDefault());
 		}
 	}
+
 }
