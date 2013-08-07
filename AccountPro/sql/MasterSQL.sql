@@ -11,6 +11,19 @@ ENABLED tinyint(1) NOT NULL
 /*sets up user account*/
 INSERT INTO accountpro.`Users` (LastName,FirstName,userid,PASSWORD) VALUES ('SHUKLA','VISHAL','vishal','password','TRUE');
 
+CREATE TABLE user_roles (
+  USER_ROLE_ID INT(10) NOT NULL PRIMARY KEY,
+  Id INT(10) NOT NULL,
+  AUTHORITY VARCHAR(45) NOT NULL,
+  FOREIGN KEY (Id) REFERENCES users (Id)
+) ;
+
+/*map user.id to user_roles */
+INSERT INTO accountpro.user_roles 
+(USER_ROLE_ID,Id,AUTHORITY) VALUES (1,1,'ROLE_USER');
+
+
+
 CREATE TABLE Customer
 (
 P_Id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

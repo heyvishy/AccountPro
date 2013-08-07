@@ -17,6 +17,7 @@
 	
  	<!-- <context:annotation-config/> -->
 	<context:component-scan base-package="accountpro"/>
+	
 
     <!-- the application context definition for the accountpro DispatcherServlet -->
 
@@ -83,6 +84,7 @@
 	        </list>
 	    </property>
 	</bean>
+	
 	
 <!--   	<bean id="messageLoader" class="accountpro.util.MessageLoader">
 		<property name="messages">

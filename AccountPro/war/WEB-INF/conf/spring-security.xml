@@ -6,15 +6,27 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.2.xsd">
    
+ <!-- <global-method-security secured-annotations="enabled" /> -->
+ <!-- <global-method-security pre-post-annotations="enabled" /> -->
  
-  <http pattern="/login*" security="none"/>
+  <!-- <http pattern="/login*" security="none"/> -->
+  <http pattern="/css/**" security="none" />
+  
   <http auto-config="true">
+  		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
  		<intercept-url pattern="/**"  access="ROLE_USER" />
 		<form-login login-page="/login.htm" default-target-url="/mainMenu.htm" always-use-default-target='true'
 			authentication-failure-url="/loginfailed.htm" />
-		<logout logout-success-url="/logout.htm" />   
+		<logout logout-success-url="/logout.htm" delete-cookies="JSESSIONID"/>
+		
+		<session-management>
+        	<concurrency-control max-sessions="1" />
+    	</session-management> 
+  
   </http> 
 
+  
+  
 <!--   <authentication-manager>
 	  <authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
@@ -31,14 +43,8 @@
   <beans:bean id="myUserDetailsService"
       class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
     <beans:property name="dataSource" ref="dataSource"/>
- 	<beans:property name="usersByUsernameQuery" value="select userid,password, enabled from Users where userid= ?">
-	</beans:property>
-
-	<beans:property name="authoritiesByUsernameQuery" value="select u.userid, ur.authority from Users u, user_roles ur  where u.Id = ur.Id and u.userid = ?">
-	</beans:property>
-
-	
-
+ 	<beans:property name="usersByUsernameQuery" value="select userid,password, enabled from Users where userid= ?" />
+	<beans:property name="authoritiesByUsernameQuery" value="select u.userid, ur.authority from Users u, user_roles ur  where u.Id = ur.Id and u.userid = ?" />
   </beans:bean>
 
 </beans:beans>
